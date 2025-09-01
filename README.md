@@ -990,12 +990,13 @@
         </div>
     </div>
 
-    <script type="module" src="blog.js"></script>
     <script type="module">
         // Firebase SDKのインポート
         import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, query, orderBy, getDocs, addDoc, setDoc, updateDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+        
+        // blog.jsから記事データをインポートします
         import { getBlogArticles } from './blog.js';
 
         // Firebaseのグローバル変数
@@ -1008,6 +1009,8 @@
         let auth;
         let userId = 'anonymous'; // 匿名ユーザーID
         let isAdmin = false; // 管理者ステータス
+        
+        let currentArticles = getBlogArticles(); // blog.jsから記事データを取得
 
         // --- Firebaseの初期化と認証 ---
         async function initializeFirebase() {
@@ -1020,7 +1023,7 @@
                     if (user) {
                         userId = user.uid;
                         console.log("Firebase認証成功。ユーザーID:", userId);
-                        loadArticles();
+                        // loadArticles(); // コメントアウトして、ローカルデータを使用
                     } else {
                         console.log("ユーザーがサインインしていません。匿名サインインを試行します。");
                         try {
@@ -1040,75 +1043,44 @@
         }
 
         // --- 記事データ管理 (Firestore) ---
-        const ARTICLES_COLLECTION_PATH = `/artifacts/${appId}/public/data/medreach_articles`;
-        let currentArticles = getBlogArticles(); // blog.jsから記事データを取得
-        renderArticles();
+        // Firebaseから記事を取得する関数（Firestoreが有効な場合に使用）
+        // const ARTICLES_COLLECTION_PATH = `/artifacts/${appId}/public/data/medreach_articles`;
+        // async function loadArticles() {
+        //     if (!db) {
+        //         console.warn("Firestoreが初期化されていません。");
+        //         return;
+        //     }
 
-        async function loadArticles() {
-            if (!db) {
-                console.warn("Firestoreが初期化されていません。");
-                return;
-            }
+        //     const q = query(collection(db, ARTICLES_COLLECTION_PATH), orderBy('timestamp', 'desc'));
 
-            const q = query(collection(db, ARTICLES_COLLECTION_PATH), orderBy('timestamp', 'desc'));
-
-            onSnapshot(q, (snapshot) => {
-                const fetchedArticles = [];
-                snapshot.forEach((doc) => {
-                    fetchedArticles.push({ id: doc.id, ...doc.data() });
-                });
-                currentArticles = fetchedArticles;
-                renderArticles();
-                if (isAdmin) {
-                    renderAdminArticleList();
-                }
-                console.log("Firestoreから記事がロード/更新されました。");
-            }, (error) => {
-                console.error("記事の取得エラー:", error);
-            });
-        }
+        //     onSnapshot(q, (snapshot) => {
+        //         const fetchedArticles = [];
+        //         snapshot.forEach((doc) => {
+        //             fetchedArticles.push({ id: doc.id, ...doc.data() });
+        //         });
+        //         currentArticles = fetchedArticles;
+        //         renderArticles();
+        //         if (isAdmin) {
+        //             renderAdminArticleList();
+        //         }
+        //         console.log("Firestoreから記事がロード/更新されました。");
+        //     }, (error) => {
+        //         console.error("記事の取得エラー:", error);
+        //     });
+        // }
 
         async function addArticle(title, summary, image) {
-            if (!db || !isAdmin) return;
-            try {
-                await addDoc(collection(db, ARTICLES_COLLECTION_PATH), {
-                    title,
-                    summary,
-                    image,
-                    timestamp: serverTimestamp(),
-                    year: new Date().getFullYear(),
-                    month: new Date().getMonth()
-                });
-                document.getElementById('newArticleTitle').value = '';
-                document.getElementById('newArticleSummary').value = '';
-                document.getElementById('newArticleImage').value = '';
-                console.log("記事が正常に追加されました。");
-            } catch (error) {
-                console.error("記事の追加エラー:", error);
-            }
+            // Firestoreが有効な場合のロジック
         }
 
         async function updateArticle(id, title, summary, image) {
-            if (!db || !isAdmin) return;
-            try {
-                const articleRef = doc(db, ARTICLES_COLLECTION_PATH, id);
-                await updateDoc(articleRef, { title, summary, image });
-                console.log("記事が正常に更新されました。");
-            } catch (error) {
-                console.error("記事の更新エラー:", error);
-            }
+            // Firestoreが有効な場合のロジック
         }
 
         async function deleteArticle(id) {
-            if (!db || !isAdmin) return;
-            try {
-                const articleRef = doc(db, ARTICLES_COLLECTION_PATH, id);
-                await deleteDoc(articleRef);
-                console.log("記事が正常に削除されました。");
-            } catch (error) {
-                console.error("記事の削除エラー:", error);
-            }
+            // Firestoreが有効な場合のロジック
         }
+
 
         // --- UIレンダリング関数 ---
         function renderArticles() {
@@ -1528,7 +1500,7 @@
                 '記事の投稿者': '記事は、現役医師や医療業界の専門家が執筆しています。専門的で信頼性の高い情報を提供できるよう努めています。',
                 '外部サイト': '記事内に外部サイトへのリンクが多数ございます。信頼できる情報源へのアクセスをサポートするためです。',
                 '厚生労働省': '厚生労働省のリンク集は、「厚生労働省」タブに専用のセクションがあります。制度やガイドライン別に整理しています。',
-                'リンク集': 'リンク集についてですね。「厚生労働省」タブをご覧ください。医師の皆様が業務で必要とする情報を集約しています。',
+                'リンク集': '厚生労働省のリンク集についてですね。「厚生労働省」タブをご覧ください。医師の皆様が業務で必要とする情報を集約しています。',
                 '医療法規': '医療法規に関するリンクは、厚生労働省のリンク集にある「医療法規・倫理・安全」のカテゴリーをご参照ください。',
                 '診療報酬': '診療報酬改定に関する情報は、厚生労働省のリンク集にある「診療報酬・医療制度」のカテゴリーにあります。',
                 '研修制度': '研修制度に関する情報は、「医師資格・免許・研修」のカテゴリーにリンクがあります。',
