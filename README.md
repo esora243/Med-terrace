@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedReach | 医師・医療従事者のための総合情報サイト</title>
-    <!-- Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&family=Noto+Sans+JP:wght@400;700;800&display=swap" rel="stylesheet">
     <style>
@@ -555,7 +554,6 @@
     </style>
 </head>
 <body class="antialiased">
-    <!-- ヘッダー -->
     <div class="header-bg text-white py-6 md:py-8 shadow-lg">
         <div class="container flex flex-col md:flex-row items-center justify-between relative z-10">
             <a href="#home" class="flex items-center gap-2 mb-4 md:mb-0 text-3xl md:text-4xl font-extrabold text-white no-underline">
@@ -595,9 +593,7 @@
         </div>
     </div>
 
-    <!-- メインコンテンツ -->
     <main class="container py-8 md:py-12">
-        <!-- ホームセクション -->
         <section id="home" class="content-section active mb-12 md:mb-16 bg-white p-8 rounded-xl shadow-lg text-center">
             <h2 class="section-title">MedReach：医師の知的好奇心とキャリアの次なる一歩を繋ぐ</h2>
             <img src="画像 (3).jpg" alt="[医療研究のイメージ]" class="feature-image mx-auto my-8 max-w-4xl">
@@ -615,23 +611,20 @@
             </div>
         </section>
 
-        <!-- ドクターズブログセクション -->
         <section id="blog" class="content-section mb-12 md:mb-16">
             <h2 class="section-title">ドクターズブログ：現場の知見と未来への提言</h2>
             <p class="text-md text-medium-gray-text text-center mb-10 max-w-3xl mx-auto">
                 現役医師や医療専門家が執筆するコラム・解説記事です。日々の診療のヒントからキャリア、最新医療トレンドまで、多岐にわたるテーマを深く掘り下げます。
             </p>
             <div id="blogGrid" class="space-y-8">
-                <!-- 記事はJavaScriptによって動的にここにロードされます -->
-            </div>
+                </div>
         </section>
 
-        <!-- 記事詳細表示用モーダル -->
         <div id="articleModal" class="admin-panel-overlay">
             <div class="admin-panel-content max-w-2xl text-left">
                 <div class="flex justify-between items-center mb-4">
                     <h3 id="modalTitle" class="text-2xl font-bold text-primary-blue">記事タイトル</h3>
-                    <button id="closeArticleModalBtn" class="text-gray-500 hover:text-gray-900 text-3xl">&times;</button>
+                    <button id="closeArticleModalBtn" class="text-gray-500 hover:text-gray-900 text-3xl">×</button>
                 </div>
                 <img id="modalImage" src="" alt="[記事画像]" class="w-full h-auto rounded-lg mb-4 hidden">
                 <p id="modalBody" class="text-base text-dark-gray-text leading-relaxed"></p>
@@ -641,7 +634,6 @@
             </div>
         </div>
         
-        <!-- 求人情報セクション -->
         <section id="job-postings" class="content-section mb-12 md:mb-16">
             <h2 class="section-title">求人情報：あなたの専門性を活かす次なるステージへ</h2>
             <img src="画像 (5).jpg" alt="[求職活動のイメージ]" class="feature-image mx-auto my-8 max-w-4xl">
@@ -722,7 +714,6 @@
             </div>
         </section>
 
-        <!-- クリニック譲渡情報セクション -->
         <section id="clinic-transfer" class="content-section mb-12 md:mb-16">
             <h2 class="section-title">クリニック譲渡：理想の医療を叶える、新たな開業の選択肢</h2>
             <img src="画像 (10).jpg" alt="[クリニック譲渡のイメージ]" class="feature-image mx-auto my-8 max-w-4xl">
@@ -807,7 +798,6 @@
             </div>
         </section>
 
-        <!-- 企業情報セクション -->
         <section id="company-info" class="content-section mb-12 md:mb-16">
             <h2 class="section-title">企業情報：クレアメディカル株式会社</h2>
             <img src="画像 (25).jpg" alt="[オフィスビルのイメージ]" class="feature-image mx-auto my-8 max-w-4xl">
@@ -830,10 +820,10 @@
                     <p class="text-medium-gray-text text-sm mb-4">
                         〒105-0012<br>
                         東京都港区芝大門２丁目３−１８ 大門ビル<br>
-                        <a href="https://maps.app.goo.gl/abcdefg" target="_blank" class="text-secondary-blue hover:text-primary-blue transition-colors duration-200">[Google Mapsで見る]</a>
+                        <a href="https://www.google.com/maps/search/?api=1&query=東京都港区芝大門2-3-18" target="_blank" class="text-secondary-blue hover:text-primary-blue transition-colors duration-200">[Google Mapsで見る]</a>
                     </p>
                     <div class="aspect-w-16 aspect-h-9 overflow-hidden rounded-lg shadow-inner">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.5284059085237!2d139.75486517617904!3d35.66318533816654!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b90a6e0d9b7%3A0x86e680a6c026e4e0!2z44CSMTA1LTAwMTIg5p2x5Lqs6YO95b-o55Sw5Yy66Iil5aSn5Zmo77yS77yS5LiJ77yS5LiK44Oh44Kj44Ki44Kv44OP44Oz44K_44Or44Kv44O8!5e0!3m2!1sja!2sjp!4v1692224424368!5m2!1sja!2sjp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                        <iframe src="https://maps.google.com/maps?q=東京都港区芝大門2-3-18&t=&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
                     </div>
                 </div>
                 <div class="card p-6">
@@ -857,7 +847,6 @@
             </div>
         </section>
 
-        <!-- 厚生労働省リンクセクション -->
         <section id="mhlw-links" class="content-section mb-12 md:mb-16">
             <h2 class="section-title">厚生労働省：医師が知るべき制度・ガイドライン一覧</h2>
             <img src="画像 (26).jpg" alt="[厚生労働省のイメージ]" class="feature-image mx-auto my-8 max-w-4xl">
@@ -865,7 +854,6 @@
                 医師の皆様に不可欠な厚生労働省の公式情報を、テーマ別に整理しました。必要な制度やガイドラインへ迷わずアクセスいただけます。
             </p>
             <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- カテゴリ1: 医師資格・免許・研修 -->
                 <div class="card mhlw-category-card">
                     <h3 class="mb-4"><svg class="icon-large text-secondary-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-graduation-cap"><path d="M22 10v6M2 10l10-5 10 5M2 10v6a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2v-6"/><path d="M6 10v6"/><path d="M18 10v6"/><path d="M12 2v3"/></svg>医師資格・免許・研修</h3>
                     <img src="画像 (20).jpg" alt="[医師免許のイメージ]" class="w-full h-auto rounded-lg mb-4">
@@ -876,7 +864,6 @@
                         <li><svg class="icon-small text-accent-teal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryou/senmoni/index.html" target="_blank">専門医制度について</a></li>
                     </ul>
                 </div>
-                <!-- カテゴリ2: 医療法規・倫理・安全 -->
                 <div class="card mhlw-category-card">
                     <h3 class="mb-4"><svg class="icon-large text-secondary-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-scale"><path d="m16 16 3-3V9l-3 3"/><path d="M21 16V9l-3 3"/><path d="M21 16H9a2 2 0 0 0-2 2v3a1 1 0 0 0 1 1h5"/><path d="M16 16H4a2 2 0 0 1-2-2V3a1 1 0 0 1 1-1h12a2 2 0 0 1 2 2v10"/></svg>医療法規・倫理・安全</h3>
                     <img src="画像 (21).jpg" alt="[医療法規に関する文書のイメージ]" class="w-full h-auto rounded-lg mb-4">
@@ -887,7 +874,6 @@
                         <li><svg class="icon-small text-accent-teal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><a href="https://www.mhlw.go.jp/stf/shingi/shingi-kousei_261545.html" target="_blank">医療倫理に関する指針</a></li>
                     </ul>
                 </div>
-                <!-- カテゴリ3: 診療報酬・医療制度 -->
                 <div class="card mhlw-category-card">
                     <h3 class="mb-4"><svg class="icon-large text-secondary-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-yen"><path d="M12 1v22"/><path d="M17 7H7M17 17H7"/></svg>診療報酬・医療制度</h3>
                     <img src="画像 (22).jpg" alt="[診療報酬に関するグラフのイメージ]" class="w-full h-auto rounded-lg mb-4">
@@ -898,7 +884,6 @@
                         <li><svg class="icon-small text-accent-teal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/kenkou_iryou/iryou/iryou_keikaku/index.html" target="_blank">地域医療構想</a></li>
                     </ul>
                 </div>
-                <!-- カテゴリ4: 感染症対策・公衆衛生 -->
                 <div class="card mhlw-category-card">
                     <h3 class="mb-4"><svg class="icon-large text-secondary-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-virus"><path d="M10 2c.5 0 1 .5 1 1v2"/><path d="M14 2c-.5 0-1 .5-1 1v2"/><path d="M15 13v-2c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2v2"/><path d="M12 9v6"/><path d="M16 15v2c0 1.1-.9 2-2 2h-2c-1.1 0-2-.9-2-2v-2"/><path d="M11 22c.5 0 1-.5 1-1v-2"/><path d="M13 22c-.5 0-1-.5-1-1v-2"/><path d="M22 12h-2c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2h2"/><path d="M20 16c0 1.1.9 2 2 2h2"/><path d="M2 12h2c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H2"/><path d="M4 8c0-1.1-.9-2-2-2H0"/></svg>感染症対策・公衆衛生</h3>
                     <img src="画像 (23).jpg" alt="[感染症対策のイメージ]" class="w-full h-auto rounded-lg mb-4">
@@ -909,7 +894,6 @@
                         <li><svg class="icon-small text-accent-teal" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-external-link"><path d="M15 3h6v6"/><path d="M10 14 21 3"/><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/></svg><a href="https://www.mhlw.go.jp/stf/seisakunitsuite/bunya/vaccine_index.html" target="_blank">予防接種情報</a></li>
                     </ul>
                 </div>
-                <!-- カテゴリ5: 働き方改革・労働環境 -->
                 <div class="card mhlw-category-card">
                     <h3 class="mb-4"><svg class="icon-large text-secondary-blue" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-user-cog"><circle cx="12" cy="7" r="4"/><path d="M12 15v2"/><path d="M16 19h-8"/><path d="M17.6 17.6a2 2 0 0 0-2.8 0l-1.4 1.4a2 2 0 0 0 0 2.8l1.4 1.4a2 2 0 0 0 2.8 0l1.4-1.4a2 2 0 0 0 0-2.8z"/><path d="M2 21v-2a4 4 0 0 1 4-4h4a4 2 0 0 1 4 4v2"/></svg>働き方改革・労働環境</h3>
                     <img src="画像 (24).jpg" alt="[ワークライフバランスのイメージ]" class="w-full h-auto rounded-lg mb-4">
@@ -924,10 +908,9 @@
         </section>
     </main>
 
-    <!-- フッター -->
     <footer class="footer-bg text-white py-8 md:py-10 mt-16">
         <div class="container text-center text-sm relative z-10">
-            <p>&copy; 2023 MedReach. All rights reserved.</p>
+            <p>© 2023 MedReach. All rights reserved.</p>
             <p class="mt-2 text-gray-400">医師の専門性とキャリアを力強くサポートするプラットフォーム</p>
             <div class="mt-6 flex justify-center space-x-6 text-gray-300">
                 <a href="#" class="hover:text-white transition-colors duration-200">サイトマップ</a>
@@ -939,19 +922,16 @@
         </div>
     </footer>
 
-    <!-- チャットボット切り替えボタン -->
     <div id="chatbot-toggle-btn">
         <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-message-circle"><path d="M7.9 20A9.3 9.3 0 0 1 4 16.1L2 22l6-2Z"/><path d="M10.5 4A9.45 9.45 0 0 1 20 12.5a9.38 9.38 0 0 1-1.2 4.4L22 22l-6-2a9.43 9.43 0 0 1-5.5-1.5"/></svg>
     </div>
 
-    <!-- チャットボットコンテナ -->
     <div id="chatbot-container">
         <div id="chatbot-header">
             <h4 class="font-bold">MedReachサポート</h4>
-            <button id="close-chatbot-btn" class="text-white text-3xl font-bold leading-none">&times;</button>
+            <button id="close-chatbot-btn" class="text-white text-3xl font-bold leading-none">×</button>
         </div>
         <div id="chatbot-messages">
-            <!-- チャットメッセージはJavaScriptで動的に追加されます -->
             <div class="chatbot-message bot">
                 <span class="message-bubble">こんにちは！ご質問があれば、以下から選択いただくか、入力してください。</span>
             </div>
@@ -974,7 +954,6 @@
     </div>
 
 
-    <!-- 管理者ログインモーダル -->
     <div id="adminLoginModal" class="admin-panel-overlay">
         <div class="admin-panel-content text-center">
             <h3 class="text-2xl font-bold text-primary-blue mb-6">管理者ログイン</h3>
@@ -987,12 +966,10 @@
         </div>
     </div>
 
-    <!-- 管理者パネルモーダル -->
     <div id="adminPanelModal" class="admin-panel-overlay">
         <div class="admin-panel-content">
             <h3 class="text-2xl font-bold text-primary-blue mb-6">記事管理パネル</h3>
 
-            <!-- 新規記事追加フォーム -->
             <div class="mb-8 p-6 border border-medium-gray rounded-xl shadow-sm">
                 <h4 class="text-xl font-semibold text-dark-gray-text mb-4">新規記事の追加</h4>
                 <input type="text" id="newArticleTitle" class="admin-input" placeholder="記事タイトル">
@@ -1004,12 +981,10 @@
                 <button id="addArticleBtn" class="admin-button mt-4">記事を追加</button>
             </div>
 
-            <!-- 既存記事リスト -->
             <div class="mb-8">
                 <h4 class="text-xl font-semibold text-dark-gray-text mb-4">既存記事の編集・削除</h4>
                 <div id="adminArticleList" class="space-y-4">
-                    <!-- 記事はJSでここにロードされます -->
-                </div>
+                    </div>
             </div>
 
             <div class="flex justify-end">
@@ -1025,6 +1000,8 @@
         import { getFirestore, collection, query, orderBy, getDocs, addDoc, setDoc, updateDoc, deleteDoc, doc, onSnapshot, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
         // Firebaseのグローバル変数
+        // 注意: これらの変数は外部から設定されることを想定しています。
+        // 設定がない場合、Firebase連携は動作せず、ローカルのデータのみが使用されます。
         const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
         const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
         const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
@@ -1036,6 +1013,8 @@
         let isAdmin = false; // 管理者ステータス
 
         // --- 記事データ (2019年から月3本のペースで作成) ---
+        // 注意: 現在のバージョンではこのローカルデータを使用します。
+        // 管理者パネルでの変更は、ページをリロードすると失われます。
         let blogArticles = [
             // 2025年
             { id: 1, year: 2025, month: 7, title: "オンライン診療の未来：遠隔医療技術の最新動向", summary: "オンライン診療がもたらす医療の変革と、今後期待される新技術や法的課題について解説します。", image: "画像 (3).jpg" },
@@ -1092,95 +1071,80 @@
             { id: 48, year: 2023, month: 9, title: "救急医療体制の強化：災害時対応と日常医療の確保", summary: "いつ起こるかわからない災害時にも機能する救急医療体制の構築。日常的な救急患者対応の効率化、ドクターヘリの活用、広域連携の重要性を紹介します。", image: "画像 (36).jpg" },
             //... 2019年まで同様に記事を追加
         ];
-
-        // Firebaseのグローバル変数
-        const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
-        const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {};
-        const initialAuthToken = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-
-        let app;
-        let db;
-        let auth;
-        let userId = 'anonymous'; // 匿名ユーザーID
-        let isAdmin = false; // 管理者ステータス
         
         // --- Firebaseの初期化と認証 ---
         async function initializeFirebase() {
-            try {
-                app = initializeApp(firebaseConfig);
-                db = getFirestore(app);
-                auth = getAuth(app);
+            // Firebase設定変数が存在する場合のみ初期化を試行
+            if (firebaseConfig && Object.keys(firebaseConfig).length > 0) {
+                try {
+                    app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    auth = getAuth(app);
 
-                onAuthStateChanged(auth, async (user) => {
-                    if (user) {
-                        userId = user.uid;
-                        console.log("Firebase認証成功。ユーザーID:", userId);
-                        // loadArticles(); // ローカルデータを使用するためコメントアウト
-                    } else {
-                        console.log("ユーザーがサインインしていません。匿名サインインを試行します。");
-                        try {
-                            if (initialAuthToken) {
-                                await signInWithCustomToken(auth, initialAuthToken);
-                            } else {
-                                await signInAnonymously(auth);
+                    onAuthStateChanged(auth, async (user) => {
+                        if (user) {
+                            userId = user.uid;
+                            console.log("Firebase認証成功。ユーザーID:", userId);
+                            // データベースから記事を読み込む場合はここのコメントを解除
+                            // loadArticlesFromFirestore(); 
+                        } else {
+                            console.log("ユーザーがサインインしていません。匿名サインインを試行します。");
+                            try {
+                                if (initialAuthToken) {
+                                    await signInWithCustomToken(auth, initialAuthToken);
+                                } else {
+                                    await signInAnonymously(auth);
+                                }
+                            } catch (error) {
+                                console.error("Firebase匿名サインイン失敗:", error);
                             }
-                        } catch (error) {
-                            console.error("Firebase匿名サインイン失敗:", error);
                         }
-                    }
-                });
-            } catch (error) {
-                console.error("Firebase初期化失敗:", error);
+                    });
+                } catch (error) {
+                    console.error("Firebase初期化失敗:", error);
+                    console.log("ローカルデータモードで続行します。");
+                }
+            } else {
+                console.log("Firebase設定が見つかりません。ローカルデータモードで実行します。");
             }
         }
         
-        // --- 記事データ管理 (Firebaseは使用せず、ローカル配列で管理) ---
-        // Firebaseから記事を取得する関数（Firestoreが有効な場合に使用）
-        // const ARTICLES_COLLECTION_PATH = `/artifacts/${appId}/public/data/medreach_articles`;
-        // async function loadArticles() {
-        //     if (!db) {
-        //         console.warn("Firestoreが初期化されていません。");
-        //         return;
-        //     }
-        //     ...
-        // }
-
-        async function addArticle(title, summary, image) {
+        // --- 記事データ管理 (ローカル配列で管理) ---
+        function addArticle(title, summary, image) {
             if (!isAdmin) return;
             // ローカル配列に記事を追加
             const newId = blogArticles.length > 0 ? Math.max(...blogArticles.map(a => a.id)) + 1 : 1;
-            blogArticles.push({
+            const newArticle = {
                 id: newId,
                 title,
                 summary,
                 image,
                 year: new Date().getFullYear(),
-                month: new Date().getMonth(),
-            });
+                month: new Date().getMonth() + 1, // 月は1から12で表現
+            };
+            blogArticles.unshift(newArticle); // 配列の先頭に追加して新しく表示
             renderArticles(); // UIを再レンダリング
+            renderAdminArticleList(); // 管理パネルも更新
             document.getElementById('newArticleTitle').value = '';
             document.getElementById('newArticleSummary').value = '';
             document.getElementById('newArticleImage').value = '';
         }
 
-        async function updateArticle(id, title, summary, image) {
+        function updateArticle(id, title, summary, image) {
             if (!isAdmin) return;
-            const article = blogArticles.find(a => a.id == id);
-            if (article) {
-                article.title = title;
-                article.summary = summary;
-                article.image = image;
+            const articleIndex = blogArticles.findIndex(a => a.id == id);
+            if (articleIndex > -1) {
+                blogArticles[articleIndex] = { ...blogArticles[articleIndex], title, summary, image };
                 renderArticles(); // UIを再レンダリング
+                renderAdminArticleList(); // 管理パネルも更新
             }
         }
 
-        async function deleteArticle(id) {
+        function deleteArticle(id) {
             if (!isAdmin) return;
-            const index = blogArticles.findIndex(a => a.id == id);
-            if (index !== -1) {
-                blogArticles.splice(index, 1);
-                renderArticles(); // UIを再レンダリング
-            }
+            blogArticles = blogArticles.filter(a => a.id != id);
+            renderArticles(); // UIを再レンダリング
+            renderAdminArticleList(); // 管理パネルも更新
         }
 
 
@@ -1191,7 +1155,7 @@
                 console.error('blogGrid要素が見つかりません。');
                 return;
             }
-        
+            
             blogGrid.innerHTML = '';
 
             const articlesByYearMonth = {};
@@ -1204,7 +1168,6 @@
             });
 
             const sortedYears = Object.keys(articlesByYearMonth).sort((a, b) => b - a);
-            const imagePaths = Array.from({length: 40}, (_, i) => `画像 (${i + 1}).jpg`);
             let imageCounter = 0;
 
             sortedYears.forEach(year => {
@@ -1226,7 +1189,7 @@
                     
                     const monthHeader = document.createElement('h4');
                     monthHeader.className = 'text-xl font-semibold text-secondary-blue month-header collapsed flex items-center gap-2 mb-4 cursor-pointer';
-                    monthHeader.innerHTML = `<svg class="icon-small transform transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>${parseInt(month) + 1}月</span>`;
+                    monthHeader.innerHTML = `<svg class="icon-small transform transition-transform duration-300" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg><span>${parseInt(month)}月</span>`;
                     monthBlock.appendChild(monthHeader);
                     
                     const articlesContainer = document.createElement('div');
@@ -1236,7 +1199,7 @@
                         const articleElement = document.createElement('div');
                         articleElement.className = 'card p-6';
                         
-                        const assignedImage = `画像 (${(imageCounter % 40) + 1}).jpg`;
+                        const assignedImage = article.image || `画像 (${(imageCounter % 40) + 1}).jpg`;
                         imageCounter++;
                         
                         articleElement.innerHTML = `
@@ -1255,7 +1218,6 @@
                     monthsContainer.appendChild(monthBlock);
 
                     monthHeader.addEventListener('click', () => {
-                        const icon = monthHeader.querySelector('svg');
                         articlesContainer.classList.toggle('hidden');
                         monthHeader.classList.toggle('collapsed');
                         monthHeader.classList.toggle('expanded');
@@ -1266,7 +1228,6 @@
                 blogGrid.appendChild(yearBlock);
 
                 yearHeader.addEventListener('click', () => {
-                    const icon = yearHeader.querySelector('svg');
                     monthsContainer.classList.toggle('hidden');
                     yearHeader.classList.toggle('collapsed');
                     yearHeader.classList.toggle('expanded');
@@ -1282,7 +1243,8 @@
 
             adminArticleList.innerHTML = '';
 
-            currentArticles.forEach(article => {
+            // [FIX] 'currentArticles' is not defined -> 'blogArticles'に修正
+            blogArticles.forEach(article => {
                 const articleElement = document.createElement('div');
                 articleElement.className = 'p-4 border border-medium-gray rounded-lg bg-white shadow-sm mb-3';
                 articleElement.innerHTML = `
@@ -1330,8 +1292,6 @@
                     const newSummary = parent.querySelector('.edit-summary-input').value;
                     const newImage = parent.querySelector('.edit-image-input').value;
                     updateArticle(id, newTitle, newSummary, newImage);
-                    parent.querySelector('.edit-form').classList.add('hidden');
-                    parent.querySelector('.edit-article-btn').classList.remove('hidden');
                 });
             });
 
@@ -1451,12 +1411,13 @@
         const closeArticleModalBtn = document.getElementById('closeArticleModalBtn');
         const closeArticleModalBtnBottom = document.getElementById('closeArticleModalBtnBottom');
         
-        document.addEventListener('click', (e) => {
-            if (e.target.classList.contains('read-more-link')) {
+        document.getElementById('blogGrid').addEventListener('click', (e) => {
+            const readMoreLink = e.target.closest('.read-more-link');
+            if (readMoreLink) {
                 e.preventDefault();
-                const title = e.target.dataset.title;
-                const summary = e.target.dataset.summary;
-                const image = e.target.dataset.image;
+                const title = readMoreLink.dataset.title;
+                const summary = readMoreLink.dataset.summary;
+                const image = readMoreLink.dataset.image;
 
                 modalTitle.textContent = title;
                 modalBody.innerHTML = `
@@ -1612,6 +1573,7 @@
                 });
             });
 
+            // Firebaseの初期化（設定があれば）
             initializeFirebase();
         });
     </script>
