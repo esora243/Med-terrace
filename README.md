@@ -25,9 +25,9 @@
             font-family: var(--font-sans);
             background-color: var(--color-background);
             color: #486581;
-            line-height: 1.7; /* 可読性向上のため行間を調整 */
+            line-height: 1.7;
         }
-        h1, h2, h3, h4 { font-family: var(--font-serif); color: var(--color-primary); }
+        h1, h2, h3, h4, h5 { font-family: var(--font-serif); color: var(--color-primary); }
         .text-primary { color: var(--color-primary); }
         .bg-primary { background-color: var(--color-primary); }
         .hover\:bg-primary-dark:hover { background-color: #0B1D30; }
@@ -48,12 +48,12 @@
             color: #64748B;
             font-weight: 500;
             transition: all 0.3s ease-in-out;
-            border-radius: 9999px; /* 丸みを帯びた形状 */
+            border-radius: 9999px;
         }
         .nav-link.active {
             color: var(--color-primary);
             font-weight: 700;
-            background-color: #E2E8F0; /* 淡い背景色 */
+            background-color: #E2E8F0;
         }
         .nav-link:not(.active):hover {
             color: var(--color-primary);
@@ -166,16 +166,35 @@
                 <div class="bg-white rounded-lg p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 scroll-reveal" style="transition-delay: 450ms;"><div class="text-accent inline-block p-4 bg-accent/10 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path></svg></div><h3 class="text-lg font-bold text-secondary mt-2">関連リンク集</h3><p class="text-sm text-gray-600 mt-2">各省庁・関係機関への便利なリンク</p></div>
             </div></div>
         </section>
+
+        <section id="privacy" class="content-section">
+            <div class="py-20 bg-gray-50 text-center"><h2 class="text-5xl font-bold text-primary scroll-reveal">個人情報保護方針</h2></div>
+            <div class="container mx-auto px-6 py-24 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-6 scroll-reveal">
+                <h3 class="text-2xl font-bold">1. 基本方針</h3><p>クレアメディカル株式会社（以下、「当社」）は、個人情報の重要性を認識し、個人情報を保護することが社会的責務であると考え、個人情報に関する法令を遵守し、当社で取扱う個人情報の取得、利用、管理を適正に行います。</p>
+                <h3 class="text-2xl font-bold">2. 適用範囲</h3><p>本プライバシーポリシーは、当社が行う各種サービスにおいて、お客様の個人情報もしくはそれに準ずる情報を取り扱う際に、当社が遵守する方針を示したものです。</p>
+                <h3 class="text-2xl font-bold">3. 個人情報の取得と利用目的</h3><p>当社は、適法かつ公正な手段によって個人情報を取得し、以下の目的の範囲内で利用します。<br>・キャリア支援、求人情報の提供のため<br>・事業承継に関するコンサルティングのため<br>・当社サービスに関する重要なお知らせやお問い合わせへの対応のため</p>
+                <h3 class="text-2xl font-bold">4. 個人情報の第三者提供について</h3><p>当社は、法令に定める場合を除き、個人情報を、事前にご本人の同意を得ることなく、第三者に提供しません。</p>
+            </div></div>
+        </section>
+
+        <section id="terms" class="content-section">
+            <div class="py-20 bg-gray-50 text-center"><h2 class="text-5xl font-bold text-primary scroll-reveal">利用規約</h2></div>
+            <div class="container mx-auto px-6 py-24 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-6 scroll-reveal">
+                <h3 class="text-2xl font-bold">第1条（適用）</h3><p>本規約は、クレアメディカル株式会社（以下、「当社」）が提供するウェブサイト「MedReach」（以下、「本サービス」）の利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」）には、本規約に従って本サービスをご利用いただきます。</p>
+                <h3 class="text-2xl font-bold">第2条（禁止事項）</h3><p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。<br>・法令または公序良俗に違反する行為<br>・犯罪行為に関連する行為<br>・本サービスの内容等、本サービスに含まれる著作権、商標権ほか知的財産権を侵害する行為<br>・当社のサービスの運営を妨害するおそれのある行為</p>
+                <h3 class="text-2xl font-bold">第3条（免責事項）</h3><p>当社は、本サービスに掲載されている情報の正確性について万全を期しておりますが、その内容を保証するものではありません。本サービスの利用によってユーザーに生じたあらゆる損害について、当社は一切の責任を負いません。</p>
+            </div></div>
+        </section>
     </main>
 
     <footer class="bg-primary text-white">
         <div class="container mx-auto px-6 pt-16 pb-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
-                    <a href="#" class="flex items-center space-x-3 mb-4" data-tab-target="home">
+                    <div class="flex items-center space-x-3 mb-4 cursor-pointer" data-tab-target="home">
                         <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                         <span class="text-2xl font-bold text-white font-serif">MedReach</span>
-                    </a>
+                    </div>
                     <p class="text-gray-300 max-w-md mt-2">医師一人ひとりのキャリアと知見を最大化し、日本の医療の未来に貢献するためのプラットフォームです。</p>
                 </div>
                 <div>
@@ -187,11 +206,11 @@
                     </ul>
                 </div>
                 <div>
-                    <h5 class="font-bold uppercase text-gray-200 mb-4">企業情報</h5>
+                    <h5 class="font-bold uppercase text-gray-200 mb-4">サポート</h5>
                     <ul class="space-y-3">
                          <li><a href="#" data-tab-target="company" class="text-gray-300 hover:text-white transition">運営会社について</a></li>
-                         <li><a href="#" class="demo-link text-gray-300 hover:text-white transition">プライバシーポリシー</a></li>
-                         <li><a href="#" class="demo-link text-gray-300 hover:text-white transition">利用規約</a></li>
+                         <li><a href="#" data-tab-target="privacy" class="text-gray-300 hover:text-white transition">個人情報保護方針</a></li>
+                         <li><a href="#" data-tab-target="terms" class="text-gray-300 hover:text-white transition">利用規約</a></li>
                     </ul>
                 </div>
             </div>
@@ -220,7 +239,7 @@
                 });
             }, { threshold: 0.1 });
 
-            function switchTab(tabId, instant = false) {
+            function switchTab(tabId) {
                 if (!tabId) return;
                 activeTabId = tabId;
                 const targetSection = document.getElementById(tabId);
@@ -266,9 +285,14 @@
             });
 
             // 初期ロード
-            switchTab(activeTabId, true);
+            switchTab(activeTabId);
             const initialVisibleElements = document.getElementById(activeTabId).querySelectorAll('.scroll-reveal');
             initialVisibleElements.forEach(el => observer.observe(el));
+
+            // ウィンドウのリサイズ時
+            window.addEventListener('resize', () => {
+                switchTab(activeTabId);
+            });
         });
     </script>
 </body>
