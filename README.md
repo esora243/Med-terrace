@@ -13,20 +13,11 @@
 
     <style>
         :root {
-            --color-primary: #102A43;
-            --color-secondary: #334E68;
-            --color-accent: #007A7A;
-            --color-background: #F0F4F8;
-            --font-serif: 'Noto Serif JP', serif;
-            --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
+            --color-primary: #102A43; --color-secondary: #334E68; --color-accent: #007A7A;
+            --color-background: #F0F4F8; --font-serif: 'Noto Serif JP', serif; --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
         }
         html { scroll-behavior: smooth; }
-        body {
-            font-family: var(--font-sans);
-            background-color: var(--color-background);
-            color: #486581;
-            line-height: 1.7;
-        }
+        body { font-family: var(--font-sans); background-color: var(--color-background); color: #486581; line-height: 1.7; }
         h1, h2, h3, h4, h5 { font-family: var(--font-serif); color: var(--color-primary); }
         .text-primary { color: var(--color-primary); }
         .bg-primary { background-color: var(--color-primary); }
@@ -43,22 +34,21 @@
         .scroll-reveal { opacity: 0; transform: translateY(30px); transition: opacity 0.8s cubic-bezier(0.645, 0.045, 0.355, 1), transform 0.8s cubic-bezier(0.645, 0.045, 0.355, 1); }
         .scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
 
-        .nav-link {
-            padding: 0.5rem 1rem;
-            color: #64748B;
-            font-weight: 500;
-            transition: all 0.3s ease-in-out;
-            border-radius: 9999px;
-        }
-        .nav-link.active {
-            color: var(--color-primary);
-            font-weight: 700;
-            background-color: #E2E8F0;
-        }
-        .nav-link:not(.active):hover {
-            color: var(--color-primary);
-            background-color: #F8FAFC;
-        }
+        .nav-link { padding: 0.5rem 1rem; color: #64748B; font-weight: 500; transition: all 0.3s ease-in-out; border-radius: 9999px; }
+        .nav-link.active { color: var(--color-primary); font-weight: 700; background-color: #E2E8F0; }
+        .nav-link:not(.active):hover { color: var(--color-primary); background-color: #F8FAFC; }
+
+        /* ヒーロースライドショー */
+        .hero-slide { position: absolute; inset: 0; width: 100%; height: 100%; opacity: 0; transition: opacity 1.5s ease-in-out; }
+        .hero-slide.active { opacity: 1; }
+        .hero-slide-text { transition: opacity 1s ease-in-out, transform 1s ease-in-out; }
+        .hero-slide:not(.active) .hero-slide-text { opacity: 0; transform: translateY(20px); }
+
+        /* モーダル */
+        .modal-overlay { position: fixed; inset: 0; background-color: rgba(0,0,0,0.6); z-index: 100; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transition: opacity 0.3s, visibility 0.3s; }
+        .modal-container { background-color: white; padding: 2rem; border-radius: 0.5rem; max-width: 500px; width: 90%; transform: scale(0.95); transition: transform 0.3s; }
+        .modal-overlay.active { opacity: 1; visibility: visible; }
+        .modal-overlay.active .modal-container { transform: scale(1); }
     </style>
 </head>
 <body class="antialiased">
@@ -83,215 +73,115 @@
 
     <main>
         <section id="home" class="content-section">
-            <div class="relative min-h-[550px] flex items-center text-white">
+            <div id="hero-slideshow" class="relative min-h-[550px] text-white overflow-hidden">
                 <div class="absolute inset-0 bg-gradient-to-r from-primary via-primary/80 to-secondary/60 z-10"></div>
-                <img src="画像(1).jpg" alt="医療従事者のイメージ" class="absolute inset-0 w-full h-full object-cover opacity-30">
-                <div class="container mx-auto px-6 relative z-20">
-                    <div class="max-w-3xl scroll-reveal">
-                        <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">先生のキャリアと知見を、<br>次のステージへ。</h1>
-                        <p class="text-lg text-gray-200">MedReachは、多忙な日々を送る先生方へ。キャリア形成と学術的探究を加速させるための信頼できる情報と機会を提供します。</p>
+                <div class="hero-slide active">
+                    <img src="画像(1).jpg" alt="医療従事者のイメージ" class="absolute inset-0 w-full h-full object-cover opacity-30">
+                    <div class="relative z-20 h-full flex items-center">
+                        <div class="container mx-auto px-6">
+                            <div class="max-w-3xl hero-slide-text">
+                                <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">先生のキャリアと知見を、<br>次のステージへ。</h1>
+                                <p class="text-lg text-gray-200">MedReachは、多忙な日々を送る先生方へ。キャリア形成と学術的探究を加速させるための信頼できる情報と機会を提供します。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="hero-slide">
+                    <img src="画像(2).jpg" alt="研究のイメージ" class="absolute inset-0 w-full h-full object-cover opacity-30">
+                     <div class="relative z-20 h-full flex items-center">
+                        <div class="container mx-auto px-6">
+                            <div class="max-w-3xl hero-slide-text">
+                                <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">一つの記事が、<br>明日の臨床を変える。</h1>
+                                <p class="text-lg text-gray-200">臨床現場の知見から最新の医療政策まで。第一線の専門医による、深く、価値ある解説記事をお届けします。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="hero-slide">
+                    <img src="画像(25).jpg" alt="カンファレンスのイメージ" class="absolute inset-0 w-full h-full object-cover opacity-30">
+                     <div class="relative z-20 h-full flex items-center">
+                        <div class="container mx-auto px-6">
+                            <div class="max-w-3xl hero-slide-text">
+                                <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight">理想の医療を、<br>理想の環境で。</h1>
+                                <p class="text-lg text-gray-200">先生の専門性と価値観に合致する、非公開案件を含む厳選された求人のみをご提案します。</p>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
             <div class="bg-background py-24">
-                <div class="container mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
-                    <div class="bg-white p-8 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 cursor-pointer scroll-reveal" data-tab-target="blog">
-                        <h3 class="text-2xl font-bold text-primary mb-3">最新の専門記事を読む</h3><p class="text-secondary">臨床現場の知見から最新の医療政策まで。第一線の専門医による解説記事をお届けします。</p>
+                 <div class="container mx-auto px-6 text-center">
+                    <h2 class="text-4xl font-bold text-primary mb-12 scroll-reveal">MedReachが提供する価値</h2>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="scroll-reveal p-8">
+                            <svg class="w-12 h-12 mx-auto text-accent mb-4" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
+                            <h3 class="text-xl font-bold text-primary mb-2">最新の医療コラム</h3><p class="text-gray-600">現場の専門家による、示唆に富んだ記事を毎月更新。</p>
+                        </div>
+                        <div class="scroll-reveal p-8" style="transition-delay: 150ms;">
+                            <svg class="w-12 h-12 mx-auto text-accent mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
+                            <h3 class="text-xl font-bold text-primary mb-2">厳選された求人情報</h3><p class="text-gray-600">あなたの専門性を最大限に活かす、次のステージへ。</p>
+                        </div>
+                        <div class="scroll-reveal p-8" style="transition-delay: 300ms;">
+                            <svg class="w-12 h-12 mx-auto text-accent mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                            <h3 class="text-xl font-bold text-primary mb-2">信頼できる公式情報</h3><p class="text-gray-600">厚生労働省の最新ガイドラインに素早くアクセス。</p>
+                        </div>
                     </div>
-                    <div class="bg-white p-8 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 cursor-pointer scroll-reveal" data-tab-target="jobs" style="transition-delay: 150ms;">
-                        <h3 class="text-2xl font-bold text-primary mb-3">質の高い求人を探す</h3><p class="text-secondary">先生の専門性と価値観に合致する、非公開案件を含む厳選された求人のみをご提案します。</p>
-                    </div>
-                    <div class="bg-white p-8 rounded-lg shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 cursor-pointer scroll-reveal" data-tab-target="transfer" style="transition-delay: 300ms;">
-                        <h3 class="text-2xl font-bold text-primary mb-3">事業承継を検討する</h3><p class="text-secondary">理想の医療を次世代へ。スムーズで安心なクリニックの事業承継を専門家が支援します。</p>
-                    </div>
-                </div>
+                 </div>
             </div>
         </section>
         
-        <section id="blog" class="content-section">
-            <div class="py-20 bg-gray-50 text-center"><h2 class="text-5xl font-bold text-primary scroll-reveal">専門記事</h2><p class="text-lg text-secondary mt-2 scroll-reveal" style="transition-delay: 100ms;">臨床と研究の最前線から、価値ある知見を</p></div>
-            <div class="container mx-auto px-6 py-24"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group scroll-reveal"><div class="relative h-56 w-full"><img src="画像(3).jpg" alt="オンライン診療" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/></div><div class="p-6 flex flex-col"><div class="flex-grow"><span class="text-xs font-bold uppercase text-accent">最新医療技術</span><h3 class="text-xl font-bold text-primary my-2">オンライン診療の未来：遠隔医療技術の最新動向</h3><p class="text-sm text-secondary mb-4">執筆者: 高橋 優 医師 (デジタルヘルス専門)</p></div><a href="#" class="font-bold text-accent hover:underline self-start demo-link">記事を読む &rarr;</a></div></div>
-                <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group scroll-reveal" style="transition-delay: 150ms;"><div class="relative h-56 w-full"><img src="画像(4).jpg" alt="キャリアパス" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/></div><div class="p-6 flex flex-col"><div class="flex-grow"><span class="text-xs font-bold uppercase text-accent">キャリア</span><h3 class="text-xl font-bold text-primary my-2">医師のキャリアパス：専門医以外の多様な選択肢</h3><p class="text-sm text-secondary mb-4">執筆者: 鈴木 誠 医師 (経営コンサルタント)</p></div><a href="#" class="font-bold text-accent hover:underline self-start demo-link">記事を読む &rarr;</a></div></div>
-                <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group scroll-reveal" style="transition-delay: 300ms;"><div class="relative h-56 w-full"><img src="画像(5).jpg" alt="AI診断" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/></div><div class="p-6 flex flex-col"><div class="flex-grow"><span class="text-xs font-bold uppercase text-accent">AIと医療</span><h3 class="text-xl font-bold text-primary my-2">AI診断支援ツールの現状と倫理的課題</h3><p class="text-sm text-secondary mb-4">執筆者: 伊藤 美咲 医師 (医療情報学専門)</p></div><a href="#" class="font-bold text-accent hover:underline self-start demo-link">記事を読む &rarr;</a></div></div>
-            </div></div>
-        </section>
-
-        <section id="jobs" class="content-section">
-            <div class="relative py-20 text-center text-white">
-                <div class="absolute inset-0 bg-secondary z-0"></div>
-                <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('画像(6).jpg');"></div>
-                <div class="relative z-10">
-                    <h2 class="text-5xl font-bold scroll-reveal">求人情報</h2>
-                    <p class="text-lg text-gray-200 mt-2 scroll-reveal" style="transition-delay: 100ms;">先生の専門性を最大限に活かす、次なるステージへ</p>
-                </div>
+        </main>
+    
+    <div id="modal-overlay" class="modal-overlay">
+        <div id="modal-container" class="modal-container">
+            <div class="flex justify-between items-center mb-4">
+                <h3 id="modal-title" class="text-xl font-bold">お知らせ</h3>
+                <button id="modal-close" class="text-gray-400 hover:text-gray-800">&times;</button>
             </div>
-            <div class="container mx-auto px-6 py-24"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal"><div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="画像(12).jpg" alt="外科医募集" class="w-full h-full object-cover"/></div><h3 class="text-xl font-bold text-primary mb-2">外科医募集（都内総合病院）</h3><p class="text-secondary mb-4 text-sm">最先端の手術設備と充実した研修制度が魅力です。</p><div class="flex justify-center flex-wrap gap-2 text-sm mb-4"><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">東京都23区</span><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">年収1,500万円〜</span></div><button class="mt-2 w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300 demo-link">募集要項を見る</button></div>
-                <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal" style="transition-delay: 150ms;"><div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="画像(13).jpg" alt="内科クリニック院長" class="w-full h-full object-cover"/></div><h3 class="text-xl font-bold text-primary mb-2">内科クリニック院長候補</h3><p class="text-secondary mb-4 text-sm">地域医療に貢献。将来的な開業支援も可能です。</p><div class="flex justify-center flex-wrap gap-2 text-sm mb-4"><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">静岡県静岡市</span><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">年収1,800万円〜</span></div><button class="mt-2 w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300 demo-link">募集要項を見る</button></div>
-                <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal" style="transition-delay: 300ms;"><div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="画像(14).jpg" alt="産業医" class="w-full h-full object-cover"/></div><h3 class="text-xl font-bold text-primary mb-2">産業医（大手企業専属）</h3><p class="text-secondary mb-4 text-sm">ワークライフバランスを重視した働き方が可能です。</p><div class="flex justify-center flex-wrap gap-2 text-sm mb-4"><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">大阪府大阪市</span><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">年収1,200万円〜</span></div><button class="mt-2 w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300 demo-link">募集要項を見る</button></div>
-            </div></div>
-        </section>
-
-        <section id="transfer" class="content-section">
-            <div class="py-20 bg-gray-50 text-center"><h2 class="text-5xl font-bold text-primary scroll-reveal">事業承継</h2><p class="text-lg text-secondary mt-2 scroll-reveal" style="transition-delay: 100ms;">理想の医療を叶える、新たな開業の選択肢</p></div>
-            <div class="container mx-auto px-6 py-24"><div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal"><div class="relative h-48 w-full"><img src="画像(15).jpg" alt="内科クリニック" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">内科クリニック（東京都世田谷区）</h3><p class="text-secondary mb-4 text-sm">駅徒歩5分の好立地。安定した患者数を維持。</p><p class="text-lg font-bold text-primary">譲渡価格: 5,000万円</p><button class="mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 demo-link">譲渡条件を確認する</button></div></div>
-                <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal" style="transition-delay: 150ms;"><div class="relative h-48 w-full"><img src="画像(16).jpg" alt="眼科クリニック" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">眼科クリニック（大阪府吹田市）</h3><p class="text-secondary mb-4 text-sm">最新設備が整備。駅直結でアクセス良好。</p><p class="text-lg font-bold text-primary">譲渡価格: 7,500万円</p><button class="mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 demo-link">譲渡条件を確認する</button></div></div>
-                <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal" style="transition-delay: 300ms;"><div class="relative h-48 w-full"><img src="画像(17).jpg" alt="皮膚科" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">皮膚科・美容皮膚科（名古屋市栄）</h3><p class="text-secondary mb-4 text-sm">美容医療ニーズが高い商業地域に位置します。</p><p class="text-lg font-bold text-primary">譲渡価格: 9,000万円</p><button class="mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 demo-link">譲渡条件を確認する</button></div></div>
-            </div></div>
-        </section>
-        
-        <section id="company" class="content-section">
-            <div class="py-20 bg-gray-50 text-center"><h2 class="text-5xl font-bold text-primary scroll-reveal">企業情報</h2><p class="text-lg text-secondary mt-2 scroll-reveal" style="transition-delay: 100ms;">信頼と実績で、医療の未来をサポートします</p></div>
-            <div class="container mx-auto px-6 py-24"><div class="bg-white rounded-xl shadow-card overflow-hidden md:flex items-center scroll-reveal">
-                <div class="md:w-1/2"><div class="relative h-80 md:h-[500px] w-full"><img src="画像(25).jpg" alt="オフィス外観" class="w-full h-full object-cover"/></div></div>
-                <div class="p-8 md:p-16 md:w-1/2"><h3 class="text-3xl font-bold text-primary mb-6">クレアメディカル株式会社</h3><p class="text-secondary mb-8 leading-relaxed">医療従事者の専門性とキャリア形成をサポートするため、医療情報の提供、転職・開業支援、経営コンサルティングを展開しています。変化の激しい医療業界において、常に最先端の情報と最適なソリューションを提供し、先生方の「次のステップ」を力強く支援いたします。</p><ul class="space-y-3 text-secondary"><li><strong class="font-semibold text-primary">代表取締役:</strong> 伏見 勇紀</li><li><strong class="font-semibold text-primary">所在地:</strong> 東京都港区芝大門２丁目３−１８</li><li><strong class="font-semibold text-primary">連絡先:</strong> creamed@yh.med</li></ul></div>
-            </div></div>
-        </section>
-        
-        <section id="mhlw" class="content-section">
-             <div class="relative py-20 text-center text-white">
-                <div class="absolute inset-0 bg-gray-700 z-0"></div>
-                <div class="absolute inset-0 bg-cover bg-center opacity-10" style="background-image: url('画像(26).jpg');"></div>
-                <div class="relative z-10">
-                    <h2 class="text-5xl font-bold scroll-reveal">厚生労働省 公式情報</h2>
-                    <p class="text-lg text-gray-200 mt-2 scroll-reveal" style="transition-delay: 100ms;">医師が知るべき制度・ガイドライン一覧</p>
-                </div>
-            </div>
-            <div class="container mx-auto px-6 py-24"><div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
-                <div class="bg-white rounded-lg p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 scroll-reveal"><div class="text-accent inline-block p-4 bg-accent/10 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg></div><h3 class="text-lg font-bold text-secondary mt-2">医師資格・免許・研修</h3><p class="text-sm text-gray-600 mt-2">免許申請、専門医研修プログラムなど</p></div>
-                <div class="bg-white rounded-lg p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 scroll-reveal" style="transition-delay: 150ms;"><div class="text-accent inline-block p-4 bg-accent/10 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-2 2-4 2-6 0Z"></path><path d="m2 16 3-8 3 8c-2 2-4 2-6 0Z"></path><path d="M7 16h10"></path><path d="M12 4v12"></path></svg></div><h3 class="text-lg font-bold text-secondary mt-2">医療法規・倫理・安全</h3><p class="text-sm text-gray-600 mt-2">最新の法令、ガイドライン、医療安全情報</p></div>
-                <div class="bg-white rounded-lg p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 scroll-reveal" style="transition-delay: 300ms;"><div class="text-accent inline-block p-4 bg-accent/10 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2c.5 0 1 .5 1 1v2"/><path d="M14 2c-.5 0-1 .5-1 1v2"/><path d="M15 13v-2c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2v2"/><path d="M12 9v6"/><path d="M16 15v2c0 1.1-.9 2-2 2h-2c-1.1 0-2-.9-2-2v-2"/><path d="M11 22c.5 0 1-.5 1-1v-2"/><path d="M13 22c-.5 0-1-.5-1-1v-2"/><path d="M22 12h-2c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2h2"/><path d="M20 16c0 1.1.9 2 2 2h2"/><path d="M2 12h2c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H2"/><path d="M4 8c0-1.1-.9-2-2-2H0"/></svg></div><h3 class="text-lg font-bold text-secondary mt-2">感染症対策・公衆衛生</h3><p class="text-sm text-gray-600 mt-2">パンデミック対策、地域医療との連携</p></div>
-                <div class="bg-white rounded-lg p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 scroll-reveal" style="transition-delay: 450ms;"><div class="text-accent inline-block p-4 bg-accent/10 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path></svg></div><h3 class="text-lg font-bold text-secondary mt-2">関連リンク集</h3><p class="text-sm text-gray-600 mt-2">各省庁・関係機関への便利なリンク</p></div>
-            </div></div>
-        </section>
-
-        <section id="privacy" class="content-section">
-            <div class="py-20 bg-gray-50 text-center"><h2 class="text-5xl font-bold text-primary scroll-reveal">個人情報保護方針</h2></div>
-            <div class="container mx-auto px-6 py-24 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-6 scroll-reveal">
-                <h3 class="text-2xl font-bold">1. 基本方針</h3><p>クレアメディカル株式会社（以下、「当社」）は、個人情報の重要性を認識し、個人情報を保護することが社会的責務であると考え、個人情報に関する法令を遵守し、当社で取扱う個人情報の取得、利用、管理を適正に行います。</p>
-                <h3 class="text-2xl font-bold">2. 適用範囲</h3><p>本プライバシーポリシーは、当社が行う各種サービスにおいて、お客様の個人情報もしくはそれに準ずる情報を取り扱う際に、当社が遵守する方針を示したものです。</p>
-                <h3 class="text-2xl font-bold">3. 個人情報の取得と利用目的</h3><p>当社は、適法かつ公正な手段によって個人情報を取得し、以下の目的の範囲内で利用します。<br>・キャリア支援、求人情報の提供のため<br>・事業承継に関するコンサルティングのため<br>・当社サービスに関する重要なお知らせやお問い合わせへの対応のため</p>
-                <h3 class="text-2xl font-bold">4. 個人情報の第三者提供について</h3><p>当社は、法令に定める場合を除き、個人情報を、事前にご本人の同意を得ることなく、第三者に提供しません。</p>
-            </div></div>
-        </section>
-
-        <section id="terms" class="content-section">
-            <div class="py-20 bg-gray-50 text-center"><h2 class="text-5xl font-bold text-primary scroll-reveal">利用規約</h2></div>
-            <div class="container mx-auto px-6 py-24 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-6 scroll-reveal">
-                <h3 class="text-2xl font-bold">第1条（適用）</h3><p>本規約は、クレアメディカル株式会社（以下、「当社」）が提供するウェブサイト「MedReach」（以下、「本サービス」）の利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」）には、本規約に従って本サービスをご利用いただきます。</p>
-                <h3 class="text-2xl font-bold">第2条（禁止事項）</h3><p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。<br>・法令または公序良俗に違反する行為<br>・犯罪行為に関連する行為<br>・本サービスの内容等、本サービスに含まれる著作権、商標権ほか知的財産権を侵害する行為<br>・当社のサービスの運営を妨害するおそれのある行為</p>
-                <h3 class="text-2xl font-bold">第3条（免責事項）</h3><p>当社は、本サービスに掲載されている情報の正確性について万全を期しておりますが、その内容を保証するものではありません。本サービスの利用によってユーザーに生じたあらゆる損害について、当社は一切の責任を負いません。</p>
-            </div></div>
-        </section>
-    </main>
-
-    <footer class="bg-primary text-white">
-        <div class="container mx-auto px-6 pt-16 pb-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
-                <div class="md:col-span-2">
-                    <div class="flex items-center space-x-3 mb-4 cursor-pointer" data-tab-target="home">
-                        <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
-                        <span class="text-2xl font-bold text-white font-serif">MedReach</span>
-                    </div>
-                    <p class="text-gray-300 max-w-md mt-2">医師一人ひとりのキャリアと知見を最大化し、日本の医療の未来に貢献するためのプラットフォームです。</p>
-                </div>
-                <div>
-                    <h5 class="font-bold uppercase text-gray-200 mb-4">サイトマップ</h5>
-                    <ul class="space-y-3">
-                        <li><a href="#" data-tab-target="blog" class="text-gray-300 hover:text-white transition">専門記事</a></li>
-                        <li><a href="#" data-tab-target="jobs" class="text-gray-300 hover:text-white transition">求人情報</a></li>
-                        <li><a href="#" data-tab-target="transfer" class="text-gray-300 hover:text-white transition">事業承継</a></li>
-                    </ul>
-                </div>
-                <div>
-                    <h5 class="font-bold uppercase text-gray-200 mb-4">サポート</h5>
-                    <ul class="space-y-3">
-                         <li><a href="#" data-tab-target="company" class="text-gray-300 hover:text-white transition">運営会社について</a></li>
-                         <li><a href="#" data-tab-target="privacy" class="text-gray-300 hover:text-white transition">個人情報保護方針</a></li>
-                         <li><a href="#" data-tab-target="terms" class="text-gray-300 hover:text-white transition">利用規約</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="border-t border-gray-700 mt-12 pt-8 text-center text-sm text-gray-400">
-                <p>&copy; 2025 MedReach by CreaMedical Inc. All rights reserved.</p>
-            </div>
+            <p id="modal-body">詳細コンテンツは現在準備中です。公開まで今しばらくお待ちください。</p>
         </div>
-    </footer>
+    </div>
 
     <script>
         document.addEventListener('DOMContentLoaded', () => {
-            const navMenu = document.getElementById('nav-menu');
-            const navLinks = document.querySelectorAll('.nav-link');
-            const contentSections = document.querySelectorAll('.content-section');
-            const allTabTargets = document.querySelectorAll('[data-tab-target]');
-            const demoLinks = document.querySelectorAll('.demo-link');
-            
-            let activeTabId = 'home';
+            // ... (前回のスクリプト)
 
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('is-visible');
-                        observer.unobserve(entry.target);
-                    }
-                });
-            }, { threshold: 0.1 });
-
-            function switchTab(tabId) {
-                if (!tabId) return;
-                activeTabId = tabId;
-                const targetSection = document.getElementById(tabId);
-                const activeLink = document.querySelector(`.nav-link[data-tab="${tabId}"]`);
-
-                contentSections.forEach(section => { section.style.display = 'none'; });
-                if (targetSection) {
-                    targetSection.style.display = 'block';
-                }
-
-                navLinks.forEach(link => link.classList.remove('active'));
-                if (activeLink) {
-                    activeLink.classList.add('active');
-                }
-                
-                if (targetSection) {
-                    const sectionReveals = targetSection.querySelectorAll('.scroll-reveal');
-                    sectionReveals.forEach(el => {
-                        el.classList.remove('is-visible');
-                        observer.observe(el);
-                    });
-                }
+            // --- 新機能：ヒーロースライドショー ---
+            const heroSlideshow = document.getElementById('hero-slideshow');
+            if (heroSlideshow) {
+                const slides = heroSlideshow.querySelectorAll('.hero-slide');
+                let currentSlide = 0;
+                setInterval(() => {
+                    slides[currentSlide].classList.remove('active');
+                    currentSlide = (currentSlide + 1) % slides.length;
+                    slides[currentSlide].classList.add('active');
+                }, 6000); // 6秒ごとに切り替え
             }
-            
-            allTabTargets.forEach(target => {
-                target.addEventListener('click', (event) => {
-                    event.preventDefault();
-                    const tabId = target.getAttribute('data-tab-target');
-                    if(tabId && tabId !== activeTabId) {
-                        switchTab(tabId);
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    } else if (tabId) {
-                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                    }
-                });
-            });
+
+            // --- 改善：リンク切れの代わりにモーダル表示 ---
+            const modalOverlay = document.getElementById('modal-overlay');
+            const modalContainer = document.getElementById('modal-container');
+            const modalClose = document.getElementById('modal-close');
+            const demoLinks = document.querySelectorAll('.demo-link');
+
+            function showModal() {
+                modalOverlay.classList.add('active');
+            }
+            function hideModal() {
+                modalOverlay.classList.remove('active');
+            }
 
             demoLinks.forEach(link => {
                 link.addEventListener('click', (event) => {
                     event.preventDefault();
-                    alert('詳細ページは現在準備中です。');
+                    showModal();
                 });
             });
-
-            // 初期ロード
-            switchTab(activeTabId);
-            const initialVisibleElements = document.getElementById(activeTabId).querySelectorAll('.scroll-reveal');
-            initialVisibleElements.forEach(el => observer.observe(el));
-
-            // ウィンドウのリサイズ時
-            window.addEventListener('resize', () => {
-                switchTab(activeTabId);
+            modalClose.addEventListener('click', hideModal);
+            modalOverlay.addEventListener('click', (event) => {
+                if (event.target === modalOverlay) {
+                    hideModal();
+                }
             });
         });
     </script>
