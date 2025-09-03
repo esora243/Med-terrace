@@ -4,19 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MedReach | 医師のキャリアと知見を、次のステージへ</title>
-    
     <script src="https://cdn.tailwindcss.com"></script>
-    
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Noto+Sans+JP:wght@400;500;700&family=Noto+Serif+JP:wght@600;700&display=swap" rel="stylesheet">
-
     <style>
         :root {
             --color-primary: #102A43; --color-secondary: #334E68; --color-accent: #007A7A;
             --color-background: #FDFDFD; --font-serif: 'Noto Serif JP', serif; --font-sans: 'Inter', 'Noto Sans JP', sans-serif;
         }
-        html { scroll-behavior: smooth; }
+        html { scroll-behavior: smooth; scroll-padding-top: 5rem; /* ヘッダーの高さ分、スクロール位置を調整 */ }
         body { font-family: var(--font-sans); background-color: var(--color-background); color: #486581; line-height: 1.8; }
         h1, h2, h3, h4, h5 { font-family: var(--font-serif); color: var(--color-primary); }
         .text-primary { color: var(--color-primary); }
@@ -33,17 +30,23 @@
 
         .nav-link {
             position: relative; padding: 0.5rem 0; margin: 0 1rem; color: #64748B; font-weight: 500;
-            transition: color 0.3s ease-in-out;
+            text-decoration: none; transition: color 0.3s ease-in-out;
         }
         .nav-link::after {
-            content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
+            content: ''; position: absolute; left: 0; bottom: -2px; width: 100%; height: 2px;
             background-color: var(--color-accent); transform: scaleX(0); transition: transform 0.3s ease-in-out;
             transform-origin: center;
         }
         .nav-link.active::after, .nav-link:hover::after { transform: scaleX(1); }
         .nav-link.active { color: var(--color-primary); }
 
-        .header-scrolled { background-color: rgba(255, 255, 255, 0.95); box-shadow: 0 2px 4px rgba(0,0,0,0.05); }
+        .header-scrolled {
+            background-color: rgba(255, 255, 255, 0.95) !important;
+            backdrop-filter: blur(8px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        .prose p { margin-bottom: 1rem; }
+        .prose ul { list-style-position: inside; }
     </style>
 </head>
 <body class="antialiased">
@@ -80,26 +83,6 @@
             </div>
         </section>
 
-        <section id="about" class="bg-background py-24">
-            <div class="container mx-auto px-6 text-center">
-                <h2 class="text-4xl font-bold text-primary mb-12 scroll-reveal">MedReachが提供する価値</h2>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    <div class="scroll-reveal p-8">
-                        <svg class="w-12 h-12 mx-auto text-accent mb-4" xmlns="http://www.w3.org/2000/svg"  viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg>
-                        <h3 class="text-xl font-bold text-primary mb-2">最新の医療コラム</h3><p class="text-gray-600">現場の専門家による、示唆に富んだ記事を毎月更新。</p>
-                    </div>
-                    <div class="scroll-reveal p-8" style="transition-delay: 150ms;">
-                        <svg class="w-12 h-12 mx-auto text-accent mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                        <h3 class="text-xl font-bold text-primary mb-2">厳選された求人情報</h3><p class="text-gray-600">先生の専門性を最大限に活かす、次のステージへ。</p>
-                    </div>
-                    <div class="scroll-reveal p-8" style="transition-delay: 300ms;">
-                        <svg class="w-12 h-12 mx-auto text-accent mb-4" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
-                        <h3 class="text-xl font-bold text-primary mb-2">信頼できる公式情報</h3><p class="text-gray-600">厚生労働省の最新ガイドラインに素早くアクセス。</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
         <section id="blog" class="py-24 bg-white">
             <div class="container mx-auto px-6">
                 <div class="text-center mb-16"><h2 class="text-4xl font-bold text-primary scroll-reveal">専門記事</h2><p class="text-lg text-secondary mt-2 scroll-reveal" style="transition-delay: 100ms;">臨床と研究の最前線から、価値ある知見を</p></div>
@@ -122,11 +105,54 @@
             </div>
         </section>
 
-        <section id="transfer" class="py-24 bg-white"><!-- ... (transfer content) ... --></section>
-        <section id="company" class="py-24 bg-background"><!-- ... (company content) ... --></section>
-        <section id="mhlw" class="py-24 bg-white"><!-- ... (mhlw content) ... --></section>
-        <section id="privacy" class="py-24 bg-background"><!-- ... (privacy content) ... --></section>
-        <section id="terms" class="py-24 bg-white"><!-- ... (terms content) ... --></section>
+        <section id="transfer" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16"><h2 class="text-4xl font-bold text-primary scroll-reveal">事業承継</h2><p class="text-lg text-secondary mt-2 scroll-reveal" style="transition-delay: 100ms;">理想の医療を叶える、新たな開業の選択肢</p></div>
+                <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal"><div class="relative h-48 w-full"><img src="画像(15).jpg" alt="内科クリニック" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">内科クリニック（東京都世田谷区）</h3><p class="text-secondary mb-4 text-sm">駅徒歩5分の好立地。安定した患者数を維持。</p><p class="text-lg font-bold text-primary">譲渡価格: 5,000万円</p><a href="#transfer" class="block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300">譲渡条件を確認する</a></div></div>
+                    <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal" style="transition-delay: 150ms;"><div class="relative h-48 w-full"><img src="画像(16).jpg" alt="眼科クリニック" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">眼科クリニック（大阪府吹田市）</h3><p class="text-secondary mb-4 text-sm">最新設備が整備。駅直結でアクセス良好。</p><p class="text-lg font-bold text-primary">譲渡価格: 7,500万円</p><a href="#transfer" class="block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300">譲渡条件を確認する</a></div></div>
+                    <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal" style="transition-delay: 300ms;"><div class="relative h-48 w-full"><img src="画像(17).jpg" alt="皮膚科" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">皮膚科・美容皮膚科（名古屋市栄）</h3><p class="text-secondary mb-4 text-sm">美容医療ニーズが高い商業地域に位置します。</p><p class="text-lg font-bold text-primary">譲渡価格: 9,000万円</p><a href="#transfer" class="block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300">譲渡条件を確認する</a></div></div>
+                </div>
+            </div>
+        </section>
+        
+        <section id="company" class="py-24 bg-background">
+            <div class="container mx-auto px-6"><div class="bg-white rounded-xl shadow-card overflow-hidden md:flex items-center scroll-reveal">
+                <div class="md:w-1/2"><div class="relative h-80 md:h-[500px] w-full"><img src="画像(25).jpg" alt="オフィス外観" class="w-full h-full object-cover"/></div></div>
+                <div class="p-8 md:p-16 md:w-1/2"><h3 class="text-3xl font-bold text-primary mb-6">クレアメディカル株式会社</h3><p class="text-secondary mb-8 leading-relaxed">医療従事者の専門性とキャリア形成をサポートするため、医療情報の提供、転職・開業支援、経営コンサルティングを展開しています。変化の激しい医療業界において、常に最先端の情報と最適なソリューションを提供し、先生方の「次のステップ」を力強く支援いたします。</p><ul class="space-y-3 text-secondary"><li><strong class="font-semibold text-primary">代表取締役:</strong> 伏見 勇紀</li><li><strong class="font-semibold text-primary">所在地:</strong> 東京都港区芝大門２丁目３−１８</li><li><strong class="font-semibold text-primary">連絡先:</strong> creamed@yh.med</li></ul></div>
+            </div></div>
+        </section>
+        
+        <section id="mhlw" class="py-24 bg-white">
+            <div class="container mx-auto px-6">
+                <div class="text-center mb-16"><h2 class="text-4xl font-bold text-primary scroll-reveal">厚生労働省 公式情報</h2><p class="text-lg text-secondary mt-2 scroll-reveal" style="transition-delay: 100ms;">医師が知るべき制度・ガイドライン一覧</p></div>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <a href="#" class="block bg-gray-50 hover:bg-gray-100 rounded-lg p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 scroll-reveal"><div class="text-accent inline-block p-4 bg-accent/10 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20"></path></svg></div><h3 class="text-lg font-bold text-secondary mt-2">医師資格・免許・研修</h3><p class="text-sm text-gray-600 mt-2">免許申請、専門医研修プログラムなど</p></a>
+                    <a href="#" class="block bg-gray-50 hover:bg-gray-100 rounded-lg p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 scroll-reveal" style="transition-delay: 150ms;"><div class="text-accent inline-block p-4 bg-accent/10 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m16 16 3-8 3 8c-2 2-4 2-6 0Z"></path><path d="m2 16 3-8 3 8c-2 2-4 2-6 0Z"></path><path d="M7 16h10"></path><path d="M12 4v12"></path></svg></div><h3 class="text-lg font-bold text-secondary mt-2">医療法規・倫理・安全</h3><p class="text-sm text-gray-600 mt-2">最新の法令、ガイドライン、医療安全情報</p></a>
+                    <a href="#" class="block bg-gray-50 hover:bg-gray-100 rounded-lg p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 scroll-reveal" style="transition-delay: 300ms;"><div class="text-accent inline-block p-4 bg-accent/10 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 2c.5 0 1 .5 1 1v2"/><path d="M14 2c-.5 0-1 .5-1 1v2"/><path d="M15 13v-2c0-1.1-.9-2-2-2h-2c-1.1 0-2 .9-2 2v2"/><path d="M12 9v6"/><path d="M16 15v2c0 1.1-.9 2-2 2h-2c-1.1 0-2-.9-2-2v-2"/><path d="M11 22c.5 0 1-.5 1-1v-2"/><path d="M13 22c-.5 0-1-.5-1-1v-2"/><path d="M22 12h-2c-1.1 0-2-.9-2-2v-2c0-1.1.9-2 2-2h2"/><path d="M20 16c0 1.1.9 2 2 2h2"/><path d="M2 12h2c1.1 0 2 .9 2 2v2c0 1.1-.9 2-2 2H2"/><path d="M4 8c0-1.1-.9-2-2-2H0"/></svg></div><h3 class="text-lg font-bold text-secondary mt-2">感染症対策・公衆衛生</h3><p class="text-sm text-gray-600 mt-2">パンデミック対策、地域医療との連携</p></a>
+                    <a href="#" class="block bg-gray-50 hover:bg-gray-100 rounded-lg p-6 text-center shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 scroll-reveal" style="transition-delay: 450ms;"><div class="text-accent inline-block p-4 bg-accent/10 rounded-full mb-4"><svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.72"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.72-1.72"></path></svg></div><h3 class="text-lg font-bold text-secondary mt-2">関連リンク集</h3><p class="text-sm text-gray-600 mt-2">各省庁・関係機関への便利なリンク</p></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="privacy" class="py-24 bg-background">
+            <div class="container mx-auto px-6 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-8 scroll-reveal">
+                <h2 class="text-4xl font-bold text-center mb-8">個人情報保護方針</h2>
+                <div><h3 class="text-2xl font-bold mb-2">1. 基本方針</h3><p>クレアメディカル株式会社（以下、「当社」）は、個人情報の重要性を認識し、個人情報を保護することが社会的責務であると考え、個人情報に関する法令を遵守し、当社で取扱う個人情報の取得、利用、管理を適正に行います。</p></div>
+                <div><h3 class="text-2xl font-bold mb-2">2. 適用範囲</h3><p>本プライバシーポリシーは、当社が行う各種サービスにおいて、お客様の個人情報もしくはそれに準ずる情報を取り扱う際に、当社が遵守する方針を示したものです。</p></div>
+                <div><h3 class="text-2xl font-bold mb-2">3. 個人情報の取得と利用目的</h3><p>当社は、適法かつ公正な手段によって個人情報を取得し、以下の目的の範囲内で利用します。<br>・キャリア支援、求人情報の提供のため<br>・事業承継に関するコンサルティングのため<br>・当社サービスに関する重要なお知らせやお問い合わせへの対応のため</p></div>
+                <div><h3 class="text-2xl font-bold mb-2">4. 個人情報の第三者提供について</h3><p>当社は、法令に定める場合を除き、個人情報を、事前にご本人の同意を得ることなく、第三者に提供しません。</p></div>
+            </div></div>
+        </section>
+
+        <section id="terms" class="py-24 bg-white">
+            <div class="container mx-auto px-6 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-8 scroll-reveal">
+                <h2 class="text-4xl font-bold text-center mb-8">利用規約</h2>
+                <div><h3 class="text-2xl font-bold mb-2">第1条（適用）</h3><p>本規約は、クレアメディカル株式会社（以下、「当社」）が提供するウェブサイト「MedReach」（以下、「本サービス」）の利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」）には、本規約に従って本サービスをご利用いただきます。</p></div>
+                <div><h3 class="text-2xl font-bold mb-2">第2条（禁止事項）</h3><p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。<br>1. 法令または公序良俗に違反する行為<br>2. 犯罪行為に関連する行為<br>3. 本サービスの内容等、本サービスに含まれる著作権、商標権ほか知的財産権を侵害する行為<br>4. 当社のサービスの運営を妨害するおそれのある行為</p></div>
+                <div><h3 class="text-2xl font-bold mb-2">第3条（免責事項）</h3><p>当社は、本サービスに掲載されている情報の正確性について万全を期しておりますが、その内容を保証するものではありません。本サービスの利用によってユーザーに生じたあらゆる損害について、当社は一切の責任を負いません。</p></div>
+            </div></div>
+        </section>
     </main>
     
     <footer class="bg-primary text-white">
@@ -166,30 +192,42 @@
     document.addEventListener('DOMContentLoaded', () => {
         const header = document.getElementById('header');
         const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('main > section');
+        const sections = document.querySelectorAll('main > section[id]');
 
         // ヘッダーのスクロールエフェクト
-        window.addEventListener('scroll', () => {
+        const handleHeaderScroll = () => {
             if (window.scrollY > 50) {
                 header.classList.add('header-scrolled');
             } else {
                 header.classList.remove('header-scrolled');
             }
-        });
+        };
+        window.addEventListener('scroll', handleHeaderScroll);
+        handleHeaderScroll();
 
         // スクロールに応じたアクティブリンクの更新
         const sectionObserver = new IntersectionObserver((entries) => {
+            let currentActive = '';
             entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.5) {
-                    const id = entry.target.getAttribute('id');
-                    navLinks.forEach(link => {
-                        link.classList.toggle('active', link.getAttribute('href') === `#${id}`);
-                    });
+                if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                    currentActive = entry.target.getAttribute('id');
                 }
             });
-        }, { rootMargin: "-50% 0px -50% 0px", threshold: 0 });
 
-        sections.forEach(section => sectionObserver.observe(section));
+            navLinks.forEach(link => {
+                // hrefの#以降の文字列を取得して比較
+                const linkHref = link.getAttribute('href').substring(1);
+                link.classList.toggle('active', linkHref === currentActive);
+            });
+
+        }, { 
+            rootMargin: "-20% 0px -50% 0px", // 画面の中央付近で判定
+            threshold: 0.3 
+        });
+
+        sections.forEach(section => {
+             if(section.id) sectionObserver.observe(section);
+        });
 
         // スクロールリビールアニメーション
         const scrollObserver = new IntersectionObserver((entries) => {
@@ -206,3 +244,4 @@
     </script>
 </body>
 </html>
+
