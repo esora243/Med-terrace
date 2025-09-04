@@ -117,10 +117,34 @@
         </section>
         
         <section id="company" class="py-24 bg-background">
-            <div class="container mx-auto px-6"><div class="bg-white rounded-xl shadow-card overflow-hidden md:flex items-center scroll-reveal">
-                <div class="md:w-1/2"><div class="relative h-80 md:h-[500px] w-full"><img src="画像(25).jpg" alt="オフィス外観" class="w-full h-full object-cover"/></div></div>
-                <div class="p-8 md:p-16 md:w-1/2"><h3 class="text-3xl font-bold text-primary mb-6">クレアメディカル株式会社</h3><p class="text-secondary mb-8 leading-relaxed">医療従事者の専門性とキャリア形成をサポートするため、医療情報の提供、転職・開業支援、経営コンサルティングを展開しています。変化の激しい医療業界において、常に最先端の情報と最適なソリューションを提供し、先生方の「次のステップ」を力強く支援いたします。</p><ul class="space-y-3 text-secondary"><li><strong class="font-semibold text-primary">代表取締役:</strong> 伏見 勇紀</li><li><strong class="font-semibold text-primary">所在地:</strong> 東京都港区芝大門２丁目３−１８</li><li><strong class="font-semibold text-primary">連絡先:</strong> creamed@yh.med</li></ul></div>
-            </div></div>
+            <div class="container mx-auto px-6">
+                <div class="bg-white rounded-xl shadow-card overflow-hidden md:flex items-center scroll-reveal">
+                    <div class="md:w-1/2">
+                        <div class="relative h-80 md:h-[600px] w-full">
+                            <img src="画像(25).jpg" alt="オフィス外観" class="w-full h-full object-cover"/>
+                        </div>
+                    </div>
+                    <div class="p-8 md:p-16 md:w-1/2">
+                        <h3 class="text-3xl font-bold text-primary mb-6">クレアメディカル株式会社</h3>
+                        <p class="text-secondary mb-8 leading-relaxed">
+                            私たちクレアメディカルは、「医療の未来を、医師と共に創造する」を理念に掲げ、医療従事者の皆様のキャリアと成長を多角的に支援する企業です。
+                            変化の激しい医療業界において、常に最先端の情報と最適なソリューションを提供し、先生方一人ひとりが専門性を最大限に発揮できる環境作りをサポートすることが私たちの使命です。
+                        </p>
+                        <ul class="space-y-4 text-secondary">
+                            <li><strong class="font-semibold text-primary block">会社名</strong>クレアメディカル株式会社</li>
+                            <li><strong class="font-semibold text-primary block">代表者</strong>代表取締役社長　伏見勇紀</li>
+                            <li><strong class="font-semibold text-primary block">所在地</strong>東京都港区芝大門1丁目2-14 H'O浜松町</li>
+                            <li><strong class="font-semibold text-primary block">連絡先</strong>cremed@xs671474.xsrv.jp</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="mt-16 scroll-reveal">
+                    <h3 class="text-3xl font-bold text-primary text-center mb-8">アクセス</h3>
+                    <div class="rounded-xl overflow-hidden shadow-card">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3241.608329599298!2d139.7533083152583!3d35.66191498019869!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188b906478e5c5%3A0x1d0b1a080d92e811!2zSydP5rWc5p2-55S6!5e0!3m2!1sja!2sjp!4v1662345678901!5m2!1sja!2sjp" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                    </div>
+                </div>
+            </div>
         </section>
         
         <section id="mhlw" class="py-24 bg-white">
@@ -138,10 +162,11 @@
         <section id="privacy" class="py-24 bg-background">
             <div class="container mx-auto px-6 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-8 scroll-reveal">
                 <h2 class="text-4xl font-bold text-center mb-8">個人情報保護方針</h2>
-                <div><h3 class="text-2xl font-bold mb-2">1. 基本方針</h3><p>クレアメディカル株式会社（以下、「当社」）は、個人情報の重要性を認識し、個人情報を保護することが社会的責務であると考え、個人情報に関する法令を遵守し、当社で取扱う個人情報の取得、利用、管理を適正に行います。</p></div>
-                <div><h3 class="text-2xl font-bold mb-2">2. 適用範囲</h3><p>本プライバシーポリシーは、当社が行う各種サービスにおいて、お客様の個人情報もしくはそれに準ずる情報を取り扱う際に、当社が遵守する方針を示したものです。</p></div>
-                <div><h3 class="text-2xl font-bold mb-2">3. 個人情報の取得と利用目的</h3><p>当社は、適法かつ公正な手段によって個人情報を取得し、以下の目的の範囲内で利用します。<br>・キャリア支援、求人情報の提供のため<br>・事業承継に関するコンサルティングのため<br>・当社サービスに関する重要なお知らせやお問い合わせへの対応のため</p></div>
-                <div><h3 class="text-2xl font-bold mb-2">4. 個人情報の第三者提供について</h3><p>当社は、法令に定める場合を除き、個人情報を、事前にご本人の同意を得ることなく、第三者に提供しません。</p></div>
+                <p>クレアメディカル株式会社（以下、「当社」）は、個人情報の重要性を深く認識し、その保護を社会的責務と考え、関連法令を遵守するとともに、当社が取り扱う個人情報の取得、利用、管理を以下の通り適正に行います。</p>
+                <div><h3 class="text-2xl font-bold mb-2">1. 基本方針</h3><p>当社は、個人情報保護法および関連するその他の法令・規範を遵守し、個人情報を適正に取り扱います。また、個人情報保護に関する社内規程を策定し、役員および全従業員に周知徹底させ、継続的な改善に努めます。</p></div>
+                <div><h3 class="text-2xl font-bold mb-2">2. 個人情報の取得と利用目的</h3><p>当社は、適法かつ公正な手段によって個人情報を取得し、以下の目的の範囲内で適切に利用します。<br>・キャリア支援、求人情報の提供、およびそれらに関連する連絡のため<br>・事業承継に関するコンサルティング業務の遂行のため<br>・当社が提供するサービスに関する重要なお知らせや、お問い合わせへの対応のため<br>・サービスの改善や新たなサービスの開発に役立てるため</p></div>
+                <div><h3 class="text-2xl font-bold mb-2">3. 個人情報の第三者提供について</h3><p>当社は、法令に定める場合を除き、事前にご本人の同意を得ることなく、個人情報を第三者に提供しません。ただし、求人応募や事業承継のマッチング等、ご本人の同意に基づき、必要な範囲で提携企業や医療機関に情報を提供することがあります。</p></div>
+                <div><h3 class="text-2xl font-bold mb-2">4. 個人情報の安全管理措置</h3><p>当社は、取り扱う個人情報の漏洩、滅失またはき損の防止、その他の個人情報の安全管理のために、必要かつ適切な措置を講じます。</p></div>
             </div></div>
         </section>
 
@@ -150,7 +175,7 @@
                 <h2 class="text-4xl font-bold text-center mb-8">利用規約</h2>
                 <div><h3 class="text-2xl font-bold mb-2">第1条（適用）</h3><p>本規約は、クレアメディカル株式会社（以下、「当社」）が提供するウェブサイト「MedReach」（以下、「本サービス」）の利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」）には、本規約に従って本サービスをご利用いただきます。</p></div>
                 <div><h3 class="text-2xl font-bold mb-2">第2条（禁止事項）</h3><p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。<br>1. 法令または公序良俗に違反する行為<br>2. 犯罪行為に関連する行為<br>3. 本サービスの内容等、本サービスに含まれる著作権、商標権ほか知的財産権を侵害する行為<br>4. 当社のサービスの運営を妨害するおそれのある行為</p></div>
-                <div><h3 class="text-2xl font-bold mb-2">第3条（免責事項）</h3><p>当社は、本サービスに掲載されている情報の正確性について万全を期しておりますが、その内容を保証するものではありません。本サービスの利用によってユーザーに生じたあらゆる損害について、当社は一切の責任を負いません。</p></div>
+                <div><h3 class="text-2xl font-bold mb-2">第3条（免責事項）</h3><p>当社は、本サービスに掲載されている情報の正確性について万全を期しておりますが、その内容の完全性、正確性、有用性、安全性を保証するものではありません。本サービスの利用によってユーザーに生じたあらゆる損害について、当社は一切の責任を負いません。</p></div>
             </div></div>
         </section>
     </main>
@@ -194,7 +219,6 @@
         const navLinks = document.querySelectorAll('.nav-link');
         const sections = document.querySelectorAll('main > section[id]');
 
-        // ヘッダーのスクロールエフェクト
         const handleHeaderScroll = () => {
             if (window.scrollY > 50) {
                 header.classList.add('header-scrolled');
@@ -205,7 +229,6 @@
         window.addEventListener('scroll', handleHeaderScroll);
         handleHeaderScroll();
 
-        // スクロールに応じたアクティブリンクの更新
         const sectionObserver = new IntersectionObserver((entries) => {
             let currentActive = '';
             entries.forEach(entry => {
@@ -215,13 +238,12 @@
             });
 
             navLinks.forEach(link => {
-                // hrefの#以降の文字列を取得して比較
                 const linkHref = link.getAttribute('href').substring(1);
                 link.classList.toggle('active', linkHref === currentActive);
             });
 
         }, { 
-            rootMargin: "-20% 0px -50% 0px", // 画面の中央付近で判定
+            rootMargin: "-20% 0px -50% 0px",
             threshold: 0.3 
         });
 
@@ -229,7 +251,6 @@
              if(section.id) sectionObserver.observe(section);
         });
 
-        // スクロールリビールアニメーション
         const scrollObserver = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
