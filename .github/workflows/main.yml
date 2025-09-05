@@ -3,7 +3,7 @@ name: Deploy to XServer
 on:
   push:
     branches:
-      - main  # mainブランチにプッシュされた時に実行
+      - main
 
 jobs:
   deploy:
@@ -15,11 +15,11 @@ jobs:
 
     - name: Deploy to XServer via rsync
       uses: easingthemes/ssh-deploy@main
-      with:
+      env:
         SSH_PRIVATE_KEY: ${{ secrets.XSERVER_SSH_KEY }}
         REMOTE_HOST: ${{ secrets.XSERVER_HOST }}
         REMOTE_USER: ${{ secrets.XSERVER_USER }}
-        REMOTE_PORT: 10022 # エックスサーバーのSSHポート番号
-        SOURCE: "./" # リポジトリの全ファイルを転送
+        REMOTE_PORT: "10022"
+        SOURCE: "./"
         TARGET: ${{ secrets.XSERVER_DOMAIN_PATH }}
         ARGS: "-rlgoDvz --delete --exclude='.git*' --exclude='.github*'"
