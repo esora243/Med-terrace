@@ -115,7 +115,7 @@
                 </video>
                 <div class="container mx-auto px-6 relative z-20">
                     <div class="max-w-3xl scroll-reveal">
-                        <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight" style="text-shadow: 1px 1px 5px rgba(0,0,0,0.3);">医療従事者のキャリアと知見を、<br>次のステージへ。</h1>
+                        <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight" style="text-shadow: 1px 1px 5px rgba(0,0,0,0.3);">医療従事者のキャリアと知見をテラス<br></h1>
                         <p class="text-xl text-gray-200" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">メドテラスは、多忙な日々を送る先生方のキャリア形成と学術的探究を加速させるための、信頼できる情報と機会を提供します。</p>
                     </div>
                 </div>
