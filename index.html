@@ -80,7 +80,7 @@
     <header id="header" class="bg-white/80 backdrop-blur-lg fixed top-0 left-0 right-0 z-50 transition-all duration-300">
         <div class="container mx-auto px-6">
             <div class="flex items-center justify-between h-20">
-                <a href="#home" class="flex items-center space-x-3">
+                <a href="#home" class="flex items-center space-x-3 page-link" data-section="main-content-wrapper">
                     <svg class="h-8 w-8 text-primary" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                     <span class="text-2xl font-bold text-primary font-serif">Medterrace</span>
                 </a>
@@ -88,7 +88,7 @@
                     <a href="#blog" class="nav-link">メディカルコラム</a>
                     <a href="#jobs" class="nav-link">求人情報</a>
                     <a href="#transfer" class="nav-link">事業承継</a>
-                    <a href="contact.html" class="nav-link">お問い合わせ</a>
+                    <a href="#contact" class="nav-link page-link" data-section="contact">お問い合わせ</a>
                     <a href="#company" class="nav-link">企業情報</a>
                 </nav>
             </div>
@@ -132,10 +132,10 @@
                         <!-- Job postings will be injected here by JS -->
                     </div>
                      <div class="text-center mt-12 pt-8 border-t border-gray-200 scroll-reveal">
-                         <a href="contact.html" class="contact-link bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block" data-inquiry-type="求人" data-inquiry-subject="求人情報全般について">
-                            求人情報について全般的に相談する
-                        </a>
-                    </div>
+                         <a href="#contact" class="page-link bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block" data-section="contact" data-inquiry-type="求人" data-inquiry-subject="求人情報全般について">
+                             求人情報について全般的に相談する
+                         </a>
+                     </div>
                     <div class="text-center mt-8 scroll-reveal">
                         <button id="load-more-jobs" class="text-secondary hover:text-primary font-bold py-3 px-8 rounded-lg transition duration-300">さらに表示</button>
                     </div>
@@ -149,7 +149,7 @@
                         <!-- Transfer listings will be injected here by JS -->
                     </div>
                     <div class="text-center mt-12 pt-8 border-t border-gray-200 scroll-reveal">
-                        <a href="contact.html" class="contact-link bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block" data-inquiry-type="事業承継" data-inquiry-subject="事業承継全般について">
+                        <a href="#contact" class="page-link bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block" data-section="contact" data-inquiry-type="事業承継" data-inquiry-subject="事業承継全般について">
                             事業承継について全般的に相談する
                         </a>
                     </div>
@@ -204,41 +204,86 @@
                     </div>
                 </div>
             </section>
-
-            <section id="privacy" class="py-24 bg-white hidden">
-                <div class="container mx-auto px-6 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-8 scroll-reveal prose">
-                    <button class="back-to-main-from-policy mb-8 font-bold text-accent hover:underline">&larr; トップページへ戻る</button>
-                    <h2 class="text-4xl font-bold text-center mb-8">個人情報保護方針</h2>
-                    <p>クレアメディカル株式会社（以下、「当社」）は、個人情報の重要性を深く認識し、その保護を社会的責務と考え、関連法令を遵守するとともに、当社が取り扱う個人情報の取得、利用、管理を以下の通り適正に行います。</p>
-                    <h3>1. 基本方針</h3><p>当社は、個人情報保護法および関連するその他の法令・規範を遵守し、個人情報を適正に取り扱います。また、個人情報保護に関する社内規程を策定し、役員および全従業員に周知徹底させ、継続的な改善に努めます。</p>
-                    <h3>2. 個人情報の取得と利用目的</h3><p>当社は、適法かつ公正な手段によって個人情報を取得し、以下の目的の範囲内で適切に利用します。<br>・キャリア支援、求人情報の提供、およびそれらに関連する連絡のため<br>・事業承継に関するコンサルティング業務の遂行のため<br>・当社が提供するサービスに関する重要なお知らせや、お問い合わせへの対応のため<br>・サービスの改善や新たなサービスの開発に役立てるため</p>
-                    <h3>3. 個人情報の第三者提供について</h3><p>当社は、法令に定める場合を除き、事前にご本人の同意を得ることなく、個人情報を第三者に提供しません。ただし、求人応募や事業承継のマッチング等、ご本人の同意に基づき、必要な範囲で提携企業や医療機関に情報を提供することがあります。</p>
-                    <h3>4. 個人情報の安全管理措置</h3><p>当社は、取り扱う個人情報の漏洩、滅失またはき損の防止、その他の個人情報の安全管理のために、必要かつ適切な措置を講じます。</p>
-                </div></div>
-            </section>
-
-            <section id="terms" class="py-24 bg-background hidden">
-                <div class="container mx-auto px-6 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-8 scroll-reveal prose">
-                    <button class="back-to-main-from-policy mb-8 font-bold text-accent hover:underline">&larr; トップページへ戻る</button>
-                    <h2 class="text-4xl font-bold text-center mb-8">利用規約</h2>
-                    <h3>第1条（適用）</h3><p>本規約は、クレアメディカル株式会社（以下、「当社」）が提供するウェブサイト「メドテラス」（以下、「本サービス」）の利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」）には、本規約に従って本サービスをご利用いただきます。</p>
-                    <h3>第2条（禁止事項）</h3><p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。<br>1. 法令または公序良俗に違反する行為<br>2. 犯罪行為に関連する行為<br>3. 本サービスの内容等、本サービスに含まれる著作権、商標権ほか知的財産権を侵害する行為<br>4. 当社のサービスの運営を妨害するおそれのある行為</p>
-                    <h3>第3条（免責事項）</h3><p>当社は、本サービスに掲載されている情報の正確性について万全を期しておりますが、その内容の完全性、正確性、有用性、安全性を保証するものではありません。本サービスの利用によってユーザーに生じたあらゆる損害について、当社は一切の責任を負いません。</p>
-                </div></div>
-            </section>
         </main>
     </div>
 
-    <!-- Article Detail Sections (Initially Hidden) -->
+    <!-- Article Detail Sections (Wrapper) -->
     <div id="article-section-wrapper" class="hidden">
         <!-- Article details will be injected here by JS -->
     </div>
+
+    <!-- Other Page Sections (Initially Hidden) -->
+    <section id="contact" class="page-section hidden py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl">
+            <div class="bg-white p-6 sm:p-10 rounded-lg shadow-card space-y-8 scroll-reveal">
+                <button class="page-link mb-8 font-bold text-accent hover:underline" data-section="main-content-wrapper">&larr; トップページへ戻る</button>
+                <div class="text-center">
+                    <h2 class="text-4xl font-bold">お問い合わせ</h2>
+                    <p class="text-lg text-secondary mt-2">ご相談・ご質問など、お気軽にお問い合わせください。</p>
+                </div>
+                <!-- IMPORTANT: 実際のFormspreeフォームIDに置き換えてください -->
+                <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" class="space-y-6">
+                    <div>
+                        <label for="contact-name" class="block text-sm font-medium text-gray-700">お名前 *</label>
+                        <input type="text" name="name" id="contact-name" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-accent focus:ring-accent sm:text-sm p-3">
+                    </div>
+                    <div>
+                        <label for="contact-email" class="block text-sm font-medium text-gray-700">メールアドレス *</label>
+                        <input type="email" name="email" id="contact-email" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-accent focus:ring-accent sm:text-sm p-3">
+                    </div>
+                    <div>
+                        <label for="contact-type" class="block text-sm font-medium text-gray-700">お問い合わせ種別 *</label>
+                        <select id="contact-type" name="type" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-accent focus:ring-accent sm:text-sm p-3 bg-white">
+                            <option>選択してください</option>
+                            <option value="求人">求人について</option>
+                            <option value="事業承継">事業承継について</option>
+                            <option value="メディカルコラム">メディカルコラムについて</option>
+                            <option value="その他">その他</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="contact-subject" class="block text-sm font-medium text-gray-700">件名</label>
+                        <input type="text" name="subject" id="contact-subject" class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-accent focus:ring-accent sm:text-sm p-3">
+                    </div>
+                    <div>
+                        <label for="contact-message" class="block text-sm font-medium text-gray-700">お問い合わせ内容 *</label>
+                        <textarea id="contact-message" name="message" rows="6" required class="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-accent focus:ring-accent sm:text-sm p-3"></textarea>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="inline-block bg-accent hover:opacity-90 text-white font-bold py-3 px-12 rounded-lg transition duration-300">送信する</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <section id="privacy" class="page-section hidden py-24 bg-white">
+        <div class="container mx-auto px-6 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-8 scroll-reveal prose">
+            <button class="page-link mb-8 font-bold text-accent hover:underline" data-section="main-content-wrapper">&larr; トップページへ戻る</button>
+            <h2 class="text-4xl font-bold text-center mb-8">個人情報保護方針</h2>
+            <p>クレアメディカル株式会社（以下、「当社」）は、個人情報の重要性を深く認識し、その保護を社会的責務と考え、関連法令を遵守するとともに、当社が取り扱う個人情報の取得、利用、管理を以下の通り適正に行います。</p>
+            <h3>1. 基本方針</h3><p>当社は、個人情報保護法および関連するその他の法令・規範を遵守し、個人情報を適正に取り扱います。また、個人情報保護に関する社内規程を策定し、役員および全従業員に周知徹底させ、継続的な改善に努めます。</p>
+            <h3>2. 個人情報の取得と利用目的</h3><p>当社は、適法かつ公正な手段によって個人情報を取得し、以下の目的の範囲内で適切に利用します。<br>・キャリア支援、求人情報の提供、およびそれらに関連する連絡のため<br>・事業承継に関するコンサルティング業務の遂行のため<br>・当社が提供するサービスに関する重要なお知らせや、お問い合わせへの対応のため<br>・サービスの改善や新たなサービスの開発に役立てるため</p>
+            <h3>3. 個人情報の第三者提供について</h3><p>当社は、法令に定める場合を除き、事前にご本人の同意を得ることなく、個人情報を第三者に提供しません。ただし、求人応募や事業承継のマッチング等、ご本人の同意に基づき、必要な範囲で提携企業や医療機関に情報を提供することがあります。</p>
+            <h3>4. 個人情報の安全管理措置</h3><p>当社は、取り扱う個人情報の漏洩、滅失またはき損の防止、その他の個人情報の安全管理のために、必要かつ適切な措置を講じます。</p>
+        </div></div>
+    </section>
+
+    <section id="terms" class="page-section hidden py-24 bg-background">
+        <div class="container mx-auto px-6 max-w-4xl"><div class="bg-white p-10 rounded-lg shadow-card space-y-8 scroll-reveal prose">
+            <button class="page-link mb-8 font-bold text-accent hover:underline" data-section="main-content-wrapper">&larr; トップページへ戻る</button>
+            <h2 class="text-4xl font-bold text-center mb-8">利用規約</h2>
+            <h3>第1条（適用）</h3><p>本規約は、クレアメディカル株式会社（以下、「当社」）が提供するウェブサイト「メドテラス」（以下、「本サービス」）の利用条件を定めるものです。登録ユーザーの皆さま（以下、「ユーザー」）には、本規約に従って本サービスをご利用いただきます。</p>
+            <h3>第2条（禁止事項）</h3><p>ユーザーは、本サービスの利用にあたり、以下の行為をしてはなりません。<br>1. 法令または公序良俗に違反する行為<br>2. 犯罪行為に関連する行為<br>3. 本サービスの内容等、本サービスに含まれる著作権、商標権ほか知的財産権を侵害する行為<br>4. 当社のサービスの運営を妨害するおそれのある行為</p>
+            <h3>第3条（免責事項）</h3><p>当社は、本サービスに掲載されている情報の正確性について万全を期しておりますが、その内容の完全性、正確性、有用性、安全性を保証するものではありません。本サービスの利用によってユーザーに生じたあらゆる損害について、当社は一切の責任を負いません。</p>
+        </div></div>
+    </section>
 
     <footer class="bg-primary text-white">
         <div class="container mx-auto px-6 pt-16 pb-12">
             <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
                 <div class="md:col-span-2">
-                    <a href="#home" class="flex items-center space-x-3 mb-4">
+                    <a href="#home" class="flex items-center space-x-3 mb-4 page-link" data-section="main-content-wrapper">
                         <svg class="h-8 w-8 text-white" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
                         <span class="text-2xl font-bold text-white font-serif">Medterrace</span>
                     </a>
@@ -250,15 +295,15 @@
                         <li><a href="#blog" class="text-gray-300 hover:text-white transition">メディカルコラム</a></li>
                         <li><a href="#jobs" class="text-gray-300 hover:text-white transition">求人情報</a></li>
                         <li><a href="#transfer" class="text-gray-300 hover:text-white transition">事業承継</a></li>
-                        <li><a href="contact.html" class="text-gray-300 hover:text-white transition">お問い合わせ</a></li>
+                        <li><a href="#contact" class="text-gray-300 hover:text-white transition page-link" data-section="contact">お問い合わせ</a></li>
                     </ul>
                 </div>
                 <div>
                     <h5 class="font-bold uppercase text-gray-200 mb-4">企業情報</h5>
                     <ul class="space-y-3">
                         <li><a href="#company" class="text-gray-300 hover:text-white transition">運営会社について</a></li>
-                        <li><a href="#privacy" class="footer-link text-gray-300 hover:text-white transition cursor-pointer">個人情報保護方針</a></li>
-                        <li><a href="#terms" class="footer-link text-gray-300 hover:text-white transition cursor-pointer">利用規約</a></li>
+                        <li><a href="#privacy" class="page-link text-gray-300 hover:text-white transition cursor-pointer" data-section="privacy">個人情報保護方針</a></li>
+                        <li><a href="#terms" class="page-link text-gray-300 hover:text-white transition cursor-pointer" data-section="terms">利用規約</a></li>
                          <li><a href="#" id="admin-login-link" class="text-gray-500 hover:text-white transition cursor-pointer text-sm">管理者用</a></li>
                     </ul>
                 </div>
@@ -304,9 +349,9 @@
             <div class="flex-grow flex flex-col md:flex-row overflow-hidden">
                 <div class="w-full md:w-1/4 border-b md:border-b-0 md:border-r bg-light-gray p-4">
                     <nav class="flex md:flex-col space-x-2 md:space-x-0 md:space-y-2">
-                         <button class="admin-tab active-tab text-left" data-content="admin-add-article">コラム追加</button>
-                         <button class="admin-tab text-left" data-content="admin-add-job">求人追加</button>
-                         <button class="admin-tab text-left" data-content="admin-add-transfer">事業承継追加</button>
+                          <button class="admin-tab active-tab text-left" data-content="admin-add-article">コラム追加</button>
+                          <button class="admin-tab text-left" data-content="admin-add-job">求人追加</button>
+                          <button class="admin-tab text-left" data-content="admin-add-transfer">事業承継追加</button>
                     </nav>
                 </div>
                 <div class="w-full md:w-3/4 p-6 overflow-y-auto">
@@ -360,17 +405,35 @@
         // --- Fallback Data ---
         const defaultData = {
             articles: [
-                 { id: 'article-telemedicine', category: '最新医療技術', title: 'オンライン診療の未来：遠隔医療技術の最新動向', createdAt: { toDate: () => new Date('2025-09-01') }, image: '画像(3).jpg', ref_title: 'The Future of Telehealth: Opportunities and Challenges. NEJM Catalyst.', ref_link: 'https://catalyst.nejm.org/doi/full/10.1056/CAT.20.0125' },
+                 { id: 'article-telemedicine', category: '最新医療技術', title: 'オンライン診療の未来：遠隔医療技術の最新動向', createdAt: { toDate: () => new Date('2025-09-01') }, image: '画像(3).jpg', ref_title: 'The Future of Telehealth. NEJM Catalyst.', ref_link: 'https://catalyst.nejm.org/doi/full/10.1056/CAT.20.0125' },
                  { id: 'article-career', category: 'キャリア', title: '医師のキャリアパス：専門医以外の多様な選択肢', createdAt: { toDate: () => new Date('2025-08-25') }, image: '画像(4).jpg', ref_title: 'Non-Clinical Careers for Physicians. JAMA.', ref_link: 'https://jamanetwork.com/journals/jama/fullarticle/2768522' },
-                 { id: 'article-ai', category: 'AIと医療', title: 'AI診断支援ツールの現状と倫理的課題', createdAt: { toDate: () => new Date('2025-08-18') }, image: '画像(5).jpg', ref_title: 'High-performance medicine: the convergence of human and artificial intelligence. Nature Medicine.', ref_link: 'https://www.nature.com/articles/s41591-019-0300-7' },
+                 { id: 'article-ai', category: 'AIと医療', title: 'AI診断支援ツールの現状と倫理的課題', createdAt: { toDate: () => new Date('2025-08-18') }, image: '画像(5).jpg', ref_title: 'High-performance medicine: AI. Nature Medicine.', ref_link: 'https://www.nature.com/articles/s41591-019-0300-7' },
+                 { id: 'article-genome', category: 'ゲノム医療', title: 'ゲノム編集技術CRISPR-Cas9の臨床応用', createdAt: { toDate: () => new Date('2025-08-10') }, image: '画像(6).jpg', ref_title: 'CRISPR-Cas9 in the clinic. The Lancet.', ref_link: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)32753-2/fulltext' },
+                 { id: 'article-mental', category: 'メンタルヘルス', title: '医師の燃え尽き症候群：予防と対策', createdAt: { toDate: () => new Date('2025-08-02') }, image: '画像(7).jpg', ref_title: 'Physician Burnout: A Public Health Crisis. Mayo Clinic.', ref_link: 'https://www.mayoclinicproceedings.org/article/S0025-6196(19)30831-9/fulltext' },
+                 { id: 'article-regenerative', category: '再生医療', title: 'iPS細胞を用いた心筋再生治療の最前線', createdAt: { toDate: () => new Date('2025-07-28') }, image: '画像(8).jpg', ref_title: 'Heart regeneration with iPSCs. Cell Stem Cell.', ref_link: 'https://www.cell.com/cell-stem-cell/fulltext/S1934-5909(20)30283-X' },
+                 { id: 'article-management', category: '病院経営', title: 'クリニック経営におけるDX推進のポイント', createdAt: { toDate: () => new Date('2025-07-21') }, image: '画像(9).jpg', ref_title: 'Digital Transformation in Healthcare. HBR.', ref_link: 'https://hbr.org/2018/11/digital-transformation-isnt-about-technology' },
+                 { id: 'article-vaccine', category: '予防医学', title: 'mRNAワクチンの開発と今後の展望', createdAt: { toDate: () => new Date('2025-07-15') }, image: '画像(10).jpg', ref_title: 'mRNA vaccines — a new era. Nature Reviews.', ref_link: 'https://www.nature.com/articles/nrd.2017.243' },
+                 { id: 'article-nutrition', category: '栄養学', title: '腸内フローラと疾患：最新の研究動向', createdAt: { toDate: () => new Date('2025-07-08') }, image: '画像(11).jpg', ref_title: 'The role of the gut microbiome. Gut.', ref_link: 'https://gut.bmj.com/content/67/9/1716' },
+                 { id: 'article-sleep', category: '睡眠医学', title: '睡眠不足が免疫系に与える影響', createdAt: { toDate: () => new Date('2025-07-01') }, image: '画像(3).jpg', ref_title: 'Sleep and immune function. Pflugers Archiv.', ref_link: 'https://link.springer.com/article/10.1007/s00424-011-1044-0' },
+                 { id: 'article-asset', category: '資産形成', title: '医師のための資産形成：iDeCoとNISA活用法', createdAt: { toDate: () => new Date('2025-06-24') }, image: '画像(4).jpg', ref_title: 'Physician Wealth Management. White Coat Investor.', ref_link: 'https://www.whitecoatinvestor.com/' },
+                 { id: 'article-robotics', category: '手術支援ロボット', title: '最新の手術支援ロボットと低侵襲手術の進化', createdAt: { toDate: () => new Date('2025-06-17') }, image: '画像(5).jpg', ref_title: 'Robotic Surgery. Annual Review of Biomedical Engineering.', ref_link: 'https://www.annualreviews.org/doi/abs/10.1146/annurev-bioeng-071811-150055' },
+                 { id: 'article-maas', category: '医療MaaS', title: '医療MaaSが変える地域医療と訪問診療の未来', createdAt: { toDate: () => new Date('2025-06-10') }, image: '画像(6).jpg', ref_title: 'Mobility as a Service in Healthcare. Deloitte Insights.', ref_link: 'https://www2.deloitte.com/us/en/insights/focus/future-of-mobility/mobility-as-a-service-in-healthcare.html' },
+                 { id: 'article-workstyle', category: '働き方改革', title: '医師の働き方改革：タスクシフトとチーム医療', createdAt: { toDate: () => new Date('2025-06-03') }, image: '画像(7).jpg', ref_title: 'Task shifting and delegation for physicians. The BMJ.', ref_link: 'https://www.bmj.com/content/368/bmj.m664' },
+                 { id: 'article-aging', category: '老年医学', title: 'フレイル対策と健康寿命延伸に向けたアプローチ', createdAt: { toDate: () => new Date('2025-05-27') }, image: '画像(8).jpg', ref_title: 'Frailty in older adults. Nature Reviews Disease Primers.', ref_link: 'https://www.nature.com/articles/s41572-019-0131-y' },
+                 { id: 'article-blockchain', category: 'ブロックチェーン', title: '医療情報管理におけるブロックチェーン技術の応用', createdAt: { toDate: () => new Date('2025-05-20') }, image: '画像(9).jpg', ref_title: 'Blockchain Technology in Healthcare. JMIR.', ref_link: 'https://www.jmir.org/2017/4/e122/' },
+                 { id: 'article-d2c', category: 'D2C', title: 'D2C時代の新しいヘルスケアビジネスモデル', createdAt: { toDate: () => new Date('2025-05-13') }, image: '画像(10).jpg', ref_title: 'Direct-to-Consumer Healthcare. HBR.', ref_link: 'https://hbr.org/2019/02/the-direct-to-consumer-health-care-revolution' },
+                 { id: 'article-medical-tourism', category: '医療ツーリズム', title: '日本の医療ツーリズムの現状と国際競争力', createdAt: { toDate: () => new Date('2025-05-06') }, image: '画像(11).jpg', ref_title: 'Medical Tourism from a Global Perspective. International Journal of Environmental Research and Public Health.', ref_link: 'https://www.mdpi.com/1660-4601/16/18/3321' },
+                 { id: 'article-palliative', category: '緩和ケア', title: '緩和ケアの早期導入がもたらすQOLの向上', createdAt: { toDate: () => new Date('2025-04-29') }, image: '画像(3).jpg', ref_title: 'Early Palliative Care for Patients with Metastatic Non–Small-Cell Lung Cancer. NEJM.', ref_link: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1000678' },
+                 { id: 'article-drug-discovery', category: '創薬', title: 'AI創薬が加速する新薬開発のプロセス', createdAt: { toDate: () => new Date('2025-04-22') }, image: '画像(4).jpg', ref_title: 'Artificial intelligence in drug discovery and development. Nature Reviews Drug Discovery.', ref_link: 'https://www.nature.com/articles/d41573-019-00016-2' },
+                 { id: 'article-ethics', category: '医療倫理', title: 'ゲノム編集時代の生命倫理と臨床医の役割', createdAt: { toDate: () => new Date('2025-04-15') }, image: '画像(5).jpg', ref_title: 'Ethical Issues in Genome Editing. Science.', ref_link: 'https://www.science.org/doi/10.1126/science.aad7235' }
             ],
             jobs: [
-                { id: 'job-1', title: '外科医募集（都内総合病院）', image: '画像(12).jpg', description: '最先端の手術設備と充実した研修制度が魅力です。若手からベテランまで幅広く歓迎します。', location: '東京都23区', salary: '年収1,500万円〜' },
-                { id: 'job-2', title: '内科クリニック院長候補', image: '画像(13).jpg', description: '地域医療に貢献。将来的な開業支援制度も整っており、経営ノウハウも学べます。', location: '静岡県静岡市', salary: '年収1,800万円〜' },
-                { id: 'job-3', title: '産業医（大手IT企業専属）', image: '画像(14).jpg', description: 'ワークライフバランスを重視した働き方が可能です。メンタルヘルス領域に強みのある方歓迎。', location: '大阪府大阪市', salary: '年収1,200万円〜' },
-                { id: 'job-4', title: '小児科医募集（横浜市）', image: '画像(12).jpg', description: '駅前のクリニックモール内。週4日勤務も相談可能です。', location: '神奈川県横浜市', salary: '年収1,400万円〜' },
-                { id: 'job-5', title: '研究医（大手製薬会社）', image: '画像(13).jpg', description: 'オンコロジー領域のトランスレーショナルリサーチ担当。', location: '東京都中央区', salary: '年収1,300万円〜' },
-                { id: 'job-6', title: '在宅医（福岡市）', image: '画像(14).jpg', description: '多職種連携を重視した地域密着型の在宅医療クリニックです。', location: '福岡県福岡市', salary: '年収1,600万円〜' },
+                 { id: 'job-1', title: '外科医募集（都内総合病院）', image: '画像(12).jpg', description: '最先端の手術設備と充実した研修制度が魅力です。若手からベテランまで幅広く歓迎します。', location: '東京都23区', salary: '年収1,500万円〜' },
+                 { id: 'job-2', title: '内科クリニック院長候補', image: '画像(13).jpg', description: '地域医療に貢献。将来的な開業支援制度も整っており、経営ノウハウも学べます。', location: '静岡県静岡市', salary: '年収1,800万円〜' },
+                 { id: 'job-3', title: '産業医（大手IT企業専属）', image: '画像(14).jpg', description: 'ワークライフバランスを重視した働き方が可能です。メンタルヘルス領域に強みのある方歓迎。', location: '大阪府大阪市', salary: '年収1,200万円〜' },
+                 { id: 'job-4', title: '小児科医募集（横浜市）', image: '画像(12).jpg', description: '駅前のクリニックモール内。週4日勤務も相談可能です。', location: '神奈川県横浜市', salary: '年収1,400万円〜' },
+                 { id: 'job-5', title: '研究医（大手製薬会社）', image: '画像(13).jpg', description: 'オンコロジー領域のトランスレーショナルリサーチ担当。', location: '東京都中央区', salary: '年収1,300万円〜' },
+                 { id: 'job-6', title: '在宅医（福岡市）', image: '画像(14).jpg', description: '多職種連携を重視した地域密着型の在宅医療クリニックです。', location: '福岡県福岡市', salary: '年収1,600万円〜' },
             ],
             transfers: [
                  { id: 'transfer-1', title: '内科クリニック（東京都世田谷区）', image: '画像(15).jpg', description: '駅徒歩5分の好立地。地域に根ざし、安定した患者数を維持しています。', price: '5,000万円', details: ['院長年収目安: 2,500万円', 'スタッフ: 常勤看護師2名、事務2名', '連携病院: 地域中核病院と密連携'] },
@@ -402,37 +465,39 @@
                      if (!firebaseConfigStr || firebaseConfigStr === '{}' || !JSON.parse(firebaseConfigStr).apiKey) {
                          throw new Error("Firebase config is missing or invalid.");
                      }
-                     const firebaseConfig = JSON.parse(firebaseConfigStr);
+                    const firebaseConfig = JSON.parse(firebaseConfigStr);
 
-                     const app = initializeApp(firebaseConfig);
-                     db = getFirestore(app);
-                     const auth = getAuth(app);
-                     
-                     onAuthStateChanged(auth, user => {
-                         if (user) {
-                             setupRealtimeListeners();
-                         } else {
-                             const token = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
-                             if (token) {
+                    const app = initializeApp(firebaseConfig);
+                    db = getFirestore(app);
+                    const auth = getAuth(app);
+                    
+                    onAuthStateChanged(auth, user => {
+                        if (user) {
+                            setupRealtimeListeners();
+                        } else {
+                            const token = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+                            if (token) {
                                 signInWithCustomToken(auth, token).catch(error => {
                                     console.error("Custom token sign-in failed, trying anonymous.", error);
                                     signInAnonymously(auth).catch(anonError => console.error("Anonymous sign-in also failed:", anonError));
                                 });
-                             } else {
+                            } else {
                                 signInAnonymously(auth).catch(anonError => console.error("Anonymous sign-in failed:", anonError));
-                             }
-                         }
-                     });
-                } catch(e) {
+                            }
+                        }
+                    });
+                 } catch(e) {
                     console.error("Firebase initialization failed:", e);
                     loadFallbackData();
-                }
+                 }
             };
 
             const setupRealtimeListeners = () => {
                 const articlesRef = collection(db, `artifacts/${appId}/public/data/articles`);
                 onSnapshot(articlesRef, (snapshot) => {
-                    articles = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    const fetchedArticles = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    articles = [...fetchedArticles, ...defaultData.articles.filter(da => !fetchedArticles.find(fa => fa.id === da.id))]
+                               .sort((a,b) => (b.createdAt?.seconds || b.createdAt.toDate().getTime()/1000) - (a.createdAt?.seconds || a.createdAt.toDate().getTime()/1000));
                     renderArticles();
                 }, error => {
                     console.error("Error fetching articles:", error);
@@ -442,7 +507,9 @@
 
                 const jobsRef = collection(db, `artifacts/${appId}/public/data/jobs`);
                 onSnapshot(jobsRef, (snapshot) => {
-                    jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    const fetchedJobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    jobs = [...fetchedJobs, ...defaultData.jobs.filter(dj => !fetchedJobs.find(fj => fj.id === dj.id))]
+                             .sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
                     renderJobs();
                 }, error => {
                     console.error("Error fetching jobs:", error);
@@ -452,7 +519,9 @@
 
                 const transfersRef = collection(db, `artifacts/${appId}/public/data/transfers`);
                 onSnapshot(transfersRef, (snapshot) => {
-                    transfers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    const fetchedTransfers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    transfers = [...fetchedTransfers, ...defaultData.transfers.filter(dt => !fetchedTransfers.find(ft => ft.id === dt.id))]
+                                  .sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
                     renderTransfers();
                 }, error => {
                     console.error("Error fetching transfers:", error);
@@ -469,9 +538,9 @@
             };
 
             // --- Rendering Functions ---
-            const INITIAL_ARTICLES_SHOWN = 3;
-            const INITIAL_JOBS_SHOWN = 3;
-            const INITIAL_TRANSFERS_SHOWN = 3;
+            const INITIAL_ARTICLES_SHOWN = 9;
+            const INITIAL_JOBS_SHOWN = 6;
+            const INITIAL_TRANSFERS_SHOWN = 6;
 
             const renderArticles = () => {
                 const container = document.getElementById('articles-grid');
@@ -490,7 +559,7 @@
                                 </div>
                                 <div class="mt-auto pt-2 space-y-3">
                                     <a href="#${article.id}" class="font-bold text-accent hover:underline self-start article-link">続きを読む &rarr;</a>
-                                    <a href="contact.html" class="contact-link block w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center text-sm" data-inquiry-type="その他" data-inquiry-subject="${article.title}">この記事について問い合わせる</a>
+                                    <a href="#contact" class="page-link block w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center text-sm" data-section="contact" data-inquiry-type="メディカルコラム" data-inquiry-subject="${article.title}">この記事について問い合わせる</a>
                                 </div>
                             </div>
                         </div>`;
@@ -504,9 +573,9 @@
                  container.innerHTML = articles.map(article => {
                     const articleDate = article.createdAt?.toDate ? article.createdAt.toDate().toLocaleDateString('ja-JP') : new Date().toLocaleDateString('ja-JP');
                     return `
-                    <section id="${article.id}" class="article-content py-24 bg-white">
+                    <section id="${article.id}" class="article-content hidden py-24 bg-white">
                         <div class="container mx-auto px-6 max-w-4xl prose">
-                            <button class="back-to-main mb-8 font-bold text-accent hover:underline">&larr; コラム一覧へ戻る</button>
+                            <button class="page-link mb-8 font-bold text-accent hover:underline" data-section="main-content-wrapper">&larr; コラム一覧へ戻る</button>
                             <span class="text-sm font-bold uppercase text-accent">${article.category}</span>
                             <h1 class="text-4xl font-bold text-primary mt-2 mb-4">${article.title}</h1>
                             <p class="text-base text-secondary">公開日: ${articleDate}</p>
@@ -514,7 +583,7 @@
                             <h3>概要</h3><p>本稿では、「${article.title}」をテーマに、最新の研究成果や臨床応用における現状を深掘りします。詳細については、以下の参考文献をご参照ください。</p>
                             <h3>参考文献</h3><ul><li><a href="${article.ref_link}" target="_blank" rel="noopener noreferrer" class="font-bold break-words">${article.ref_title}</a></li></ul>
                             <div class="mt-12 text-center">
-                                <a href="contact.html" class="contact-link inline-block bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 no-underline" data-inquiry-type="その他" data-inquiry-subject="${article.title}">
+                                <a href="#contact" class="page-link inline-block bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 no-underline" data-section="contact" data-inquiry-type="メディカルコラム" data-inquiry-subject="${article.title}">
                                     この記事について問い合わせる
                                 </a>
                             </div>
@@ -527,8 +596,8 @@
                 const container = document.getElementById('jobs-grid');
                 if (!container) return;
                 container.innerHTML = jobs.map((job, index) => {
-                     const isHidden = index >= INITIAL_JOBS_SHOWN ? 'hidden extra-job-item' : '';
-                     return `
+                      const isHidden = index >= INITIAL_JOBS_SHOWN ? 'hidden extra-job-item' : '';
+                      return `
                         <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal flex flex-col ${isHidden}">
                             <div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="${job.image}" alt="${job.title}" class="w-full h-full object-cover"/></div>
                             <h3 class="text-xl font-bold text-primary mb-2">${job.title}</h3>
@@ -537,7 +606,7 @@
                                 <span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">${job.location}</span>
                                 <span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">${job.salary}</span>
                             </div>
-                            <a href="contact.html" class="contact-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-inquiry-type="求人" data-inquiry-subject="${job.title}">この求人に問い合わせる</a>
+                            <a href="#contact" class="page-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-section="contact" data-inquiry-type="求人" data-inquiry-subject="${job.title}">この求人に問い合わせる</a>
                         </div>`;
                 }).join('');
             };
@@ -546,9 +615,9 @@
                 const container = document.getElementById('transfers-grid');
                 if (!container) return;
                 container.innerHTML = transfers.map((item, index) => {
-                     const isHidden = index >= INITIAL_TRANSFERS_SHOWN ? 'hidden extra-transfer-item' : '';
-                     const detailsHtml = (item.details || []).map(detail => `<li><strong>${detail.split(':')[0]}:</strong> ${detail.split(':')[1] || ''}</li>`).join('');
-                     return `
+                      const isHidden = index >= INITIAL_TRANSFERS_SHOWN ? 'hidden extra-transfer-item' : '';
+                      const detailsHtml = (item.details || []).map(detail => `<li><strong>${detail.split(':')[0]}:</strong> ${detail.split(':')[1] || ''}</li>`).join('');
+                      return `
                         <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card ${isHidden}">
                             <div class="relative h-48 w-full"><img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover"/></div>
                             <div class="p-6 border-t-4 border-accent">
@@ -558,19 +627,11 @@
                                 <button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button>
                                 <div class="transfer-details">
                                     <ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4">${detailsHtml}</ul>
-                                    <a href="contact.html" class="contact-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-inquiry-type="事業承継" data-inquiry-subject="${item.title}">この案件に問い合わせる</a>
+                                    <a href="#contact" class="page-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-section="contact" data-inquiry-type="事業承継" data-inquiry-subject="${item.title}">この案件に問い合わせる</a>
                                 </div>
                             </div>
                         </div>`;
                 }).join('');
-            };
-            
-            const setupContactLinks = () => {
-                document.querySelectorAll('.contact-link').forEach(link => {
-                    const type = link.dataset.inquiryType;
-                    const subject = link.dataset.inquirySubject || '';
-                    link.href = `contact.html?type=${encodeURIComponent(type)}&subject=${encodeURIComponent(subject)}`;
-                });
             };
             
             const setupStaticUIAndHandlers = () => {
@@ -662,43 +723,67 @@
                 });
 
                 // Load More Buttons
-                const setupLoadMore = (buttonId, itemClass) => {
+                const setupLoadMore = (buttonId, itemClass, initialCount) => {
                     const button = document.getElementById(buttonId);
+                    const items = document.querySelectorAll(`.${itemClass}`);
                     if (button) {
+                        if (items.length <= initialCount) {
+                             button.style.display = 'none';
+                        }
                         button.addEventListener('click', () => {
-                            document.querySelectorAll(`.${itemClass}.hidden`).forEach(item => item.classList.remove('hidden'));
+                            items.forEach(item => item.classList.remove('hidden'));
                             button.style.display = 'none';
                         });
                     }
                 };
-                setupLoadMore('load-more-articles', 'article-item');
-                setupLoadMore('load-more-jobs', 'extra-job-item');
-                setupLoadMore('load-more-transfers', 'extra-transfer-item');
+                setupLoadMore('load-more-articles', 'article-item', INITIAL_ARTICLES_SHOWN);
+                setupLoadMore('load-more-jobs', 'extra-job-item', INITIAL_JOBS_SHOWN);
+                setupLoadMore('load-more-transfers', 'extra-transfer-item', INITIAL_TRANSFERS_SHOWN);
 
-                // Event Delegation for dynamic content
-                const mainContent = document.getElementById('main-content-wrapper');
-                const articleWrapper = document.getElementById('article-section-wrapper');
-                
+                // --- Page and Content Navigation ---
+                const mainContentWrapper = document.getElementById('main-content-wrapper');
+                const articleSectionWrapper = document.getElementById('article-section-wrapper');
+                const pageSections = document.querySelectorAll('.page-section');
+                const allWrappers = [mainContentWrapper, articleSectionWrapper, ...pageSections];
+
+                const showSection = (targetId) => {
+                    allWrappers.forEach(wrapper => wrapper.classList.add('hidden'));
+                    const target = document.getElementById(targetId);
+                    if (target) {
+                        target.classList.remove('hidden');
+                    } else {
+                        mainContentWrapper.classList.remove('hidden'); // Default fallback
+                    }
+                    window.scrollTo(0, 0);
+                };
+
                 document.body.addEventListener('click', e => {
+                    const pageLink = e.target.closest('.page-link');
+                    if(pageLink) {
+                        e.preventDefault();
+                        const sectionId = pageLink.dataset.section;
+                        showSection(sectionId);
+
+                        if (sectionId === 'contact') {
+                            const type = pageLink.dataset.inquiryType || '';
+                            const subject = pageLink.dataset.inquirySubject || '';
+                            document.getElementById('contact-type').value = type || '選択してください';
+                            document.getElementById('contact-subject').value = subject;
+                        }
+                        return; // Stop further processing
+                    }
+
                     const articleLink = e.target.closest('.article-link');
                     if(articleLink) {
                         e.preventDefault();
                         const articleId = articleLink.getAttribute('href').substring(1);
-                        mainContent.classList.add('hidden');
-                        articleWrapper.classList.remove('hidden');
-                        articleWrapper.querySelectorAll('.article-content').forEach(content => {
+                        showSection('article-section-wrapper');
+                        articleSectionWrapper.querySelectorAll('.article-content').forEach(content => {
                             content.classList.toggle('hidden', content.id !== articleId);
                         });
-                        window.scrollTo(0, 0);
+                        return; // Stop further processing
                     }
 
-                    const backButton = e.target.closest('.back-to-main');
-                     if(backButton) {
-                        e.preventDefault();
-                        articleWrapper.classList.add('hidden');
-                        mainContent.classList.remove('hidden');
-                     }
-                    
                     const toggleButton = e.target.closest('.transfer-toggle');
                     if(toggleButton) {
                         const card = toggleButton.closest('.transfer-card');
@@ -711,13 +796,9 @@
                 });
             };
 
-
             // --- Initial Execution ---
-            // 1. Render fallback content immediately to prevent blank page
             loadFallbackData();
-            // 2. Setup all UI handlers that don't depend on data
             setupStaticUIAndHandlers();
-            // 3. Attempt to connect to Firebase to load live data
             initializeFirebase();
         });
     </script>
