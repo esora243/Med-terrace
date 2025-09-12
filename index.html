@@ -68,11 +68,11 @@
         }
         .transfer-details.is-open { max-height: 500px; padding-top: 1rem; padding-bottom: 1rem; }
 
-        .company-tab {
+        .company-tab, .admin-tab {
             padding: 0.75rem 1.5rem; font-weight: 600; cursor: pointer;
             border-bottom: 3px solid transparent; transition: all 0.3s ease; color: var(--color-secondary);
         }
-        .company-tab.active-tab { color: var(--color-primary); border-bottom-color: var(--color-accent); }
+        .company-tab.active-tab, .admin-tab.active-tab { color: var(--color-primary); border-bottom-color: var(--color-accent); }
     </style>
 </head>
 <body class="antialiased">
@@ -116,7 +116,7 @@
                         <h2 class="text-4xl font-bold text-primary scroll-reveal">Medical Column</h2>
                         <p class="text-lg text-secondary mt-2 scroll-reveal" style="transition-delay: 100ms;">臨床と研究の最前線から、価値ある知見をお届けします</p>
                     </div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                    <div id="articles-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
                         <!-- Articles will be injected here by JS -->
                     </div>
                     <div class="text-center mt-16 scroll-reveal">
@@ -128,18 +128,10 @@
             <section id="jobs" class="py-24 bg-background">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16"><h2 class="text-4xl font-bold text-primary scroll-reveal">求人情報</h2><p class="text-lg text-secondary mt-2 scroll-reveal" style="transition-delay: 100ms;">先生の専門性を最大限に活かす、次なるステージをご提案します</p></div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        <!-- Initial 3 Job Postings -->
-                        <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal flex flex-col"><div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="画像(12).jpg" alt="外科医募集" class="w-full h-full object-cover"/></div><h3 class="text-xl font-bold text-primary mb-2">外科医募集（都内総合病院）</h3><p class="text-secondary mb-4 text-sm flex-grow">最先端の手術設備と充実した研修制度が魅力です。若手からベテランまで幅広く歓迎します。</p><div class="flex justify-center flex-wrap gap-2 text-sm mb-4"><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">東京都23区</span><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">年収1,500万円〜</span></div><a href="contact.html" class="contact-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-inquiry-type="求人" data-inquiry-subject="外科医募集（都内総合病院）">この求人に問い合わせる</a></div>
-                        <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal flex flex-col" style="transition-delay: 150ms;"><div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="画像(13).jpg" alt="内科クリニック院長" class="w-full h-full object-cover"/></div><h3 class="text-xl font-bold text-primary mb-2">内科クリニック院長候補</h3><p class="text-secondary mb-4 text-sm flex-grow">地域医療に貢献。将来的な開業支援制度も整っており、経営ノウハウも学べます。</p><div class="flex justify-center flex-wrap gap-2 text-sm mb-4"><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">静岡県静岡市</span><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">年収1,800万円〜</span></div><a href="contact.html" class="contact-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-inquiry-type="求人" data-inquiry-subject="内科クリニック院長候補">この求人に問い合わせる</a></div>
-                        <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal flex flex-col" style="transition-delay: 300ms;"><div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="画像(14).jpg" alt="産業医" class="w-full h-full object-cover"/></div><h3 class="text-xl font-bold text-primary mb-2">産業医（大手IT企業専属）</h3><p class="text-secondary mb-4 text-sm flex-grow">ワークライフバランスを重視した働き方が可能です。メンタルヘルス領域に強みのある方歓迎。</p><div class="flex justify-center flex-wrap gap-2 text-sm mb-4"><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">大阪府大阪市</span><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">年収1,200万円〜</span></div><a href="contact.html" class="contact-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-inquiry-type="求人" data-inquiry-subject="産業医（大手IT企業専属）">この求人に問い合わせる</a></div>
-
-                        <!-- Extra Job Postings (Initially hidden) -->
-                        <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal hidden extra-job-item flex flex-col"><div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="画像(12).jpg" alt="小児科医募集" class="w-full h-full object-cover"/></div><h3 class="text-xl font-bold text-primary mb-2">小児科医募集（横浜市）</h3><p class="text-secondary mb-4 text-sm flex-grow">駅前のクリニックモール内。週4日勤務も相談可能です。</p><div class="flex justify-center flex-wrap gap-2 text-sm mb-4"><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">神奈川県横浜市</span><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">年収1,400万円〜</span></div><a href="contact.html" class="contact-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-inquiry-type="求人" data-inquiry-subject="小児科医募集（横浜市）">この求人に問い合わせる</a></div>
-                        <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal hidden extra-job-item flex flex-col"><div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="画像(13).jpg" alt="研究医" class="w-full h-full object-cover"/></div><h3 class="text-xl font-bold text-primary mb-2">研究医（大手製薬会社）</h3><p class="text-secondary mb-4 text-sm flex-grow">オンコロジー領域のトランスレーショナルリサーチ担当。</p><div class="flex justify-center flex-wrap gap-2 text-sm mb-4"><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">東京都中央区</span><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">年収1,300万円〜</span></div><a href="contact.html" class="contact-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-inquiry-type="求人" data-inquiry-subject="研究医（大手製薬会社）">この求人に問い合わせる</a></div>
-                        <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal hidden extra-job-item flex flex-col"><div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="画像(14).jpg" alt="在宅医" class="w-full h-full object-cover"/></div><h3 class="text-xl font-bold text-primary mb-2">在宅医（福岡市）</h3><p class="text-secondary mb-4 text-sm flex-grow">多職種連携を重視した地域密着型の在宅医療クリニックです。</p><div class="flex justify-center flex-wrap gap-2 text-sm mb-4"><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">福岡県福岡市</span><span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">年収1,600万円〜</span></div><a href="contact.html" class="contact-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-inquiry-type="求人" data-inquiry-subject="在宅医（福岡市）">この求人に問い合わせる</a></div>
+                    <div id="jobs-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Job postings will be injected here by JS -->
                     </div>
-                    <div class="text-center mt-12 pt-8 border-t border-gray-200 scroll-reveal">
+                     <div class="text-center mt-12 pt-8 border-t border-gray-200 scroll-reveal">
                          <a href="contact.html" class="contact-link bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block" data-inquiry-type="求人" data-inquiry-subject="求人情報全般について">
                             求人情報について全般的に相談する
                         </a>
@@ -153,16 +145,8 @@
             <section id="transfer" class="py-24 bg-white">
                 <div class="container mx-auto px-6">
                     <div class="text-center mb-16"><h2 class="text-4xl font-bold text-primary scroll-reveal">事業承継</h2><p class="text-lg text-secondary mt-2 scroll-reveal" style="transition-delay: 100ms;">理想の医療を叶える、新たな開業の選択肢</p></div>
-                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-                        <!-- Initial 3 Transfer items -->
-                        <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card"><div class="relative h-48 w-full"><img src="画像(15).jpg" alt="内科クリニック" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">内科クリニック（東京都世田谷区）</h3><p class="text-secondary mb-4 text-sm">駅徒歩5分の好立地。地域に根ざし、安定した患者数を維持しています。</p><p class="text-lg font-bold text-primary">譲渡価格: 5,000万円</p><button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button><div class="transfer-details"><ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4"><li><strong>院長年収目安:</strong> 2,500万円</li><li><strong>スタッフ:</strong> 常勤看護師2名、事務2名</li><li><strong>連携病院:</strong> 地域中核病院と密連携</li></ul><a href="contact.html" class="contact-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-inquiry-type="事業承継" data-inquiry-subject="内科クリニック（東京都世田谷区）">この案件に問い合わせる</a></div></div></div>
-                        <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card" style="transition-delay: 150ms;"><div class="relative h-48 w-full"><img src="画像(16).jpg" alt="眼科クリニック" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">眼科クリニック（大阪府吹田市）</h3><p class="text-secondary mb-4 text-sm">最新の白内障手術設備が整備済み。駅直結の医療モール内でアクセス良好。</p><p class="text-lg font-bold text-primary">譲渡価格: 7,500万円</p><button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button><div class="transfer-details"><ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4"><li><strong>手術件数:</strong> 白内障 約40件/月</li><li><strong>設備:</strong> 最新フェムトセカンドレーザー完備</li><li><strong>特徴:</strong> 自由診療（ICL等）の実績多数</li></ul><a href="contact.html" class="contact-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-inquiry-type="事業承継" data-inquiry-subject="眼科クリニック（大阪府吹田市）">この案件に問い合わせる</a></div></div></div>
-                        <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card" style="transition-delay: 300ms;"><div class="relative h-48 w-full"><img src="画像(17).jpg" alt="皮膚科" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">皮膚科・美容皮膚科（名古屋市栄）</h3><p class="text-secondary mb-4 text-sm">美容医療ニーズが高い中心商業地域に位置。自由診療の売上が高く高収益。</p><p class="text-lg font-bold text-primary">譲渡価格: 9,000万円</p><button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button><div class="transfer-details"><ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4"><li><strong>自由診療比率:</strong> 約60%</li><li><strong>設備:</strong> ピコレーザー、HIFU等多数</li><li><strong>顧客層:</strong> 20-40代女性が中心</li></ul><a href="contact.html" class="contact-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-inquiry-type="事業承継" data-inquiry-subject="皮膚科・美容皮膚科（名古屋市栄）">この案件に問い合わせる</a></div></div></div>
-                        
-                        <!-- Extra Transfer items (initially hidden) -->
-                        <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card hidden extra-transfer-item"><div class="relative h-48 w-full"><img src="画像(15).jpg" alt="整形外科" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">整形外科クリニック（神戸市）</h3><p class="text-secondary mb-4 text-sm">リハビリテーション施設が充実。スポーツ整形にも強み。</p><p class="text-lg font-bold text-primary">譲渡価格: 1.2億円</p><button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button><div class="transfer-details"><ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4"><li><strong>一日来院数:</strong> 約150人</li><li><strong>設備:</strong> MRI、骨密度測定装置完備</li><li><strong>特徴:</strong> 運動療法士が多数在籍</li></ul><a href="contact.html" class="contact-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-inquiry-type="事業承継" data-inquiry-subject="整形外科クリニック（神戸市）">この案件に問い合わせる</a></div></div></div>
-                        <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card hidden extra-transfer-item"><div class="relative h-48 w-full"><img src="画像(16).jpg" alt="耳鼻咽喉科" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">耳鼻咽喉科（さいたま市）</h3><p class="text-secondary mb-4 text-sm">住宅街に位置し、小児から高齢者まで幅広い患者層。</p><p class="text-lg font-bold text-primary">譲渡価格: 6,000万円</p><button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button><div class="transfer-details"><ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4"><li><strong>院長年収目安:</strong> 2,800万円</li><li><strong>特徴:</strong> 補聴器外来も実施</li><li><strong>引継期間:</strong> 6ヶ月間の丁寧な引継ぎ可</li></ul><a href="contact.html" class="contact-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-inquiry-type="事業承継" data-inquiry-subject="耳鼻咽喉科（さいたま市）">この案件に問い合わせる</a></div></div></div>
-                        <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card hidden extra-transfer-item"><div class="relative h-48 w-full"><img src="画像(17).jpg" alt="心療内科" class="w-full h-full object-cover"/></div><div class="p-6 border-t-4 border-accent"><h3 class="text-xl font-bold text-primary mb-2">心療内科（京都市）</h3><p class="text-secondary mb-4 text-sm">オフィス街にあり、働く世代のメンタルヘルスをサポート。</p><p class="text-lg font-bold text-primary">譲渡価格: 4,500万円</p><button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button><div class="transfer-details"><ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4"><li><strong>診療形態:</strong> 完全予約制</li><li><strong>特徴:</strong> カウンセリング、復職支援に強み</li><li><strong>引継条件:</strong> 現院長の週1日勤務継続希望</li></ul><a href="contact.html" class="contact-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-inquiry-type="事業承継" data-inquiry-subject="心療内科（京都市）">この案件に問い合わせる</a></div></div></div>
+                    <div id="transfers-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
+                        <!-- Transfer listings will be injected here by JS -->
                     </div>
                     <div class="text-center mt-12 pt-8 border-t border-gray-200 scroll-reveal">
                         <a href="contact.html" class="contact-link bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 inline-block" data-inquiry-type="事業承継" data-inquiry-subject="事業承継全般について">
@@ -275,6 +259,7 @@
                         <li><a href="#company" class="text-gray-300 hover:text-white transition">運営会社について</a></li>
                         <li><a href="#privacy" class="footer-link text-gray-300 hover:text-white transition cursor-pointer">個人情報保護方針</a></li>
                         <li><a href="#terms" class="footer-link text-gray-300 hover:text-white transition cursor-pointer">利用規約</a></li>
+                         <li><a href="#" id="admin-login-link" class="text-gray-500 hover:text-white transition cursor-pointer text-sm">管理者用</a></li>
                     </ul>
                 </div>
             </div>
@@ -308,372 +293,434 @@
             </div>
         </div>
     </div>
-
-
-    <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Article Data ---
-        const articles = [
-            { id: 'article-telemedicine', category: '最新医療技術', title: 'オンライン診療の未来：遠隔医療技術の最新動向', author: '高橋 優 医師', specialty: 'デジタルヘルス専門', date: '2025年9月1日', image: '画像(3).jpg', ref_title: 'The Future of Telehealth: Opportunities and Challenges. NEJM Catalyst.', ref_link: 'https://catalyst.nejm.org/doi/full/10.1056/CAT.20.0125' },
-            { id: 'article-career', category: 'キャリア', title: '医師のキャリアパス：専門医以外の多様な選択肢', author: '鈴木 誠 医師', specialty: '経営コンサルタント', date: '2025年8月25日', image: '画像(4).jpg', ref_title: 'Non-Clinical Careers for Physicians. JAMA.', ref_link: 'https://jamanetwork.com/journals/jama/fullarticle/2768522' },
-            { id: 'article-ai', category: 'AIと医療', title: 'AI診断支援ツールの現状と倫理的課題', author: '伊藤 美咲 医師', specialty: '医療情報学専門', date: '2025年8月18日', image: '画像(5).jpg', ref_title: 'High-performance medicine: the convergence of human and artificial intelligence. Nature Medicine.', ref_link: 'https://www.nature.com/articles/s41591-019-0300-7' },
-            { id: 'article-regenerative', category: '再生医療', title: 'iPS細胞を用いた心筋再生治療の最前線', author: '田中 健太 医師', specialty: '循環器内科', date: '2025年9月5日', image: '画像(3).jpg', ref_title: 'Myocardial regeneration with induced pluripotent stem cells. Nat Cardiovasc Res.', ref_link: 'https://pubmed.ncbi.nlm.nih.gov/33806788/' },
-            { id: 'article-genomics', category: 'ゲノム医療', title: 'がんゲノム医療の普及と今後の展望', author: '渡辺 陽子 医師', specialty: '腫瘍内科', date: '2025年9月4日', image: '画像(4).jpg', ref_title: 'Precision oncology: the rule or the exception? The Lancet Oncology.', ref_link: 'https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(21)00473-1/fulltext' },
-            { id: 'article-blockchain', category: '医療DX', title: '医療データ管理におけるブロックチェーン技術の可能性', author: '佐藤 拓也 氏', specialty: '医療IT専門家', date: '2025年9月3日', image: '画像(5).jpg', ref_title: 'Blockchain Technology in Healthcare: A Systematic Review. Healthcare Informatics Research.', ref_link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6581423/' },
-            { id: 'article-d2p', category: '製薬', title: 'DtoP創薬：デジタル技術が加速する新薬開発', author: '加藤 雄一 医師', specialty: '製薬メディカル', date: '2025年9月2日', image: '画像(3).jpg', ref_title: 'How artificial intelligence is changing drug discovery. Trends in Pharmacological Sciences.', ref_link: 'https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(19)30193-5' },
-            { id: 'article-management', category: '病院経営', title: 'データ駆動型病院経営(DDHM)の実現に向けた課題', author: '山田 浩二 氏', specialty: '経営コンサルタント', date: '2025年8月30日', image: '画像(4).jpg', ref_title: 'Big data analytics for healthcare. BioMed research international.', ref_link: 'https://www.hindawi.com/journals/bmri/2015/362917/' },
-            { id: 'article-worklife', category: '働き方改革', title: '医師の働き方改革とタスクシフティングの現状', author: '中村 あずさ 医師', specialty: '社会医学', date: '2025年8月29日', image: '画像(5).jpg', ref_title: 'Task shifting from doctors to non-doctors for chronic diseases. Cochrane Database of Systematic Reviews.', ref_link: 'https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD004395.pub2/full' },
-            { id: 'article-robotics', category: '外科', title: '手術支援ロボットの進化と適用領域の拡大', author: '木村 剛 医師', specialty: '消化器外科', date: '2025年8月28日', image: '画像(3).jpg', ref_title: 'Robotic surgery: a current perspective. Annals of surgery.', ref_link: 'https://journals.lww.com/annalsofsurgery/fulltext/2009/09000/robotic_surgery__a_current_perspective.15.aspx' },
-            { id: 'article-nutrition', category: '予防医療', title: '個別化栄養指導と腸内フローラの関係性', author: '高田 真理 医師', specialty: '内分泌内科', date: '2025年8月27日', image: '画像(4).jpg', ref_title: 'The role of the gut microbiota in nutrition and health. Nature Reviews Gastroenterology & Hepatology.', ref_link: 'https://www.nature.com/articles/nrgastro.2016.142' },
-            { id: 'article-mental', category: '精神科', title: 'デジタルフェノタイピングによる精神疾患の早期発見', author: '小林 健 医師', specialty: '精神科', date: '2025年8月26日', image: '画像(5).jpg', ref_title: 'Digital phenotyping for mental health: a systematic review of the literature. Npj Digital Medicine.', ref_link: 'https://www.nature.com/articles/s41746-019-0122-0' },
-            { id: 'article-burnout', category: 'ウェルビーイング', title: '医師のバーンアウト：現状と組織的対策', author: '西田 淳 医師', specialty: '産業医', date: '2025年8月23日', image: '画像(3).jpg', ref_title: 'Physician Burnout: A Global Crisis. The Lancet.', ref_link: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)01004-9/fulltext' },
-            { id: 'article-immunology', category: '免疫学', title: '免疫チェックポイント阻害薬の次なる展開', author: '吉田 拓海 医師', specialty: '臨床免疫学', date: '2025年8月22日', image: '画像(4).jpg', ref_title: 'Next-generation cancer immunotherapy: the promise of personalized combination strategies. The Lancet.', ref_link: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)30186-8/fulltext' },
-            { id: 'article-law', category: '医療法務', title: 'オンライン診療における医師の法的責任と留意点', author: '橋本 徹 氏', specialty: '弁護士（医療法務専門）', date: '2025年8月21日', image: '画像(5).jpg', ref_title: 'Legal and regulatory issues in telehealth. AMA Journal of Ethics.', ref_link: 'https://journalofethics.ama-assn.org/article/legal-and-regulatory-issues-telehealth/2016-01' },
-            { id: 'article-vr', category: '医療教育', title: 'VRシミュレータを用いた外科手技トレーニングの効果', author: '斉藤 達也 医師', specialty: '医療教育学', date: '2025年8月20日', image: '画像(3).jpg', ref_title: 'Virtual reality in surgical training and education. Journal of Surgical Education.', ref_link: 'https://www.journalofsurgicaleducation.org/article/S1931-7204(16)30139-8/fulltext' },
-            { id: 'article-phr', category: 'PHR', title: 'PHRの普及に向けたデータ標準化とセキュリティ', author: '藤田 誠 氏', specialty: '医療情報技師', date: '2025年8月19日', image: '画像(4).jpg', ref_title: 'Personal health records: definitions, benefits, and strategies for overcoming barriers to adoption. J Am Med Inform Assoc.', ref_link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2244904/' },
-            { id: 'article-sleeptech', category: 'スリープテック', title: '睡眠障害に対するデジタル療法の応用', author: '村上 直樹 医師', specialty: '睡眠医療専門医', date: '2025年8月16日', image: '画像(5).jpg', ref_title: 'Digital therapeutics for insomnia. Current Sleep Medicine Reports.', ref_link: 'https://link.springer.com/article/10.1007/s40675-020-00171-8' },
-            { id: 'article-liquidbiopsy', category: '診断技術', title: 'リキッドバイオプシーが拓くがん診断の未来', author: '井上 恵子 医師', specialty: '臨床検査医学', date: '2025年8月15日', image: '画像(3).jpg', ref_title: 'Liquid biopsy: a step forward in the management of cancer. Molecular Cancer.', ref_link: 'https://molecular-cancer.biomedcentral.com/articles/10.1186/s12943-021-01309-8' },
-            { id: 'article-homecare', category: '在宅医療', title: 'ICTを活用した次世代の在宅医療連携モデル', author: '岡田 宗介 医師', specialty: '在宅医療専門医', date: '2025年8月14日', image: '画像(4).jpg', ref_title: 'The use of information and communication technology in home care. Gerontology.', ref_link: 'https://www.karger.com/Article/FullText/430263' },
-            { id: 'article-clinicaltrial', category: '臨床試験', title: 'バーチャル臨床試験（DCT）のメリットと課題', author: '松本 健吾 医師', specialty: '臨床薬理学', date: '2025年8月13日', image: '画像(5).jpg', ref_title: 'Decentralized Clinical Trials: The Future of Medical Product Development? Clinical Therapeutics.', ref_link: 'https://www.clinicaltherapeutics.com/article/S0149-2918(21)00388-7/fulltext' },
-            { id: 'article-pro', category: '患者報告アウトカム', title: 'PRO(Patient-Reported Outcome)の臨床応用', author: '宮崎 里奈 医師', specialty: 'リハビリテーション科', date: '2025年8月12日', image: '画像(3).jpg', ref_title: 'Patient-reported outcomes in clinical practice. The British Journal of General Practice.', ref_link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4073733/' },
-            { id: 'article-aging', category: '老年医学', title: '健康寿命延伸に向けたフレイル対策の最新知見', author: '大西 賢治 医師', specialty: '老年内科', date: '2025年8月11日', image: '画像(4).jpg', ref_title: 'Frailty in older adults: evidence for a phenotype. The Journals of Gerontology.', ref_link: 'https://academic.oup.com/biomedgerontology/article/56/3/M146/552309' },
-            { id: 'article-medicaldevice', category: '医療機器', title: '治療用アプリ(DTx)の保険収載と今後の市場', author: '小野寺 翔 氏', specialty: '医療機器コンサルタント', date: '2025年8月9日', image: '画像(5).jpg', ref_title: 'Digital therapeutics: emerging new therapy for neuropsychiatric disorders. Psychological Medicine.', ref_link: 'https://www.cambridge.org/core/journals/psychological-medicine/article/digital-therapeutics-emerging-new-therapy-for-neuropsychiatric-disorders/859A3C2E1F4B431C8240A264353E32C4' },
-            { id: 'article-crispr', category: '遺伝子治療', title: 'CRISPR-Cas9による遺伝子治療の臨床応用と倫理', author: '森 裕子 医師', specialty: '遺伝カウンセリング', date: '2025年8月8日', image: '画像(3).jpg', ref_title: 'CRISPR-Cas9 gene therapy for inherited diseases. Nature Reviews Drug Discovery.', ref_link: 'https://www.nature.com/articles/nrd.2018.176' },
-            { id: 'article-radiomics', category: '放射線科', title: 'ラジオミクスは画像診断をどう変えるか', author: '千葉 亮 医師', specialty: '放射線診断専門医', date: '2025年8月7日', image: '画像(4).jpg', ref_title: 'Radiomics: the process and the challenges. Magnetic Resonance Imaging.', ref_link: 'https://www.sciencedirect.com/science/article/pii/S0730725X1500164X' },
-            { id: 'article-globalhealth', category: '国際保健', title: '医師が国際保健分野で貢献する多様なキャリア', author: '関根 絵美 医師', specialty: '公衆衛生専門医', date: '2025年8月6日', image: '画像(5).jpg', ref_title: 'Global health careers: a guide for aspiring professionals. The Lancet Global Health.', ref_link: 'https://www.thelancet.com/journals/langlo/article/PIIS2214-109X(18)30252-8/fulltext' },
-            { id: 'article-ebm', category: 'EBM', title: 'リアルワールドデータ(RWD)を活用した新たなEBMの形', author: '坂本 雄大 医師', specialty: '臨床疫学', date: '2025年8月5日', image: '画像(3).jpg', ref_title: 'Real-world data: a brief review of the terminology, applications, and challenges. BMC Medical Research Methodology.', ref_link: 'https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-021-01436-5' },
-            { id: 'article-communication', category: '医療コミュニケーション', title: 'Shared Decision Making(SDM)の実践と課題', author: '福田 恵 医師', specialty: '総合診療科', date: '2025年8月4日', image: '画像(4).jpg', ref_title: 'Shared decision making: the pinnacle of patient-centered care. BMJ.', ref_link: 'https://www.bmj.com/content/329/7456/26' },
-            { id: 'article-nanomedicine', category: 'ナノ医療', title: 'ドラッグデリバリーシステム(DDS)のナノテク革命', author: '今井 聡 博士', specialty: '薬学研究者', date: '2025年8月2日', image: '画像(5).jpg', ref_title: 'Nanoparticle-based drug delivery systems. Advanced Drug Delivery Reviews.', ref_link: 'https://www.sciencedirect.com/science/article/pii/S0169409X1200251X' }
-        ];
-
-        const INITIAL_ARTICLES_SHOWN = 3;
-
-        // --- Render Articles ---
-        const renderArticles = () => {
-            const blogGrid = document.querySelector('#blog .grid');
-            const articleWrapper = document.getElementById('article-section-wrapper');
-            let articleCardsHTML = '';
-            let articleDetailsHTML = '';
-            
-            articles.forEach((article, index) => {
-                const delay = (index % 3) * 150;
-                const isHidden = index >= INITIAL_ARTICLES_SHOWN ? 'hidden' : '';
-                // Article Card
-                articleCardsHTML += `
-                    <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group scroll-reveal article-item ${isHidden}" style="transition-delay: ${delay}ms;">
-                        <div class="relative h-56 w-full">
-                            <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
-                        </div>
-                        <div class="p-6 flex flex-col flex-grow">
-                            <div class="flex-grow">
-                                <span class="text-xs font-bold uppercase text-accent">${article.category}</span>
-                                <h3 class="text-xl font-bold text-primary my-2 leading-snug">${article.title}</h3>
-                                <p class="text-sm text-secondary mb-4">
-                                    <span class="font-bold">公開日:</span> ${article.date}
-                                </p>
-                            </div>
-                            <a href="#${article.id}" class="font-bold text-accent hover:underline self-start article-link mt-auto pt-2">続きを読む &rarr;</a>
-                        </div>
+    
+    <!-- Admin Panel Modal -->
+    <div id="admin-panel-modal" class="hidden fixed inset-0 bg-black bg-opacity-70 z-50 flex items-center justify-center p-4">
+        <div class="bg-white rounded-lg shadow-2xl w-full max-w-4xl h-full max-h-[90vh] flex flex-col">
+            <div class="flex justify-between items-center p-4 border-b">
+                <h2 class="text-2xl font-bold text-primary font-serif">管理者パネル</h2>
+                <button id="close-admin-panel" class="text-gray-500 hover:text-gray-800 text-3xl leading-none">&times;</button>
+            </div>
+            <div class="flex-grow flex flex-col md:flex-row overflow-hidden">
+                <div class="w-full md:w-1/4 border-b md:border-b-0 md:border-r bg-light-gray p-4">
+                    <nav class="flex md:flex-col space-x-2 md:space-x-0 md:space-y-2">
+                         <button class="admin-tab active-tab text-left" data-content="admin-add-article">コラム追加</button>
+                         <button class="admin-tab text-left" data-content="admin-add-job">求人追加</button>
+                         <button class="admin-tab text-left" data-content="admin-add-transfer">事業承継追加</button>
+                    </nav>
+                </div>
+                <div class="w-full md:w-3/4 p-6 overflow-y-auto">
+                    <!-- Add Article Form -->
+                    <div id="admin-add-article" class="admin-tab-content space-y-4">
+                        <h3 class="text-xl font-bold text-primary">新しいコラムを追加</h3>
+                        <form id="add-article-form" class="space-y-4">
+                            <div><label class="block text-sm font-medium">カテゴリ</label><input type="text" name="category" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <div><label class="block text-sm font-medium">タイトル</label><input type="text" name="title" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <div><label class="block text-sm font-medium">画像パス</label><input type="text" name="image" value="画像(3).jpg" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <div><label class="block text-sm font-medium">参考文献タイトル</label><input type="text" name="ref_title" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <div><label class="block text-sm font-medium">参考文献URL</label><input type="url" name="ref_link" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <button type="submit" class="bg-accent text-white font-bold py-2 px-4 rounded-lg">コラムを追加</button>
+                        </form>
                     </div>
-                `;
-                
-                // Article Detail Page
-                articleDetailsHTML += `
+                    <!-- Add Job Form -->
+                    <div id="admin-add-job" class="admin-tab-content hidden space-y-4">
+                        <h3 class="text-xl font-bold text-primary">新しい求人を追加</h3>
+                        <form id="add-job-form" class="space-y-4">
+                            <div><label class="block text-sm font-medium">役職</label><input type="text" name="title" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                             <div><label class="block text-sm font-medium">画像パス</label><input type="text" name="image" value="画像(12).jpg" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <div><label class="block text-sm font-medium">説明</label><textarea name="description" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></textarea></div>
+                            <div><label class="block text-sm font-medium">勤務地</label><input type="text" name="location" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <div><label class="block text-sm font-medium">給与</label><input type="text" name="salary" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <button type="submit" class="bg-accent text-white font-bold py-2 px-4 rounded-lg">求人を追加</button>
+                        </form>
+                    </div>
+                    <!-- Add Transfer Form -->
+                    <div id="admin-add-transfer" class="admin-tab-content hidden space-y-4">
+                         <h3 class="text-xl font-bold text-primary">新しい事業承継案件を追加</h3>
+                        <form id="add-transfer-form" class="space-y-4">
+                            <div><label class="block text-sm font-medium">案件名</label><input type="text" name="title" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                             <div><label class="block text-sm font-medium">画像パス</label><input type="text" name="image" value="画像(15).jpg" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <div><label class="block text-sm font-medium">説明</label><textarea name="description" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></textarea></div>
+                            <div><label class="block text-sm font-medium">譲渡価格</label><input type="text" name="price" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm"></div>
+                            <div><label class="block text-sm font-medium">詳細 (1行ごとに項目を作成)</label><textarea name="details" placeholder="例:&#10;院長年収目安: 2,500万円&#10;スタッフ: 常勤看護師2名、事務2名" required class="mt-1 w-full border-gray-300 rounded-md shadow-sm h-24"></textarea></div>
+                            <button type="submit" class="bg-accent text-white font-bold py-2 px-4 rounded-lg">案件を追加</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module">
+        // Firebase SDKのインポート
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, onSnapshot, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // --- Fallback Data ---
+        const defaultData = {
+            articles: [
+                 { id: 'article-telemedicine', category: '最新医療技術', title: 'オンライン診療の未来：遠隔医療技術の最新動向', createdAt: { toDate: () => new Date('2025-09-01') }, image: '画像(3).jpg', ref_title: 'The Future of Telehealth: Opportunities and Challenges. NEJM Catalyst.', ref_link: 'https://catalyst.nejm.org/doi/full/10.1056/CAT.20.0125' },
+                 { id: 'article-career', category: 'キャリア', title: '医師のキャリアパス：専門医以外の多様な選択肢', createdAt: { toDate: () => new Date('2025-08-25') }, image: '画像(4).jpg', ref_title: 'Non-Clinical Careers for Physicians. JAMA.', ref_link: 'https://jamanetwork.com/journals/jama/fullarticle/2768522' },
+                 { id: 'article-ai', category: 'AIと医療', title: 'AI診断支援ツールの現状と倫理的課題', createdAt: { toDate: () => new Date('2025-08-18') }, image: '画像(5).jpg', ref_title: 'High-performance medicine: the convergence of human and artificial intelligence. Nature Medicine.', ref_link: 'https://www.nature.com/articles/s41591-019-0300-7' },
+            ],
+            jobs: [
+                { id: 'job-1', title: '外科医募集（都内総合病院）', image: '画像(12).jpg', description: '最先端の手術設備と充実した研修制度が魅力です。若手からベテランまで幅広く歓迎します。', location: '東京都23区', salary: '年収1,500万円〜' },
+                { id: 'job-2', title: '内科クリニック院長候補', image: '画像(13).jpg', description: '地域医療に貢献。将来的な開業支援制度も整っており、経営ノウハウも学べます。', location: '静岡県静岡市', salary: '年収1,800万円〜' },
+                { id: 'job-3', title: '産業医（大手IT企業専属）', image: '画像(14).jpg', description: 'ワークライフバランスを重視した働き方が可能です。メンタルヘルス領域に強みのある方歓迎。', location: '大阪府大阪市', salary: '年収1,200万円〜' },
+                { id: 'job-4', title: '小児科医募集（横浜市）', image: '画像(12).jpg', description: '駅前のクリニックモール内。週4日勤務も相談可能です。', location: '神奈川県横浜市', salary: '年収1,400万円〜' },
+                { id: 'job-5', title: '研究医（大手製薬会社）', image: '画像(13).jpg', description: 'オンコロジー領域のトランスレーショナルリサーチ担当。', location: '東京都中央区', salary: '年収1,300万円〜' },
+                { id: 'job-6', title: '在宅医（福岡市）', image: '画像(14).jpg', description: '多職種連携を重視した地域密着型の在宅医療クリニックです。', location: '福岡県福岡市', salary: '年収1,600万円〜' },
+            ],
+            transfers: [
+                 { id: 'transfer-1', title: '内科クリニック（東京都世田谷区）', image: '画像(15).jpg', description: '駅徒歩5分の好立地。地域に根ざし、安定した患者数を維持しています。', price: '5,000万円', details: ['院長年収目安: 2,500万円', 'スタッフ: 常勤看護師2名、事務2名', '連携病院: 地域中核病院と密連携'] },
+                 { id: 'transfer-2', title: '眼科クリニック（大阪府吹田市）', image: '画像(16).jpg', description: '最新の白内障手術設備が整備済み。駅直結の医療モール内でアクセス良好。', price: '7,500万円', details: ['手術件数: 白内障 約40件/月', '設備: 最新フェムトセカンドレーザー完備', '特徴: 自由診療（ICL等）の実績多数'] },
+                 { id: 'transfer-3', title: '皮膚科・美容皮膚科（名古屋市栄）', image: '画像(17).jpg', description: '美容医療ニーズが高い中心商業地域に位置。自由診療の売上が高く高収益。', price: '9,000万円', details: ['自由診療比率: 約60%', '設備: ピコレーザー、HIFU等多数', '顧客層: 20-40代女性が中心'] },
+                 { id: 'transfer-4', title: '整形外科クリニック（神戸市）', image: '画像(15).jpg', description: 'リハビリテーション施設が充実。スポーツ整形にも強み。', price: '1.2億円', details: ['一日来院数: 約150人', '設備: MRI、骨密度測定装置完備', '特徴: 運動療法士が多数在籍'] },
+                 { id: 'transfer-5', title: '耳鼻咽喉科（さいたま市）', image: '画像(16).jpg', description: '住宅街に位置し、小児から高齢者まで幅広い患者層。', price: '6,000万円', details: ['院長年収目安: 2,800万円', '特徴: 補聴器外来も実施', '引継期間: 6ヶ月間の丁寧な引継ぎ可'] },
+                 { id: 'transfer-6', title: '心療内科（京都市）', image: '画像(17).jpg', description: 'オフィス街にあり、働く世代のメンタルヘルスをサポート。', price: '4,500万円', details: ['診療形態: 完全予約制', '特徴: カウンセリング、復職支援に強み', '引継条件: 現院長の週1日勤務継続希望'] },
+            ]
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+
+            let db;
+            let articles = [], jobs = [], transfers = [];
+            const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
+
+            const loadFallbackData = () => {
+                console.warn("Firebase connection failed or not available. Loading local fallback data.");
+                articles = defaultData.articles;
+                jobs = defaultData.jobs;
+                transfers = defaultData.transfers;
+                renderAllContent();
+            };
+
+            const initializeFirebase = async () => {
+                try {
+                     const firebaseConfigStr = typeof __firebase_config !== 'undefined' ? __firebase_config : '{}';
+                     if (!firebaseConfigStr || firebaseConfigStr === '{}' || !JSON.parse(firebaseConfigStr).apiKey) {
+                         throw new Error("Firebase config is missing or invalid.");
+                     }
+                     const firebaseConfig = JSON.parse(firebaseConfigStr);
+
+                     const app = initializeApp(firebaseConfig);
+                     db = getFirestore(app);
+                     const auth = getAuth(app);
+                     
+                     onAuthStateChanged(auth, user => {
+                         if (user) {
+                             setupRealtimeListeners();
+                         } else {
+                             const token = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
+                             if (token) {
+                                signInWithCustomToken(auth, token).catch(error => {
+                                    console.error("Custom token sign-in failed, trying anonymous.", error);
+                                    signInAnonymously(auth).catch(anonError => console.error("Anonymous sign-in also failed:", anonError));
+                                });
+                             } else {
+                                signInAnonymously(auth).catch(anonError => console.error("Anonymous sign-in failed:", anonError));
+                             }
+                         }
+                     });
+                } catch(e) {
+                    console.error("Firebase initialization failed:", e);
+                    loadFallbackData();
+                }
+            };
+
+            const setupRealtimeListeners = () => {
+                const articlesRef = collection(db, `artifacts/${appId}/public/data/articles`);
+                onSnapshot(articlesRef, (snapshot) => {
+                    articles = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    renderArticles();
+                }, error => {
+                    console.error("Error fetching articles:", error);
+                    articles = defaultData.articles;
+                    renderArticles();
+                });
+
+                const jobsRef = collection(db, `artifacts/${appId}/public/data/jobs`);
+                onSnapshot(jobsRef, (snapshot) => {
+                    jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    renderJobs();
+                }, error => {
+                    console.error("Error fetching jobs:", error);
+                    jobs = defaultData.jobs;
+                    renderJobs();
+                });
+
+                const transfersRef = collection(db, `artifacts/${appId}/public/data/transfers`);
+                onSnapshot(transfersRef, (snapshot) => {
+                    transfers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    renderTransfers();
+                }, error => {
+                    console.error("Error fetching transfers:", error);
+                    transfers = defaultData.transfers;
+                    renderTransfers();
+                });
+            };
+
+            const renderAllContent = () => {
+                renderArticles();
+                renderJobs();
+                renderTransfers();
+                window.dispatchEvent(new CustomEvent('contentRendered'));
+            };
+
+            // --- Rendering Functions ---
+            const INITIAL_ARTICLES_SHOWN = 3;
+            const INITIAL_JOBS_SHOWN = 3;
+            const INITIAL_TRANSFERS_SHOWN = 3;
+
+            const renderArticles = () => {
+                const container = document.getElementById('articles-grid');
+                if (!container) return;
+                container.innerHTML = articles.map((article, index) => {
+                    const isHidden = index >= INITIAL_ARTICLES_SHOWN ? 'hidden article-item' : 'article-item';
+                    const articleDate = article.createdAt?.toDate ? article.createdAt.toDate().toLocaleDateString('ja-JP') : new Date().toLocaleDateString('ja-JP');
+                    return `
+                        <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group scroll-reveal flex flex-col ${isHidden}">
+                            <div class="relative h-56 w-full"><img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/></div>
+                            <div class="p-6 flex flex-col flex-grow">
+                                <div class="flex-grow">
+                                    <span class="text-xs font-bold uppercase text-accent">${article.category}</span>
+                                    <h3 class="text-xl font-bold text-primary my-2 leading-snug">${article.title}</h3>
+                                    <p class="text-sm text-secondary mb-4"><span class="font-bold">公開日:</span> ${articleDate}</p>
+                                </div>
+                                <div class="mt-auto pt-2 space-y-3">
+                                    <a href="#${article.id}" class="font-bold text-accent hover:underline self-start article-link">続きを読む &rarr;</a>
+                                    <a href="contact.html" class="contact-link block w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center text-sm" data-inquiry-type="その他" data-inquiry-subject="${article.title}">この記事について問い合わせる</a>
+                                </div>
+                            </div>
+                        </div>`;
+                }).join('');
+                renderArticleDetails();
+            };
+
+            const renderArticleDetails = () => {
+                const container = document.getElementById('article-section-wrapper');
+                if(!container) return;
+                 container.innerHTML = articles.map(article => {
+                    const articleDate = article.createdAt?.toDate ? article.createdAt.toDate().toLocaleDateString('ja-JP') : new Date().toLocaleDateString('ja-JP');
+                    return `
                     <section id="${article.id}" class="article-content py-24 bg-white">
                         <div class="container mx-auto px-6 max-w-4xl prose">
                             <button class="back-to-main mb-8 font-bold text-accent hover:underline">&larr; コラム一覧へ戻る</button>
                             <span class="text-sm font-bold uppercase text-accent">${article.category}</span>
                             <h1 class="text-4xl font-bold text-primary mt-2 mb-4">${article.title}</h1>
-                            <p class="text-base text-secondary">公開日: ${article.date}</p>
+                            <p class="text-base text-secondary">公開日: ${articleDate}</p>
                             <img src="${article.image}" alt="${article.title}" class="w-full rounded-lg shadow-md my-8"/>
-                            
-                            <h3>概要</h3>
-                            <p>本稿では、「${article.title}」をテーマに、最新の研究成果や臨床応用における現状を深掘りします。この分野は、近年の技術革新により目覚ましい進歩を遂げており、今後の医療に大きな変革をもたらす可能性を秘めています。その核心となる技術的背景、臨床現場での具体的な活用事例、そして今後の展望について、多角的な視点から詳述します。</p>
-                            
-                            <h3>主要なポイントと臨床的意義</h3>
-                            <p>${article.category}領域における最近の最も重要な進展は、[具体的な技術や発見]です。これにより、[疾患名など]の診断精度が飛躍的に向上し、治療戦略にも新たな選択肢が生まれました。例えば、[具体的な臨床例]では、従来の方法と比較して[具体的な改善点]が報告されており、患者のQOL向上に大きく貢献しています。しかし、この技術の普及には、[コスト、倫理、法整備など]といった課題も存在し、社会全体での議論が求められます。</p>
-                            
-                            <h3>今後の展望と課題</h3>
-                            <p>将来的には、AIやビッグデータ解析との融合により、さらに個別化された医療（プレシジョン・メディシン）の実現が期待されます。個々の患者の遺伝子情報やライフログデータを基に、最適な治療法を予測・選択する時代が到来するかもしれません。この革新を現実のものとするためには、異分野の研究者やエンジニアとの連携を強化し、質の高い臨床データを集積・解析する基盤を構築することが不可欠です。また、新たな技術から生じる倫理的・法的・社会的な課題（ELSI）に対する継続的な検討も重要となります。</p>
-                            
-                            <h3>参考文献</h3>
-                            <p>本記事の執筆にあたり、以下の学術論文を主要な参考文献としています。</p>
-                            <ul>
-                                <li><a href="${article.ref_link}" target="_blank" rel="noopener noreferrer" class="font-bold break-words">${article.ref_title}</a></li>
-                            </ul>
+                            <h3>概要</h3><p>本稿では、「${article.title}」をテーマに、最新の研究成果や臨床応用における現状を深掘りします。詳細については、以下の参考文献をご参照ください。</p>
+                            <h3>参考文献</h3><ul><li><a href="${article.ref_link}" target="_blank" rel="noopener noreferrer" class="font-bold break-words">${article.ref_title}</a></li></ul>
+                            <div class="mt-12 text-center">
+                                <a href="contact.html" class="contact-link inline-block bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 no-underline" data-inquiry-type="その他" data-inquiry-subject="${article.title}">
+                                    この記事について問い合わせる
+                                </a>
+                            </div>
                         </div>
-                    </section>
-                `;
-            });
+                    </section>`
+                }).join('');
+            };
             
-            blogGrid.innerHTML = articleCardsHTML;
-            articleWrapper.innerHTML = articleDetailsHTML;
-        };
+            const renderJobs = () => {
+                const container = document.getElementById('jobs-grid');
+                if (!container) return;
+                container.innerHTML = jobs.map((job, index) => {
+                     const isHidden = index >= INITIAL_JOBS_SHOWN ? 'hidden extra-job-item' : '';
+                     return `
+                        <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal flex flex-col ${isHidden}">
+                            <div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="${job.image}" alt="${job.title}" class="w-full h-full object-cover"/></div>
+                            <h3 class="text-xl font-bold text-primary mb-2">${job.title}</h3>
+                            <p class="text-secondary mb-4 text-sm flex-grow">${job.description}</p>
+                            <div class="flex justify-center flex-wrap gap-2 text-sm mb-4">
+                                <span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">${job.location}</span>
+                                <span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">${job.salary}</span>
+                            </div>
+                            <a href="contact.html" class="contact-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-inquiry-type="求人" data-inquiry-subject="${job.title}">この求人に問い合わせる</a>
+                        </div>`;
+                }).join('');
+            };
 
-        renderArticles();
-
-        // --- Link Setup for Contact Page ---
-        const setupContactLinks = () => {
-            document.querySelectorAll('.contact-link').forEach(link => {
-                const type = link.dataset.inquiryType;
-                const subject = link.dataset.inquirySubject || ''; // Use empty string if subject is not defined
-                const subjectEncoded = encodeURIComponent(subject);
-                link.href = `contact.html?type=${encodeURIComponent(type)}&subject=${subjectEncoded}`;
-            });
-        };
-        setupContactLinks();
-
-
-        const header = document.getElementById('header');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('#main-content-wrapper > main > section[id]');
-
-        const handleHeaderScroll = () => {
-            header.classList.toggle('header-scrolled', window.scrollY > 50);
-        };
-        window.addEventListener('scroll', handleHeaderScroll);
-        handleHeaderScroll();
-
-        const sectionObserver = new IntersectionObserver((entries) => {
-            let currentActive = '';
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-                    currentActive = entry.target.getAttribute('id');
-                }
-            });
+            const renderTransfers = () => {
+                const container = document.getElementById('transfers-grid');
+                if (!container) return;
+                container.innerHTML = transfers.map((item, index) => {
+                     const isHidden = index >= INITIAL_TRANSFERS_SHOWN ? 'hidden extra-transfer-item' : '';
+                     const detailsHtml = (item.details || []).map(detail => `<li><strong>${detail.split(':')[0]}:</strong> ${detail.split(':')[1] || ''}</li>`).join('');
+                     return `
+                        <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card ${isHidden}">
+                            <div class="relative h-48 w-full"><img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover"/></div>
+                            <div class="p-6 border-t-4 border-accent">
+                                <h3 class="text-xl font-bold text-primary mb-2">${item.title}</h3>
+                                <p class="text-secondary mb-4 text-sm">${item.description}</p>
+                                <p class="text-lg font-bold text-primary">${item.price}</p>
+                                <button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button>
+                                <div class="transfer-details">
+                                    <ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4">${detailsHtml}</ul>
+                                    <a href="contact.html" class="contact-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-inquiry-type="事業承継" data-inquiry-subject="${item.title}">この案件に問い合わせる</a>
+                                </div>
+                            </div>
+                        </div>`;
+                }).join('');
+            };
             
-            navLinks.forEach(link => {
-                const linkHref = link.getAttribute('href').substring(1);
-                link.classList.toggle('active', linkHref === currentActive);
-            });
-        }, { rootMargin: "-20% 0px -50% 0px", threshold: 0.3 });
-        sections.forEach(section => {
-            if (section.id) sectionObserver.observe(section);
-        });
-
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    scrollObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
-
-        const mainContentWrapper = document.getElementById('main-content-wrapper');
-        const articleSectionWrapper = document.getElementById('article-section-wrapper');
-        
-        const showArticle = (articleId) => {
-            mainContentWrapper.classList.add('hidden');
-            document.querySelectorAll('.article-content').forEach(article => {
-                article.classList.toggle('hidden', article.id !== articleId);
-            });
-            articleSectionWrapper.classList.remove('hidden');
-            window.scrollTo(0, 0);
-        };
-
-        const showMainContent = (targetSectionId = null) => {
-            articleSectionWrapper.classList.add('hidden');
-            mainContentWrapper.classList.remove('hidden');
-            document.querySelectorAll('#main-content-wrapper > main > section').forEach(sec => sec.classList.remove('hidden'));
+            const setupContactLinks = () => {
+                document.querySelectorAll('.contact-link').forEach(link => {
+                    const type = link.dataset.inquiryType;
+                    const subject = link.dataset.inquirySubject || '';
+                    link.href = `contact.html?type=${encodeURIComponent(type)}&subject=${encodeURIComponent(subject)}`;
+                });
+            };
             
-            document.getElementById('privacy').classList.add('hidden');
-            document.getElementById('terms').classList.add('hidden');
+            const setupStaticUIAndHandlers = () => {
+                // Header Scroll
+                const header = document.getElementById('header');
+                const handleHeaderScroll = () => header.classList.toggle('header-scrolled', window.scrollY > 50);
+                window.addEventListener('scroll', handleHeaderScroll);
+                handleHeaderScroll();
 
-            if(targetSectionId) {
-                setTimeout(() => {
-                    const targetElement = document.getElementById(targetSectionId);
-                    if (targetElement) {
-                        targetElement.scrollIntoView({ behavior: 'smooth' });
-                    }
-                }, 0);
-            }
-        };
-        
-        const showPolicyPage = (pageId) => {
-             mainContentWrapper.classList.remove('hidden');
-             articleSectionWrapper.classList.add('hidden');
-             document.querySelectorAll('#main-content-wrapper > main > section').forEach(sec => {
-                 sec.classList.toggle('hidden', sec.id !== pageId);
-             });
-             window.scrollTo(0,0);
-        }
+                // Scroll Reveal
+                const scrollObserver = new IntersectionObserver((entries) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            scrollObserver.unobserve(entry.target);
+                        }
+                    });
+                }, { threshold: 0.1 });
+                const observeNewItems = () => document.querySelectorAll('.scroll-reveal:not(.is-visible)').forEach(el => scrollObserver.observe(el));
+                window.addEventListener('contentRendered', observeNewItems);
 
-        document.body.addEventListener('click', (e) => {
-            const articleLink = e.target.closest('.article-link');
-            const backToMainLink = e.target.closest('.back-to-main');
-            const footerLink = e.target.closest('.footer-link');
-            const backToMainFromPolicy = e.target.closest('.back-to-main-from-policy');
+                // Admin Panel
+                const adminLoginLink = document.getElementById('admin-login-link');
+                const adminModal = document.getElementById('admin-panel-modal');
+                const closeAdminPanel = document.getElementById('close-admin-panel');
+                const adminTabs = document.querySelectorAll('.admin-tab');
+                const adminTabContents = document.querySelectorAll('.admin-tab-content');
 
-            if (articleLink) {
-                e.preventDefault();
-                const articleId = articleLink.getAttribute('href').substring(1);
-                showArticle(articleId);
-            } else if (backToMainLink) {
-                e.preventDefault();
-                showMainContent('blog');
-            } else if (footerLink) {
-                 e.preventDefault();
-                 const pageId = footerLink.getAttribute('href').substring(1);
-                 showPolicyPage(pageId);
-            } else if (backToMainFromPolicy) {
-                e.preventDefault();
-                showMainContent();
-            }
-        });
-        
-        document.querySelectorAll('.transfer-card .transfer-toggle').forEach(button => {
-            button.addEventListener('click', (e) => {
-                e.preventDefault();
-                const details = button.nextElementSibling;
-                const isOpen = details.classList.contains('is-open');
+                adminLoginLink.addEventListener('click', e => {
+                    e.preventDefault();
+                    const password = prompt('パスワードを入力してください:');
+                    if (password === 'esora243') { adminModal.classList.remove('hidden'); }
+                    else if (password) { alert('パスワードが違います。'); }
+                });
+                closeAdminPanel.addEventListener('click', () => adminModal.classList.add('hidden'));
+
+                adminTabs.forEach(tab => {
+                    tab.addEventListener('click', () => {
+                        adminTabs.forEach(t => t.classList.remove('active-tab'));
+                        tab.classList.add('active-tab');
+                        const contentId = tab.dataset.content;
+                        adminTabContents.forEach(content => content.classList.toggle('hidden', content.id !== contentId));
+                    });
+                });
                 
-                document.querySelectorAll('.transfer-details.is-open').forEach(openDetail => {
-                    if (openDetail !== details) {
-                        openDetail.classList.remove('is-open');
-                        const otherButton = openDetail.closest('.transfer-card').querySelector('.transfer-toggle');
-                        if(otherButton) otherButton.textContent = '譲渡条件を確認する';
+                // Admin Form Submissions
+                document.getElementById('add-article-form').addEventListener('submit', async e => {
+                    e.preventDefault();
+                    if(!db) { alert("データベースに接続できません。"); return; }
+                    const form = e.target;
+                    try {
+                        await addDoc(collection(db, `artifacts/${appId}/public/data/articles`), {
+                            category: form.category.value, title: form.title.value, image: form.image.value,
+                            ref_title: form.ref_title.value, ref_link: form.ref_link.value, createdAt: serverTimestamp()
+                        });
+                        alert('新しいコラムを追加しました。');
+                        form.reset();
+                        adminModal.classList.add('hidden');
+                    } catch (error) { console.error("Error adding document: ", error); alert("エラーが発生しました。");}
+                });
+                document.getElementById('add-job-form').addEventListener('submit', async e => {
+                    e.preventDefault();
+                    if(!db) { alert("データベースに接続できません。"); return; }
+                    const form = e.target;
+                    try {
+                        await addDoc(collection(db, `artifacts/${appId}/public/data/jobs`), {
+                            title: form.title.value, image: form.image.value, description: form.description.value,
+                            location: form.location.value, salary: form.salary.value, createdAt: serverTimestamp()
+                        });
+                        alert('新しい求人を追加しました。');
+                        form.reset();
+                        adminModal.classList.add('hidden');
+                    } catch (error) { console.error("Error adding document: ", error); alert("エラーが発生しました。");}
+                });
+                document.getElementById('add-transfer-form').addEventListener('submit', async e => {
+                    e.preventDefault();
+                    if(!db) { alert("データベースに接続できません。"); return; }
+                    const form = e.target;
+                    try {
+                        await addDoc(collection(db, `artifacts/${appId}/public/data/transfers`), {
+                            title: form.title.value, image: form.image.value, description: form.description.value,
+                            price: form.price.value, details: form.details.value.split('\n').filter(line => line.trim() !== ''),
+                            createdAt: serverTimestamp()
+                        });
+                        alert('新しい事業承継案件を追加しました。');
+                        form.reset();
+                        adminModal.classList.add('hidden');
+                    } catch (error) { console.error("Error adding document: ", error); alert("エラーが発生しました。");}
+                });
+
+                // Load More Buttons
+                const setupLoadMore = (buttonId, itemClass) => {
+                    const button = document.getElementById(buttonId);
+                    if (button) {
+                        button.addEventListener('click', () => {
+                            document.querySelectorAll(`.${itemClass}.hidden`).forEach(item => item.classList.remove('hidden'));
+                            button.style.display = 'none';
+                        });
                     }
-                });
-                details.classList.toggle('is-open');
-                button.textContent = isOpen ? '譲渡条件を確認する' : '閉じる';
-            });
-        });
+                };
+                setupLoadMore('load-more-articles', 'article-item');
+                setupLoadMore('load-more-jobs', 'extra-job-item');
+                setupLoadMore('load-more-transfers', 'extra-transfer-item');
 
-        const setupLoadMore = (buttonId, itemClass) => {
-            const loadMoreButton = document.getElementById(buttonId);
-            if (!loadMoreButton) return;
-            const items = document.querySelectorAll(`.${itemClass}`);
-            if (items.length <= 3) { // Assuming 3 items are shown initially for jobs/transfer
-                 loadMoreButton.style.display = 'none';
-                 return;
-            }
-             if (buttonId === 'load-more-articles' && items.length <= INITIAL_ARTICLES_SHOWN) {
-                  loadMoreButton.style.display = 'none';
-                  return;
-             }
-
-
-            loadMoreButton.addEventListener('click', () => {
-                document.querySelectorAll(`.${itemClass}.hidden`).forEach(item => {
-                    item.classList.remove('hidden');
-                });
-                loadMoreButton.style.display = 'none';
-            });
-        };
-
-        setupLoadMore('load-more-articles', 'article-item');
-        setupLoadMore('load-more-jobs', 'extra-job-item');
-        setupLoadMore('load-more-transfers', 'extra-transfer-item');
-
-        const companyTabs = document.querySelectorAll('.company-tab');
-        companyTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                companyTabs.forEach(t => t.classList.remove('active-tab'));
-                tab.classList.add('active-tab');
-                const contentId = tab.dataset.content;
-                document.querySelectorAll('.company-tab-content').forEach(content => {
-                    content.classList.toggle('hidden', content.id !== contentId);
-                });
-            });
-        });
-        
-        const chatWidget = document.getElementById('chat-widget');
-        const chatToggleButton = document.getElementById('chat-toggle-button');
-        const chatIconOpen = document.getElementById('chat-icon-open');
-        const chatIconClose = document.getElementById('chat-icon-close');
-        const chatLog = document.getElementById('chat-log');
-        const chatInput = document.getElementById('chat-input');
-        const chatSendButton = document.getElementById('chat-send');
-
-        const toggleChat = () => {
-            const isOpen = chatWidget.classList.toggle('is-open');
-            chatIconOpen.classList.toggle('hidden', isOpen);
-            chatIconClose.classList.toggle('hidden', !isOpen);
-            if(isOpen) {
-                if(chatLog.children.length === 0) {
-                   setTimeout(() => addMessage('ai', 'こんにちは。メドテラス AIキャリア相談です。ご興味のある内容についてキーワードを入力してください。（例：「求人」「事業承継」「キャリア」）'), 500);
-                }
-                chatInput.focus();
-            }
-        };
-        chatToggleButton.addEventListener('click', toggleChat);
-
-        const addMessage = (sender, text) => {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message', 'w-full', 'flex', 'motion-safe:animate-fadeIn');
-            const bubbleDiv = document.createElement('div');
-            bubbleDiv.classList.add('rounded-lg', 'px-4', 'py-2');
-            
-            if (sender === 'user') {
-                messageDiv.classList.add('justify-end');
-                bubbleDiv.classList.add('chat-bubble-user');
-                bubbleDiv.textContent = text;
-            } else {
-                messageDiv.classList.add('justify-start');
-                bubbleDiv.classList.add('chat-bubble-ai');
-                bubbleDiv.innerHTML = text; // Allow HTML for links
-            }
-            messageDiv.appendChild(bubbleDiv);
-            chatLog.appendChild(messageDiv);
-            chatLog.scrollTop = chatLog.scrollHeight;
-        };
-
-        const getAiResponse = (userText) => {
-            const lowerCaseText = userText.toLowerCase();
-            if (lowerCaseText.includes('求人') || lowerCaseText.includes('転職')) {
-                return '求人情報ですね。当サイトでは、全国の医療機関や企業から多様な求人を掲載しております。<a href="#jobs" class="text-accent underline">求人情報セクション</a>をご覧になるか、<a href="contact.html" class="text-accent underline">お問い合わせフォーム</a>から専門コンサルタントに直接ご相談いただくことも可能です。';
-            }
-            if (lowerCaseText.includes('事業承継') || lowerCaseText.includes('開業')) {
-                return '事業承継にご興味がおありなのですね。後継者を探されているクリニック様と、開業を目指す先生とのマッチングをサポートしております。詳しくは<a href="#transfer" class="text-accent underline">事業承継セクション</a>をご覧いただくか、<a href="contact.html" class="text-accent underline">お問い合わせフォーム</a>よりお気軽にご連絡ください。';
-            }
-            if (lowerCaseText.includes('キャリア') || lowerCaseText.includes('パス')) {
-                return '医師のキャリアパスは近年、非常に多様化しています。臨床以外にも、製薬企業、コンサルティングファーム、行政など、様々な選択肢がございます。当サイトの<a href="#article-career" class="article-link text-accent underline">特集記事</a>もご参考に、先生の将来像について一緒に考えさせていただければ幸いです。';
-            }
-            if (lowerCaseText.includes('記事') || lowerCaseText.includes('コラム') || lowerCaseText.includes('ai') || lowerCaseText.includes('オンライン')) {
-                return 'メディカルコラムですね。<a href="#blog" class="text-accent underline">コラムセクション</a>では、医療の最新トレンドに関する質の高い情報を提供しております。「オンライン診療」「AI診断」「キャリアパス」など、様々なテーマの記事がございますので、ぜひご覧ください。';
-            }
-            if (lowerCaseText.includes('ありがとう')) {
-                return 'どういたしまして。その他、何かご不明な点がございましたら、お気軽にお尋ねください。';
-            }
-            return 'ご質問ありがとうございます。申し訳ございませんが、そのご質問にはお答えできかねます。より詳しい情報をご希望の場合は、<a href="contact.html" class="text-accent underline">お問い合わせフォーム</a>から専門のコンサルタントに直接ご相談ください。';
-        };
-        
-        const handleSendMessage = () => {
-            const userText = chatInput.value.trim();
-            if (userText === '') return;
-            addMessage('user', userText);
-            chatInput.value = '';
-            
-            setTimeout(() => {
-                const aiText = getAiResponse(userText);
-                addMessage('ai', aiText);
+                // Event Delegation for dynamic content
+                const mainContent = document.getElementById('main-content-wrapper');
+                const articleWrapper = document.getElementById('article-section-wrapper');
                 
-                chatLog.querySelectorAll('.article-link:not([data-listener-attached])').forEach(link => {
-                    link.dataset.listenerAttached = 'true';
-                    link.addEventListener('click', (e) => {
+                document.body.addEventListener('click', e => {
+                    const articleLink = e.target.closest('.article-link');
+                    if(articleLink) {
                         e.preventDefault();
-                        showArticle(link.getAttribute('href').substring(1));
-                        toggleChat();
-                    });
+                        const articleId = articleLink.getAttribute('href').substring(1);
+                        mainContent.classList.add('hidden');
+                        articleWrapper.classList.remove('hidden');
+                        articleWrapper.querySelectorAll('.article-content').forEach(content => {
+                            content.classList.toggle('hidden', content.id !== articleId);
+                        });
+                        window.scrollTo(0, 0);
+                    }
+
+                    const backButton = e.target.closest('.back-to-main');
+                     if(backButton) {
+                        e.preventDefault();
+                        articleWrapper.classList.add('hidden');
+                        mainContent.classList.remove('hidden');
+                     }
+                    
+                    const toggleButton = e.target.closest('.transfer-toggle');
+                    if(toggleButton) {
+                        const card = toggleButton.closest('.transfer-card');
+                        const details = card.querySelector('.transfer-details');
+                        if (details) {
+                            details.classList.toggle('is-open');
+                            toggleButton.textContent = details.classList.contains('is-open') ? '閉じる' : '譲渡条件を確認する';
+                        }
+                    }
                 });
-                chatLog.querySelectorAll('a[href^="#"]:not(.article-link):not([data-listener-attached]), a[href^="contact.html"]:not([data-listener-attached])').forEach(link => {
-                    link.dataset.listenerAttached = 'true';
-                    link.addEventListener('click', () => {
-                        toggleChat();
-                    });
-                });
-            }, 1000);
-        };
-        
-        chatSendButton.addEventListener('click', handleSendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') handleSendMessage();
+            };
+
+
+            // --- Initial Execution ---
+            // 1. Render fallback content immediately to prevent blank page
+            loadFallbackData();
+            // 2. Setup all UI handlers that don't depend on data
+            setupStaticUIAndHandlers();
+            // 3. Attempt to connect to Firebase to load live data
+            initializeFirebase();
         });
-    });
     </script>
 </body>
 </html>
-
 
