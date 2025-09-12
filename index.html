@@ -53,6 +53,8 @@
         .prose p { margin-bottom: 1.5rem; }
         .prose ul { list-style-position: inside; margin-left: 1rem; margin-bottom: 1.5rem; }
         .prose h3 { margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #E2E8F0; }
+        .prose-content { white-space: pre-wrap; }
+        .ad-container { margin: 2.5rem auto; text-align: center; }
 
         #chat-fab { position: fixed; bottom: 2rem; right: 2rem; z-index: 1000; }
         #chat-widget { position: fixed; bottom: 6rem; right: 2rem; width: 380px; max-width: 90vw; height: 550px; max-height: 80vh; z-index: 1000; transition: all 0.3s ease-in-out; transform: translateY(20px) scale(0.95); opacity: 0; pointer-events: none; }
@@ -221,7 +223,6 @@
                     <h2 class="text-4xl font-bold">お問い合わせ</h2>
                     <p class="text-lg text-secondary mt-2">ご相談・ご質問など、お気軽にお問い合わせください。</p>
                 </div>
-                <!-- IMPORTANT: 実際のFormspreeフォームIDに置き換えてください -->
                 <form action="https://formspree.io/f/YOUR_UNIQUE_ID" method="POST" class="space-y-6">
                     <div>
                         <label for="contact-name" class="block text-sm font-medium text-gray-700">お名前 *</label>
@@ -402,31 +403,8 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, onSnapshot, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // --- Fallback Data ---
+        // --- Fallback Data (Minimal) ---
         const defaultData = {
-            articles: [
-                 { id: 'article-telemedicine', category: '最新医療技術', title: 'オンライン診療の未来：遠隔医療技術の最新動向', createdAt: { toDate: () => new Date('2025-09-01') }, image: '画像(3).jpg', ref_title: 'The Future of Telehealth. NEJM Catalyst.', ref_link: 'https://catalyst.nejm.org/doi/full/10.1056/CAT.20.0125' },
-                 { id: 'article-career', category: 'キャリア', title: '医師のキャリアパス：専門医以外の多様な選択肢', createdAt: { toDate: () => new Date('2025-08-25') }, image: '画像(4).jpg', ref_title: 'Non-Clinical Careers for Physicians. JAMA.', ref_link: 'https://jamanetwork.com/journals/jama/fullarticle/2768522' },
-                 { id: 'article-ai', category: 'AIと医療', title: 'AI診断支援ツールの現状と倫理的課題', createdAt: { toDate: () => new Date('2025-08-18') }, image: '画像(5).jpg', ref_title: 'High-performance medicine: AI. Nature Medicine.', ref_link: 'https://www.nature.com/articles/s41591-019-0300-7' },
-                 { id: 'article-genome', category: 'ゲノム医療', title: 'ゲノム編集技術CRISPR-Cas9の臨床応用', createdAt: { toDate: () => new Date('2025-08-10') }, image: '画像(6).jpg', ref_title: 'CRISPR-Cas9 in the clinic. The Lancet.', ref_link: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)32753-2/fulltext' },
-                 { id: 'article-mental', category: 'メンタルヘルス', title: '医師の燃え尽き症候群：予防と対策', createdAt: { toDate: () => new Date('2025-08-02') }, image: '画像(7).jpg', ref_title: 'Physician Burnout: A Public Health Crisis. Mayo Clinic.', ref_link: 'https://www.mayoclinicproceedings.org/article/S0025-6196(19)30831-9/fulltext' },
-                 { id: 'article-regenerative', category: '再生医療', title: 'iPS細胞を用いた心筋再生治療の最前線', createdAt: { toDate: () => new Date('2025-07-28') }, image: '画像(8).jpg', ref_title: 'Heart regeneration with iPSCs. Cell Stem Cell.', ref_link: 'https://www.cell.com/cell-stem-cell/fulltext/S1934-5909(20)30283-X' },
-                 { id: 'article-management', category: '病院経営', title: 'クリニック経営におけるDX推進のポイント', createdAt: { toDate: () => new Date('2025-07-21') }, image: '画像(9).jpg', ref_title: 'Digital Transformation in Healthcare. HBR.', ref_link: 'https://hbr.org/2018/11/digital-transformation-isnt-about-technology' },
-                 { id: 'article-vaccine', category: '予防医学', title: 'mRNAワクチンの開発と今後の展望', createdAt: { toDate: () => new Date('2025-07-15') }, image: '画像(10).jpg', ref_title: 'mRNA vaccines — a new era. Nature Reviews.', ref_link: 'https://www.nature.com/articles/nrd.2017.243' },
-                 { id: 'article-nutrition', category: '栄養学', title: '腸内フローラと疾患：最新の研究動向', createdAt: { toDate: () => new Date('2025-07-08') }, image: '画像(11).jpg', ref_title: 'The role of the gut microbiome. Gut.', ref_link: 'https://gut.bmj.com/content/67/9/1716' },
-                 { id: 'article-sleep', category: '睡眠医学', title: '睡眠不足が免疫系に与える影響', createdAt: { toDate: () => new Date('2025-07-01') }, image: '画像(3).jpg', ref_title: 'Sleep and immune function. Pflugers Archiv.', ref_link: 'https://link.springer.com/article/10.1007/s00424-011-1044-0' },
-                 { id: 'article-asset', category: '資産形成', title: '医師のための資産形成：iDeCoとNISA活用法', createdAt: { toDate: () => new Date('2025-06-24') }, image: '画像(4).jpg', ref_title: 'Physician Wealth Management. White Coat Investor.', ref_link: 'https://www.whitecoatinvestor.com/' },
-                 { id: 'article-robotics', category: '手術支援ロボット', title: '最新の手術支援ロボットと低侵襲手術の進化', createdAt: { toDate: () => new Date('2025-06-17') }, image: '画像(5).jpg', ref_title: 'Robotic Surgery. Annual Review of Biomedical Engineering.', ref_link: 'https://www.annualreviews.org/doi/abs/10.1146/annurev-bioeng-071811-150055' },
-                 { id: 'article-maas', category: '医療MaaS', title: '医療MaaSが変える地域医療と訪問診療の未来', createdAt: { toDate: () => new Date('2025-06-10') }, image: '画像(6).jpg', ref_title: 'Mobility as a Service in Healthcare. Deloitte Insights.', ref_link: 'https://www2.deloitte.com/us/en/insights/focus/future-of-mobility/mobility-as-a-service-in-healthcare.html' },
-                 { id: 'article-workstyle', category: '働き方改革', title: '医師の働き方改革：タスクシフトとチーム医療', createdAt: { toDate: () => new Date('2025-06-03') }, image: '画像(7).jpg', ref_title: 'Task shifting and delegation for physicians. The BMJ.', ref_link: 'https://www.bmj.com/content/368/bmj.m664' },
-                 { id: 'article-aging', category: '老年医学', title: 'フレイル対策と健康寿命延伸に向けたアプローチ', createdAt: { toDate: () => new Date('2025-05-27') }, image: '画像(8).jpg', ref_title: 'Frailty in older adults. Nature Reviews Disease Primers.', ref_link: 'https://www.nature.com/articles/s41572-019-0131-y' },
-                 { id: 'article-blockchain', category: 'ブロックチェーン', title: '医療情報管理におけるブロックチェーン技術の応用', createdAt: { toDate: () => new Date('2025-05-20') }, image: '画像(9).jpg', ref_title: 'Blockchain Technology in Healthcare. JMIR.', ref_link: 'https://www.jmir.org/2017/4/e122/' },
-                 { id: 'article-d2c', category: 'D2C', title: 'D2C時代の新しいヘルスケアビジネスモデル', createdAt: { toDate: () => new Date('2025-05-13') }, image: '画像(10).jpg', ref_title: 'Direct-to-Consumer Healthcare. HBR.', ref_link: 'https://hbr.org/2019/02/the-direct-to-consumer-health-care-revolution' },
-                 { id: 'article-medical-tourism', category: '医療ツーリズム', title: '日本の医療ツーリズムの現状と国際競争力', createdAt: { toDate: () => new Date('2025-05-06') }, image: '画像(11).jpg', ref_title: 'Medical Tourism from a Global Perspective. International Journal of Environmental Research and Public Health.', ref_link: 'https://www.mdpi.com/1660-4601/16/18/3321' },
-                 { id: 'article-palliative', category: '緩和ケア', title: '緩和ケアの早期導入がもたらすQOLの向上', createdAt: { toDate: () => new Date('2025-04-29') }, image: '画像(3).jpg', ref_title: 'Early Palliative Care for Patients with Metastatic Non–Small-Cell Lung Cancer. NEJM.', ref_link: 'https://www.nejm.org/doi/full/10.1056/NEJMoa1000678' },
-                 { id: 'article-drug-discovery', category: '創薬', title: 'AI創薬が加速する新薬開発のプロセス', createdAt: { toDate: () => new Date('2025-04-22') }, image: '画像(4).jpg', ref_title: 'Artificial intelligence in drug discovery and development. Nature Reviews Drug Discovery.', ref_link: 'https://www.nature.com/articles/d41573-019-00016-2' },
-                 { id: 'article-ethics', category: '医療倫理', title: 'ゲノム編集時代の生命倫理と臨床医の役割', createdAt: { toDate: () => new Date('2025-04-15') }, image: '画像(5).jpg', ref_title: 'Ethical Issues in Genome Editing. Science.', ref_link: 'https://www.science.org/doi/10.1126/science.aad7235' }
-            ],
             jobs: [
                  { id: 'job-1', title: '外科医募集（都内総合病院）', image: '画像(12).jpg', description: '最先端の手術設備と充実した研修制度が魅力です。若手からベテランまで幅広く歓迎します。', location: '東京都23区', salary: '年収1,500万円〜' },
                  { id: 'job-2', title: '内科クリニック院長候補', image: '画像(13).jpg', description: '地域医療に貢献。将来的な開業支援制度も整っており、経営ノウハウも学べます。', location: '静岡県静岡市', salary: '年収1,800万円〜' },
@@ -451,11 +429,23 @@
             let articles = [], jobs = [], transfers = [];
             const appId = typeof __app_id !== 'undefined' ? __app_id : 'default-app-id';
 
-            const loadFallbackData = () => {
-                console.warn("Firebase connection failed or not available. Loading local fallback data.");
-                articles = defaultData.articles;
+            const loadInitialData = async () => {
+                try {
+                    const response = await fetch('./articles.json');
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    const articleData = await response.json();
+                    articles = articleData.map(article => ({
+                        ...article,
+                        createdAt: { toDate: () => new Date(article.createdAt.$date) }
+                    }));
+                } catch (error) {
+                    console.warn("Could not load articles.json, using empty array.", error);
+                    articles = []; 
+                }
+                
                 jobs = defaultData.jobs;
                 transfers = defaultData.transfers;
+
                 renderAllContent();
             };
 
@@ -466,29 +456,22 @@
                          throw new Error("Firebase config is missing or invalid.");
                      }
                     const firebaseConfig = JSON.parse(firebaseConfigStr);
-
                     const app = initializeApp(firebaseConfig);
                     db = getFirestore(app);
                     const auth = getAuth(app);
-                    
                     onAuthStateChanged(auth, user => {
-                        if (user) {
-                            setupRealtimeListeners();
-                        } else {
+                        if (user) setupRealtimeListeners();
+                        else {
                             const token = typeof __initial_auth_token !== 'undefined' ? __initial_auth_token : null;
                             if (token) {
-                                signInWithCustomToken(auth, token).catch(error => {
-                                    console.error("Custom token sign-in failed, trying anonymous.", error);
-                                    signInAnonymously(auth).catch(anonError => console.error("Anonymous sign-in also failed:", anonError));
-                                });
+                                signInWithCustomToken(auth, token).catch(e => signInAnonymously(auth));
                             } else {
-                                signInAnonymously(auth).catch(anonError => console.error("Anonymous sign-in failed:", anonError));
+                                signInAnonymously(auth);
                             }
                         }
                     });
                  } catch(e) {
                     console.error("Firebase initialization failed:", e);
-                    loadFallbackData();
                  }
             };
 
@@ -496,38 +479,22 @@
                 const articlesRef = collection(db, `artifacts/${appId}/public/data/articles`);
                 onSnapshot(articlesRef, (snapshot) => {
                     const fetchedArticles = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                    articles = [...fetchedArticles, ...defaultData.articles.filter(da => !fetchedArticles.find(fa => fa.id === da.id))]
-                               .sort((a,b) => (b.createdAt?.seconds || b.createdAt.toDate().getTime()/1000) - (a.createdAt?.seconds || a.createdAt.toDate().getTime()/1000));
+                    const combined = [...fetchedArticles, ...articles.filter(a => !fetchedArticles.find(fa => fa.id === a.id))];
+                    articles = combined.sort((a,b) => (b.createdAt?.seconds * 1000 || b.createdAt.toDate().getTime()) - (a.createdAt?.seconds * 1000 || a.createdAt.toDate().getTime()));
                     renderArticles();
-                }, error => {
-                    console.error("Error fetching articles:", error);
-                    articles = defaultData.articles;
-                    renderArticles();
-                });
+                }, error => console.error("Error fetching articles:", error));
 
                 const jobsRef = collection(db, `artifacts/${appId}/public/data/jobs`);
                 onSnapshot(jobsRef, (snapshot) => {
-                    const fetchedJobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                    jobs = [...fetchedJobs, ...defaultData.jobs.filter(dj => !fetchedJobs.find(fj => fj.id === dj.id))]
-                             .sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
                     renderJobs();
-                }, error => {
-                    console.error("Error fetching jobs:", error);
-                    jobs = defaultData.jobs;
-                    renderJobs();
-                });
+                }, error => console.error("Error fetching jobs:", error));
 
                 const transfersRef = collection(db, `artifacts/${appId}/public/data/transfers`);
                 onSnapshot(transfersRef, (snapshot) => {
-                    const fetchedTransfers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
-                    transfers = [...fetchedTransfers, ...defaultData.transfers.filter(dt => !fetchedTransfers.find(ft => ft.id === dt.id))]
-                                  .sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    transfers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
                     renderTransfers();
-                }, error => {
-                    console.error("Error fetching transfers:", error);
-                    transfers = defaultData.transfers;
-                    renderTransfers();
-                });
+                }, error => console.error("Error fetching transfers:", error));
             };
 
             const renderAllContent = () => {
@@ -537,7 +504,6 @@
                 window.dispatchEvent(new CustomEvent('contentRendered'));
             };
 
-            // --- Rendering Functions ---
             const INITIAL_ARTICLES_SHOWN = 3;
             const INITIAL_JOBS_SHOWN = 3;
             const INITIAL_TRANSFERS_SHOWN = 3;
@@ -546,7 +512,7 @@
                 const container = document.getElementById('articles-grid');
                 if (!container) return;
                 container.innerHTML = articles.map((article, index) => {
-                    const isHidden = index >= INITIAL_ARTICLES_SHOWN ? 'hidden article-item' : 'article-item';
+                    const isHidden = index >= INITIAL_ARTICLES_SHOWN ? 'hidden article-item' : '';
                     const articleDate = article.createdAt?.toDate ? article.createdAt.toDate().toLocaleDateString('ja-JP') : new Date().toLocaleDateString('ja-JP');
                     return `
                         <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group scroll-reveal flex flex-col ${isHidden}">
@@ -572,16 +538,20 @@
                 if(!container) return;
                  container.innerHTML = articles.map(article => {
                     const articleDate = article.createdAt?.toDate ? article.createdAt.toDate().toLocaleDateString('ja-JP') : new Date().toLocaleDateString('ja-JP');
+                    const adHtml = article.ad_html ? `<div class="ad-container not-prose">${article.ad_html}</div>` : '';
+
                     return `
                     <section id="${article.id}" class="article-content hidden py-24 bg-white">
                         <div class="container mx-auto px-6 max-w-4xl prose">
-                            <button class="page-link mb-8 font-bold text-accent hover:underline" data-section="main-content-wrapper">&larr; コラム一覧へ戻る</button>
+                            <button class="page-link mb-8 font-bold text-accent hover:underline not-prose" data-section="main-content-wrapper">&larr; コラム一覧へ戻る</button>
                             <span class="text-sm font-bold uppercase text-accent">${article.category}</span>
                             <h1 class="text-4xl font-bold text-primary mt-2 mb-4">${article.title}</h1>
                             <p class="text-base text-secondary">公開日: ${articleDate}</p>
                             <img src="${article.image}" alt="${article.title}" class="w-full rounded-lg shadow-md my-8"/>
-                            <h3>概要</h3><p>本稿では、「${article.title}」をテーマに、最新の研究成果や臨床応用における現状を深掘りします。詳細については、以下の参考文献をご参照ください。</p>
-                            <h3>参考文献</h3><ul><li><a href="${article.ref_link}" target="_blank" rel="noopener noreferrer" class="font-bold break-words">${article.ref_title}</a></li></ul>
+                            <div class="prose-content">${article.content || 'コンテンツは準備中です。'}</div>
+                            ${adHtml}
+                            <h3>参考文献</h3>
+                            <ul><li><a href="${article.ref_link}" target="_blank" rel="noopener noreferrer" class="font-bold break-words">${article.ref_title}</a></li></ul>
                             <div class="mt-12 text-center">
                                 <a href="#contact" class="page-link inline-block bg-accent hover:opacity-90 text-white font-bold py-3 px-8 rounded-lg transition duration-300 no-underline" data-section="contact" data-inquiry-type="メディカルコラム" data-inquiry-subject="${article.title}">
                                     この記事について問い合わせる
@@ -740,26 +710,29 @@
                 const setupLoadMore = (buttonId, itemClass, initialCount) => {
                     const button = document.getElementById(buttonId);
                     if (!button) return;
-                    const allItems = document.querySelectorAll(`.${itemClass}`);
                     
-                    if (allItems.length <= initialCount) {
-                        button.style.display = 'none';
-                    } else {
-                        button.style.display = 'inline-block';
-                    }
+                    const updateButtonVisibility = () => {
+                        const allItems = document.querySelectorAll(`.${itemClass}`);
+                         const hiddenItems = document.querySelectorAll(`.${itemClass}.hidden`);
+                        if (allItems.length <= initialCount || hiddenItems.length === 0) {
+                            button.style.display = 'none';
+                        } else {
+                            button.style.display = 'inline-block';
+                        }
+                    };
+
+                    window.addEventListener('contentRendered', updateButtonVisibility);
 
                     button.addEventListener('click', () => {
                         const hiddenItems = document.querySelectorAll(`.${itemClass}.hidden`);
                         hiddenItems.forEach(item => item.classList.remove('hidden'));
-                        button.style.display = 'none';
+                        updateButtonVisibility();
                     });
                 };
 
-                window.addEventListener('contentRendered', () => {
-                    setupLoadMore('load-more-articles', 'article-item', INITIAL_ARTICLES_SHOWN);
-                    setupLoadMore('load-more-jobs', 'extra-job-item', INITIAL_JOBS_SHOWN);
-                    setupLoadMore('load-more-transfers', 'extra-transfer-item', INITIAL_TRANSFERS_SHOWN);
-                });
+                setupLoadMore('load-more-articles', 'article-item', INITIAL_ARTICLES_SHOWN);
+                setupLoadMore('load-more-jobs', 'extra-job-item', INITIAL_JOBS_SHOWN);
+                setupLoadMore('load-more-transfers', 'extra-transfer-item', INITIAL_TRANSFERS_SHOWN);
 
 
                 // --- Page and Content Navigation ---
@@ -792,7 +765,7 @@
                             document.getElementById('contact-type').value = type || '選択してください';
                             document.getElementById('contact-subject').value = subject;
                         }
-                        return; // Stop further processing
+                        return;
                     }
 
                     const articleLink = e.target.closest('.article-link');
@@ -803,7 +776,7 @@
                         articleSectionWrapper.querySelectorAll('.article-content').forEach(content => {
                             content.classList.toggle('hidden', content.id !== articleId);
                         });
-                        return; // Stop further processing
+                        return;
                     }
 
                     const toggleButton = e.target.closest('.transfer-toggle');
@@ -819,7 +792,7 @@
             };
 
             // --- Initial Execution ---
-            loadFallbackData();
+            loadInitialData();
             setupStaticUIAndHandlers();
             initializeFirebase();
         });
