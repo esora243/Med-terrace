@@ -1,0 +1,75 @@
+[
+    {
+        "id": "job-1",
+        "title": "外科医募集（都内総合病院）",
+        "image": "画像(12).jpg",
+        "description": "最先端の手術設備と充実した研修制度が魅力です。若手からベテランまで幅広く歓迎します。",
+        "location": "東京都23区",
+        "salary": "年収1,500万円〜",
+        "createdAt": {
+            "$date": "2025-09-10T00:00:00.000Z"
+        },
+        "status": "active"
+    },
+    {
+        "id": "job-2",
+        "title": "内科クリニック院長候補",
+        "image": "画像(13).jpg",
+        "description": "地域医療に貢献。将来的な開業支援制度も整っており、経営ノウハウも学べます。",
+        "location": "静岡県静岡市",
+        "salary": "年収1,800万円〜",
+        "createdAt": {
+            "$date": "2025-09-08T00:00:00.000Z"
+        },
+        "status": "closed"
+    },
+    {
+        "id": "job-3",
+        "title": "産業医（大手IT企業専属）",
+        "image": "画像(14).jpg",
+        "description": "ワークライフバランスを重視した働き方が可能です。メンタルヘルス領域に強みのある方歓迎。",
+        "location": "大阪府大阪市",
+        "salary": "年収1,200万円〜",
+        "createdAt": {
+            "$date": "2025-09-05T00:00:00.000Z"
+        },
+        "status": "closed"
+    },
+    {
+        "id": "job-4",
+        "title": "小児科医募集（横浜市）",
+        "image": "画像(12).jpg",
+        "description": "駅前のクリニックモール内。週4日勤務も相談可能です。",
+        "location": "神奈川県横浜市",
+        "salary": "年収1,400万円〜",
+        "createdAt": {
+            "$date": "2025-09-02T00:00:00.000Z"
+        },
+        "status": "closed"
+    },
+    {
+        "id": "job-5",
+        "title": "研究医（大手製薬会社）",
+        "image": "画像(13).jpg",
+        "description": "オンコロジー領域のトランスレーショナルリサーチ担当。",
+        "location": "東京都中央区",
+        "salary": "年収1,300万円〜",
+        "createdAt": {
+            "$date": "2025-08-30T00:00:00.000Z"
+        },
+        "status": "closed"
+    },
+    {
+        "id": "job-6",
+        "title": "在宅医（福岡市）",
+        "image": "画像(14).jpg",
+        "description": "多職種連携を重視した地域密着型の在宅医療クリニックです。",
+        "location": "福岡県福岡市",
+        "salary": "年収1,600万円〜",
+        "createdAt": {
+            "$date": "2025-08-28T00:00:00.000Z"
+        },
+        "status": "closed"
+    }
+]
+
