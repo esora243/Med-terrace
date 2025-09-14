@@ -403,26 +403,6 @@
         import { getAuth, signInAnonymously, signInWithCustomToken, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
         import { getFirestore, collection, onSnapshot, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
 
-        // --- Fallback Data (Minimal) ---
-        const defaultData = {
-            jobs: [
-                 { id: 'job-1', title: '外科医募集（都内総合病院）', image: '画像(12).jpg', description: '最先端の手術設備と充実した研修制度が魅力です。若手からベテランまで幅広く歓迎します。', location: '東京都23区', salary: '年収1,500万円〜' },
-                 { id: 'job-2', title: '内科クリニック院長候補', image: '画像(13).jpg', description: '地域医療に貢献。将来的な開業支援制度も整っており、経営ノウハウも学べます。', location: '静岡県静岡市', salary: '年収1,800万円〜' },
-                 { id: 'job-3', title: '産業医（大手IT企業専属）', image: '画像(14).jpg', description: 'ワークライフバランスを重視した働き方が可能です。メンタルヘルス領域に強みのある方歓迎。', location: '大阪府大阪市', salary: '年収1,200万円〜' },
-                 { id: 'job-4', title: '小児科医募集（横浜市）', image: '画像(12).jpg', description: '駅前のクリニックモール内。週4日勤務も相談可能です。', location: '神奈川県横浜市', salary: '年収1,400万円〜' },
-                 { id: 'job-5', title: '研究医（大手製薬会社）', image: '画像(13).jpg', description: 'オンコロジー領域のトランスレーショナルリサーチ担当。', location: '東京都中央区', salary: '年収1,300万円〜' },
-                 { id: 'job-6', title: '在宅医（福岡市）', image: '画像(14).jpg', description: '多職種連携を重視した地域密着型の在宅医療クリニックです。', location: '福岡県福岡市', salary: '年収1,600万円〜' },
-            ],
-            transfers: [
-                 { id: 'transfer-1', title: '内科クリニック（東京都世田谷区）', image: '画像(15).jpg', description: '駅徒歩5分の好立地。地域に根ざし、安定した患者数を維持しています。', price: '5,000万円', details: ['院長年収目安: 2,500万円', 'スタッフ: 常勤看護師2名、事務2名', '連携病院: 地域中核病院と密連携'] },
-                 { id: 'transfer-2', title: '眼科クリニック（大阪府吹田市）', image: '画像(16).jpg', description: '最新の白内障手術設備が整備済み。駅直結の医療モール内でアクセス良好。', price: '7,500万円', details: ['手術件数: 白内障 約40件/月', '設備: 最新フェムトセカンドレーザー完備', '特徴: 自由診療（ICL等）の実績多数'] },
-                 { id: 'transfer-3', title: '皮膚科・美容皮膚科（名古屋市栄）', image: '画像(17).jpg', description: '美容医療ニーズが高い中心商業地域に位置。自由診療の売上が高く高収益。', price: '9,000万円', details: ['自由診療比率: 約60%', '設備: ピコレーザー、HIFU等多数', '顧客層: 20-40代女性が中心'] },
-                 { id: 'transfer-4', title: '整形外科クリニック（神戸市）', image: '画像(15).jpg', description: 'リハビリテーション施設が充実。スポーツ整形にも強み。', price: '1.2億円', details: ['一日来院数: 約150人', '設備: MRI、骨密度測定装置完備', '特徴: 運動療法士が多数在籍'] },
-                 { id: 'transfer-5', title: '耳鼻咽喉科（さいたま市）', image: '画像(16).jpg', description: '住宅街に位置し、小児から高齢者まで幅広い患者層。', price: '6,000万円', details: ['院長年収目安: 2,800万円', '特徴: 補聴器外来も実施', '引継期間: 6ヶ月間の丁寧な引継ぎ可'] },
-                 { id: 'transfer-6', title: '心療内科（京都市）', image: '画像(17).jpg', description: 'オフィス街にあり、働く世代のメンタルヘルスをサポート。', price: '4,500万円', details: ['診療形態: 完全予約制', '特徴: カウンセリング、復職支援に強み', '引継条件: 現院長の週1日勤務継続希望'] },
-            ]
-        };
-
         document.addEventListener('DOMContentLoaded', () => {
 
             let db;
@@ -443,8 +423,31 @@
                     articles = []; 
                 }
                 
-                jobs = defaultData.jobs;
-                transfers = defaultData.transfers;
+                try {
+                    const response = await fetch('./jobs.json');
+                    if (!response.ok) throw new Error('Network response was not ok');
+                    const jobData = await response.json();
+                    jobs = jobData.map(job => ({
+                        ...job,
+                        createdAt: { toDate: () => new Date(job.createdAt.$date) }
+                    }));
+                } catch (error) {
+                    console.warn("Could not load jobs.json, using empty array.", error);
+                    jobs = [];
+                }
+                
+                try {
+                    const response = await fetch('./transfers.json');
+                     if (!response.ok) throw new Error('Network response was not ok');
+                    const transferData = await response.json();
+                    transfers = transferData.map(transfer => ({
+                        ...transfer,
+                        createdAt: { toDate: () => new Date(transfer.createdAt.$date) }
+                    }));
+                } catch (error) {
+                    console.warn("Could not load transfers.json, using empty array.", error);
+                    transfers = [];
+                }
 
                 renderAllContent();
             };
@@ -486,13 +489,17 @@
 
                 const jobsRef = collection(db, `artifacts/${appId}/public/data/jobs`);
                 onSnapshot(jobsRef, (snapshot) => {
-                    jobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    const fetchedJobs = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    const combinedJobs = [...fetchedJobs, ...jobs.filter(j => !fetchedJobs.find(fj => fj.id === j.id))];
+                    jobs = combinedJobs.sort((a,b) => (b.createdAt?.seconds * 1000 || b.createdAt.toDate().getTime()) - (a.createdAt?.seconds * 1000 || a.createdAt.toDate().getTime()));
                     renderJobs();
                 }, error => console.error("Error fetching jobs:", error));
 
                 const transfersRef = collection(db, `artifacts/${appId}/public/data/transfers`);
                 onSnapshot(transfersRef, (snapshot) => {
-                    transfers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() })).sort((a,b) => (b.createdAt?.seconds || 0) - (a.createdAt?.seconds || 0));
+                    const fetchedTransfers = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+                    const combinedTransfers = [...fetchedTransfers, ...transfers.filter(t => !fetchedTransfers.find(ft => ft.id === t.id))];
+                    transfers = combinedTransfers.sort((a,b) => (b.createdAt?.seconds * 1000 || b.createdAt.toDate().getTime()) - (a.createdAt?.seconds * 1000 || a.createdAt.toDate().getTime()));
                     renderTransfers();
                 }, error => console.error("Error fetching transfers:", error));
             };
@@ -566,17 +573,36 @@
                 const container = document.getElementById('jobs-grid');
                 if (!container) return;
                 container.innerHTML = jobs.map((job, index) => {
-                      const isHidden = index >= INITIAL_JOBS_SHOWN ? 'hidden extra-job-item' : '';
-                      return `
-                        <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal flex flex-col ${isHidden}">
-                            <div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden"><img src="${job.image}" alt="${job.title}" class="w-full h-full object-cover"/></div>
+                    const isHidden = index >= INITIAL_JOBS_SHOWN ? 'hidden extra-job-item' : '';
+                    const isClosed = job.status === 'closed';
+
+                    const overlayHtml = isClosed ? `
+                        <div class="absolute inset-0 bg-gray-600 bg-opacity-70 flex items-center justify-center rounded-lg">
+                            <span class="text-white font-bold text-lg bg-black bg-opacity-50 px-4 py-2 rounded">掲載は終了しました</span>
+                        </div>
+                    ` : '';
+
+                    const contactButtonHtml = isClosed ? `
+                        <button class="mt-auto block w-full bg-gray-300 text-gray-500 font-bold py-3 px-4 rounded-lg cursor-not-allowed" disabled>募集は終了しました</button>
+                    ` : `
+                        <a href="#contact" class="page-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-section="contact" data-inquiry-type="求人" data-inquiry-subject="${job.title}">この求人に問い合わせる</a>
+                    `;
+                    
+                    const cardClasses = isClosed ? 'opacity-60' : '';
+
+                    return `
+                        <div class="bg-white rounded-lg shadow-card p-6 text-center scroll-reveal flex flex-col ${isHidden} ${cardClasses}">
+                            <div class="relative h-40 w-full mb-6 rounded-lg overflow-hidden">
+                                <img src="${job.image}" alt="${job.title}" class="w-full h-full object-cover"/>
+                                ${overlayHtml}
+                            </div>
                             <h3 class="text-xl font-bold text-primary mb-2">${job.title}</h3>
                             <p class="text-secondary mb-4 text-sm flex-grow">${job.description}</p>
                             <div class="flex justify-center flex-wrap gap-2 text-sm mb-4">
                                 <span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">${job.location}</span>
                                 <span class="bg-blue-100 text-blue-800 font-semibold px-2.5 py-0.5 rounded-full">${job.salary}</span>
                             </div>
-                            <a href="#contact" class="page-link mt-auto block w-full bg-primary hover:bg-primary-dark text-white font-bold py-3 px-4 rounded-lg transition duration-300" data-section="contact" data-inquiry-type="求人" data-inquiry-subject="${job.title}">この求人に問い合わせる</a>
+                            ${contactButtonHtml}
                         </div>`;
                 }).join('');
             };
@@ -585,20 +611,39 @@
                 const container = document.getElementById('transfers-grid');
                 if (!container) return;
                 container.innerHTML = transfers.map((item, index) => {
-                      const isHidden = index >= INITIAL_TRANSFERS_SHOWN ? 'hidden extra-transfer-item' : '';
-                      const detailsHtml = (item.details || []).map(detail => `<li><strong>${detail.split(':')[0]}:</strong> ${detail.split(':')[1] || ''}</li>`).join('');
-                      return `
-                        <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card ${isHidden}">
-                            <div class="relative h-48 w-full"><img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover"/></div>
+                    const isHidden = index >= INITIAL_TRANSFERS_SHOWN ? 'hidden extra-transfer-item' : '';
+                    const detailsHtml = (item.details || []).map(detail => `<li><strong>${detail.split(':')[0]}:</strong> ${detail.split(':')[1] || ''}</li>`).join('');
+                    const isClosed = item.status === 'closed';
+
+                    const overlayHtml = isClosed ? `
+                        <div class="absolute inset-0 bg-gray-600 bg-opacity-70 flex items-center justify-center">
+                            <span class="text-white font-bold text-lg bg-black bg-opacity-50 px-4 py-2 rounded">成約済み</span>
+                        </div>
+                    ` : '';
+
+                    const buttonBlockHtml = isClosed ? `
+                        <button class="block mt-4 w-full bg-gray-300 text-gray-500 font-bold py-2.5 px-4 rounded-lg cursor-not-allowed" disabled>募集は終了しました</button>
+                    ` : `
+                        <button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button>
+                        <div class="transfer-details">
+                            <ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4">${detailsHtml}</ul>
+                            <a href="#contact" class="page-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-section="contact" data-inquiry-type="事業承継" data-inquiry-subject="${item.title}">この案件に問い合わせる</a>
+                        </div>
+                    `;
+                    
+                    const cardClasses = isClosed ? 'opacity-60' : '';
+
+                    return `
+                        <div class="bg-white rounded-xl shadow-card overflow-hidden scroll-reveal transfer-card ${isHidden} ${cardClasses}">
+                            <div class="relative h-48 w-full">
+                                <img src="${item.image}" alt="${item.title}" class="w-full h-full object-cover"/>
+                                ${overlayHtml}
+                            </div>
                             <div class="p-6 border-t-4 border-accent">
                                 <h3 class="text-xl font-bold text-primary mb-2">${item.title}</h3>
                                 <p class="text-secondary mb-4 text-sm">${item.description}</p>
                                 <p class="text-lg font-bold text-primary">${item.price}</p>
-                                <button class="transfer-toggle block mt-4 w-full bg-secondary hover:bg-primary text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center">譲渡条件を確認する</button>
-                                <div class="transfer-details">
-                                    <ul class="text-sm text-secondary space-y-2 mt-4 text-left border-t pt-4">${detailsHtml}</ul>
-                                    <a href="#contact" class="page-link block mt-4 w-full bg-accent hover:opacity-90 text-white font-bold py-2.5 px-4 rounded-lg transition duration-300 text-center" data-section="contact" data-inquiry-type="事業承継" data-inquiry-subject="${item.title}">この案件に問い合わせる</a>
-                                </div>
+                                ${buttonBlockHtml}
                             </div>
                         </div>`;
                 }).join('');
