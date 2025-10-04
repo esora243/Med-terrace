@@ -48,6 +48,7 @@
         .prose p { margin-bottom: 1.5rem; }
         .prose ul { list-style-position: inside; margin-left: 1rem; margin-bottom: 1.5rem; }
         .prose h3 { margin-top: 2.5rem; margin-bottom: 1rem; padding-bottom: 0.5rem; border-bottom: 2px solid #E2E8F0; }
+        .prose ol { list-style-position: inside; margin-left: 1.5rem; margin-bottom: 1.5rem; }
 
         /* AI Chatbot Styles */
         #chat-fab { position: fixed; bottom: 2rem; right: 2rem; z-index: 1000; }
@@ -115,7 +116,7 @@
                 </video>
                 <div class="container mx-auto px-6 relative z-20">
                     <div class="max-w-3xl scroll-reveal">
-                        <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight" style="text-shadow: 1px 1px 5px rgba(0,0,0,0.3);">医療従事者のキャリアと知見をテラス<br></h1>
+                        <h1 class="text-5xl md:text-6xl font-bold mb-4 leading-tight" style="text-shadow: 1px 1px 5px rgba(0,0,0,0.3);">先生のキャリアと知見を、<br>次のステージへ。</h1>
                         <p class="text-xl text-gray-200" style="text-shadow: 1px 1px 3px rgba(0,0,0,0.5);">メドテラスは、多忙な日々を送る先生方のキャリア形成と学術的探究を加速させるための、信頼できる情報と機会を提供します。</p>
                     </div>
                 </div>
@@ -184,7 +185,7 @@
                             </div>
                             <div class="flex-grow relative">
                                 <div id="company-photo" class="company-tab-content absolute inset-0">
-                                    <img src="画像(20).jpg" alt="オフィス外観" class="w-full h-full object-cover"/>
+                                    <img src="画像(25).jpg" alt="オフィス外観" class="w-full h-full object-cover"/>
                                 </div>
                                 <div id="company-map" class="company-tab-content hidden absolute inset-0">
                                     <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.828032331557!2d139.7566613156296!3d35.6811673801944!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bf90da7fe15%3A0x2578228b31338a83!2z44OR44K544K_44Kz44OT44Or44OA!5e0!3m2!1sja!2sjp!4v1678886400000!5m2!1sja!2sjp" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
@@ -315,353 +316,318 @@
         </div>
     </div>
 
-
     <script>
-    document.addEventListener('DOMContentLoaded', () => {
-        // --- Article Data ---
-        const articles = [
-            { id: 'article-telemedicine', category: '最新医療技術', title: 'オンライン診療の未来：遠隔医療技術の最新動向', author: '高橋 優 医師', specialty: 'デジタルヘルス専門', date: '2025年9月1日', image: '画像(3).jpg', ref_title: 'The Future of Telehealth: Opportunities and Challenges. NEJM Catalyst.', ref_link: 'https://catalyst.nejm.org/doi/full/10.1056/CAT.20.0125' },
-            { id: 'article-career', category: 'キャリア', title: '医師のキャリアパス：専門医以外の多様な選択肢', author: '鈴木 誠 医師', specialty: '経営コンサルタント', date: '2025年8月25日', image: '画像(4).jpg', ref_title: 'Non-Clinical Careers for Physicians. JAMA.', ref_link: 'https://jamanetwork.com/journals/jama/fullarticle/2768522' },
-            { id: 'article-ai', category: 'AIと医療', title: 'AI診断支援ツールの現状と倫理的課題', author: '伊藤 美咲 医師', specialty: '医療情報学専門', date: '2025年8月18日', image: '画像(5).jpg', ref_title: 'High-performance medicine: the convergence of human and artificial intelligence. Nature Medicine.', ref_link: 'https://www.nature.com/articles/s41591-019-0300-7' },
-            { id: 'article-regenerative', category: '再生医療', title: 'iPS細胞を用いた心筋再生治療の最前線', author: '田中 健太 医師', specialty: '循環器内科', date: '2025年9月5日', image: '画像(3).jpg', ref_title: 'Myocardial regeneration with induced pluripotent stem cells. Nat Cardiovasc Res.', ref_link: 'https://pubmed.ncbi.nlm.nih.gov/33806788/' },
-            { id: 'article-genomics', category: 'ゲノム医療', title: 'がんゲノム医療の普及と今後の展望', author: '渡辺 陽子 医師', specialty: '腫瘍内科', date: '2025年9月4日', image: '画像(4).jpg', ref_title: 'Precision oncology: the rule or the exception? The Lancet Oncology.', ref_link: 'https://www.thelancet.com/journals/lanonc/article/PIIS1470-2045(21)00473-1/fulltext' },
-            { id: 'article-blockchain', category: '医療DX', title: '医療データ管理におけるブロックチェーン技術の可能性', author: '佐藤 拓也 氏', specialty: '医療IT専門家', date: '2025年9月3日', image: '画像(5).jpg', ref_title: 'Blockchain Technology in Healthcare: A Systematic Review. Healthcare Informatics Research.', ref_link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6581423/' },
-            { id: 'article-d2p', category: '製薬', title: 'DtoP創薬：デジタル技術が加速する新薬開発', author: '加藤 雄一 医師', specialty: '製薬メディカル', date: '2025年9月2日', image: '画像(3).jpg', ref_title: 'How artificial intelligence is changing drug discovery. Trends in Pharmacological Sciences.', ref_link: 'https://www.cell.com/trends/pharmacological-sciences/fulltext/S0165-6147(19)30193-5' },
-            { id: 'article-management', category: '病院経営', title: 'データ駆動型病院経営(DDHM)の実現に向けた課題', author: '山田 浩二 氏', specialty: '経営コンサルタント', date: '2025年8月30日', image: '画像(4).jpg', ref_title: 'Big data analytics for healthcare. BioMed research international.', ref_link: 'https://www.hindawi.com/journals/bmri/2015/362917/' },
-            { id: 'article-worklife', category: '働き方改革', title: '医師の働き方改革とタスクシフティングの現状', author: '中村 あずさ 医師', specialty: '社会医学', date: '2025年8月29日', image: '画像(5).jpg', ref_title: 'Task shifting from doctors to non-doctors for chronic diseases. Cochrane Database of Systematic Reviews.', ref_link: 'https://www.cochranelibrary.com/cdsr/doi/10.1002/14651858.CD004395.pub2/full' },
-            { id: 'article-robotics', category: '外科', title: '手術支援ロボットの進化と適用領域の拡大', author: '木村 剛 医師', specialty: '消化器外科', date: '2025年8月28日', image: '画像(3).jpg', ref_title: 'Robotic surgery: a current perspective. Annals of surgery.', ref_link: 'https://journals.lww.com/annalsofsurgery/fulltext/2009/09000/robotic_surgery__a_current_perspective.15.aspx' },
-            { id: 'article-nutrition', category: '予防医療', title: '個別化栄養指導と腸内フローラの関係性', author: '高田 真理 医師', specialty: '内分泌内科', date: '2025年8月27日', image: '画像(4).jpg', ref_title: 'The role of the gut microbiota in nutrition and health. Nature Reviews Gastroenterology & Hepatology.', ref_link: 'https://www.nature.com/articles/nrgastro.2016.142' },
-            { id: 'article-mental', category: '精神科', title: 'デジタルフェノタイピングによる精神疾患の早期発見', author: '小林 健 医師', specialty: '精神科', date: '2025年8月26日', image: '画像(5).jpg', ref_title: 'Digital phenotyping for mental health: a systematic review of the literature. Npj Digital Medicine.', ref_link: 'https://www.nature.com/articles/s41746-019-0122-0' },
-            { id: 'article-burnout', category: 'ウェルビーイング', title: '医師のバーンアウト：現状と組織的対策', author: '西田 淳 医師', specialty: '産業医', date: '2025年8月23日', image: '画像(3).jpg', ref_title: 'Physician Burnout: A Global Crisis. The Lancet.', ref_link: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(21)01004-9/fulltext' },
-            { id: 'article-immunology', category: '免疫学', title: '免疫チェックポイント阻害薬の次なる展開', author: '吉田 拓海 医師', specialty: '臨床免疫学', date: '2025年8月22日', image: '画像(4).jpg', ref_title: 'Next-generation cancer immunotherapy: the promise of personalized combination strategies. The Lancet.', ref_link: 'https://www.thelancet.com/journals/lancet/article/PIIS0140-6736(18)30186-8/fulltext' },
-            { id: 'article-law', category: '医療法務', title: 'オンライン診療における医師の法的責任と留意点', author: '橋本 徹 氏', specialty: '弁護士（医療法務専門）', date: '2025年8月21日', image: '画像(5).jpg', ref_title: 'Legal and regulatory issues in telehealth. AMA Journal of Ethics.', ref_link: 'https://journalofethics.ama-assn.org/article/legal-and-regulatory-issues-telehealth/2016-01' },
-            { id: 'article-vr', category: '医療教育', title: 'VRシミュレータを用いた外科手技トレーニングの効果', author: '斉藤 達也 医師', specialty: '医療教育学', date: '2025年8月20日', image: '画像(3).jpg', ref_title: 'Virtual reality in surgical training and education. Journal of Surgical Education.', ref_link: 'https://www.journalofsurgicaleducation.org/article/S1931-7204(16)30139-8/fulltext' },
-            { id: 'article-phr', category: 'PHR', title: 'PHRの普及に向けたデータ標準化とセキュリティ', author: '藤田 誠 氏', specialty: '医療情報技師', date: '2025年8月19日', image: '画像(4).jpg', ref_title: 'Personal health records: definitions, benefits, and strategies for overcoming barriers to adoption. J Am Med Inform Assoc.', ref_link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC2244904/' },
-            { id: 'article-sleeptech', category: 'スリープテック', title: '睡眠障害に対するデジタル療法の応用', author: '村上 直樹 医師', specialty: '睡眠医療専門医', date: '2025年8月16日', image: '画像(5).jpg', ref_title: 'Digital therapeutics for insomnia. Current Sleep Medicine Reports.', ref_link: 'https://link.springer.com/article/10.1007/s40675-020-00171-8' },
-            { id: 'article-liquidbiopsy', category: '診断技術', title: 'リキッドバイオプシーが拓くがん診断の未来', author: '井上 恵子 医師', specialty: '臨床検査医学', date: '2025年8月15日', image: '画像(3).jpg', ref_title: 'Liquid biopsy: a step forward in the management of cancer. Molecular Cancer.', ref_link: 'https://molecular-cancer.biomedcentral.com/articles/10.1186/s12943-021-01309-8' },
-            { id: 'article-homecare', category: '在宅医療', title: 'ICTを活用した次世代の在宅医療連携モデル', author: '岡田 宗介 医師', specialty: '在宅医療専門医', date: '2025年8月14日', image: '画像(4).jpg', ref_title: 'The use of information and communication technology in home care. Gerontology.', ref_link: 'https://www.karger.com/Article/FullText/430263' },
-            { id: 'article-clinicaltrial', category: '臨床試験', title: 'バーチャル臨床試験（DCT）のメリットと課題', author: '松本 健吾 医師', specialty: '臨床薬理学', date: '2025年8月13日', image: '画像(5).jpg', ref_title: 'Decentralized Clinical Trials: The Future of Medical Product Development? Clinical Therapeutics.', ref_link: 'https://www.clinicaltherapeutics.com/article/S0149-2918(21)00388-7/fulltext' },
-            { id: 'article-pro', category: '患者報告アウトカム', title: 'PRO(Patient-Reported Outcome)の臨床応用', author: '宮崎 里奈 医師', specialty: 'リハビリテーション科', date: '2025年8月12日', image: '画像(3).jpg', ref_title: 'Patient-reported outcomes in clinical practice. The British Journal of General Practice.', ref_link: 'https://www.ncbi.nlm.nih.gov/pmc/articles/PMC4073733/' },
-            { id: 'article-aging', category: '老年医学', title: '健康寿命延伸に向けたフレイル対策の最新知見', author: '大西 賢治 医師', specialty: '老年内科', date: '2025年8月11日', image: '画像(4).jpg', ref_title: 'Frailty in older adults: evidence for a phenotype. The Journals of Gerontology.', ref_link: 'https://academic.oup.com/biomedgerontology/article/56/3/M146/552309' },
-            { id: 'article-medicaldevice', category: '医療機器', title: '治療用アプリ(DTx)の保険収載と今後の市場', author: '小野寺 翔 氏', specialty: '医療機器コンサルタント', date: '2025年8月9日', image: '画像(5).jpg', ref_title: 'Digital therapeutics: emerging new therapy for neuropsychiatric disorders. Psychological Medicine.', ref_link: 'https://www.cambridge.org/core/journals/psychological-medicine/article/digital-therapeutics-emerging-new-therapy-for-neuropsychiatric-disorders/859A3C2E1F4B431C8240A264353E32C4' },
-            { id: 'article-crispr', category: '遺伝子治療', title: 'CRISPR-Cas9による遺伝子治療の臨床応用と倫理', author: '森 裕子 医師', specialty: '遺伝カウンセリング', date: '2025年8月8日', image: '画像(3).jpg', ref_title: 'CRISPR-Cas9 gene therapy for inherited diseases. Nature Reviews Drug Discovery.', ref_link: 'https://www.nature.com/articles/nrd.2018.176' },
-            { id: 'article-radiomics', category: '放射線科', title: 'ラジオミクスは画像診断をどう変えるか', author: '千葉 亮 医師', specialty: '放射線診断専門医', date: '2025年8月7日', image: '画像(4).jpg', ref_title: 'Radiomics: the process and the challenges. Magnetic Resonance Imaging.', ref_link: 'https://www.sciencedirect.com/science/article/pii/S0730725X1500164X' },
-            { id: 'article-globalhealth', category: '国際保健', title: '医師が国際保健分野で貢献する多様なキャリア', author: '関根 絵美 医師', specialty: '公衆衛生専門医', date: '2025年8月6日', image: '画像(5).jpg', ref_title: 'Global health careers: a guide for aspiring professionals. The Lancet Global Health.', ref_link: 'https://www.thelancet.com/journals/langlo/article/PIIS2214-109X(18)30252-8/fulltext' },
-            { id: 'article-ebm', category: 'EBM', title: 'リアルワールドデータ(RWD)を活用した新たなEBMの形', author: '坂本 雄大 医師', specialty: '臨床疫学', date: '2025年8月5日', image: '画像(3).jpg', ref_title: 'Real-world data: a brief review of the terminology, applications, and challenges. BMC Medical Research Methodology.', ref_link: 'https://bmcmedresmethodol.biomedcentral.com/articles/10.1186/s12874-021-01436-5' },
-            { id: 'article-communication', category: '医療コミュニケーション', title: 'Shared Decision Making(SDM)の実践と課題', author: '福田 恵 医師', specialty: '総合診療科', date: '2025年8月4日', image: '画像(4).jpg', ref_title: 'Shared decision making: the pinnacle of patient-centered care. BMJ.', ref_link: 'https://www.bmj.com/content/329/7456/26' },
-            { id: 'article-nanomedicine', category: 'ナノ医療', title: 'ドラッグデリバリーシステム(DDS)のナノテク革命', author: '今井 聡 博士', specialty: '薬学研究者', date: '2025年8月2日', image: '画像(5).jpg', ref_title: 'Nanoparticle-based drug delivery systems. Advanced Drug Delivery Reviews.', ref_link: 'https://www.sciencedirect.com/science/article/pii/S0169409X1200251X' }
-        ];
+        document.addEventListener('DOMContentLoaded', () => {
+            fetch('article.json')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json();
+                })
+                .then(articlesData => {
+                    const articles = articlesData;
+                    const INITIAL_ARTICLES_SHOWN = 6;
 
-        const INITIAL_ARTICLES_SHOWN = 6;
+                    // --- Render Articles ---
+                    const renderArticles = () => {
+                        const blogGrid = document.querySelector('#blog .grid');
+                        const articleWrapper = document.getElementById('article-section-wrapper');
+                        let articleCardsHTML = '';
+                        let articleDetailsHTML = '';
+                        
+                        articles.forEach((article, index) => {
+                            const delay = (index % 3) * 150;
+                            const isHidden = index >= INITIAL_ARTICLES_SHOWN ? 'hidden' : '';
+                            const articleDate = new Date(article.createdAt.$date).toLocaleDateString('ja-JP');
 
-        // --- Render Articles ---
-        const renderArticles = () => {
-            const blogGrid = document.querySelector('#blog .grid');
-            const articleWrapper = document.getElementById('article-section-wrapper');
-            let articleCardsHTML = '';
-            let articleDetailsHTML = '';
-            
-            articles.forEach((article, index) => {
-                const delay = (index % 3) * 150;
-                const isHidden = index >= INITIAL_ARTICLES_SHOWN ? 'hidden' : '';
-                // Article Card
-                articleCardsHTML += `
-                    <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group scroll-reveal article-item ${isHidden}" style="transition-delay: ${delay}ms;">
-                        <div class="relative h-56 w-full">
-                            <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
-                        </div>
-                        <div class="p-6 flex flex-col">
-                            <div class="flex-grow">
-                                <span class="text-xs font-bold uppercase text-accent">${article.category}</span>
-                                <h3 class="text-xl font-bold text-primary my-2">${article.title}</h3>
-                                <p class="text-sm text-secondary mb-4">執筆者: ${article.author} (${article.specialty})</p>
-                            </div>
-                            <a href="#${article.id}" class="font-bold text-accent hover:underline self-start article-link">続きを読む &rarr;</a>
-                        </div>
-                    </div>
-                `;
-                
-                // Article Detail Page
-                articleDetailsHTML += `
-                    <section id="${article.id}" class="article-content py-24 bg-white">
-                        <div class="container mx-auto px-6 max-w-4xl prose">
-                            <button class="back-to-main mb-8 font-bold text-accent hover:underline">&larr; 記事一覧へ戻る</button>
-                            <span class="text-sm font-bold uppercase text-accent">${article.category}</span>
-                            <h1 class="text-4xl font-bold text-primary mt-2 mb-4">${article.title}</h1>
-                            <p class="text-base text-secondary">執筆者: ${article.author} (${article.specialty}) | 公開日: ${article.date}</p>
-                            <img src="${article.image}" alt="${article.title}" class="w-full rounded-lg shadow-md my-8"/>
-                            <!-- Placeholder content -->
-                            <p>本記事は、${article.title}に関する最新の動向と臨床現場へのインパクトを考察します。この分野は急速な進歩を遂げており、医療従事者にとって常に最新の情報を把握しておくことが重要です。</p>
-                            <h3>主要なポイント</h3>
-                            <p>このテーマにおける主要なポイントは、技術的な革新、臨床応用の拡大、そして倫理的・社会的な課題の3つに大別されます。特に、新しいテクノロジーがもたらす便益と、それに伴うリスクをいかにバランスさせるかが今後の大きな課題となるでしょう。</p>
-                            <h3>今後の展望</h3>
-                            <p>将来的には、より個別化された医療の実現や、これまで治療が困難であった疾患に対する新たなアプローチが可能になると期待されています。そのためには、分野を超えた連携と、継続的な研究開発が不可欠です。</p>
-                            <!-- End of placeholder -->
-                            <h3>参考文献</h3>
-                            <p>本記事の作成にあたり、以下の論文・報告を参考にしました。</p>
-                            <ul>
-                                <li><a href="${article.ref_link}" target="_blank" rel="noopener noreferrer">${article.ref_title}</a></li>
-                            </ul>
-                        </div>
-                    </section>
-                `;
-            });
-            
-            blogGrid.innerHTML = articleCardsHTML;
-            articleWrapper.innerHTML = articleDetailsHTML;
-        };
+                            // Article Card
+                            articleCardsHTML += `
+                                <div class="bg-white rounded-xl shadow-card hover:shadow-card-hover transition-all duration-300 transform hover:-translate-y-2 overflow-hidden group scroll-reveal article-item ${isHidden}" style="transition-delay: ${delay}ms;">
+                                    <div class="relative h-56 w-full">
+                                        <img src="${article.image}" alt="${article.title}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"/>
+                                    </div>
+                                    <div class="p-6 flex flex-col">
+                                        <div class="flex-grow">
+                                            <span class="text-xs font-bold uppercase text-accent">${article.category}</span>
+                                            <h3 class="text-xl font-bold text-primary my-2">${article.title}</h3>
+                                            <p class="text-sm text-secondary mb-4">公開日: ${articleDate}</p>
+                                        </div>
+                                        <a href="#${article.id}" class="font-bold text-accent hover:underline self-start article-link">続きを読む &rarr;</a>
+                                    </div>
+                                </div>
+                            `;
+                            
+                            // Article Detail Page
+                            articleDetailsHTML += `
+                                <section id="${article.id}" class="article-content py-24 bg-white">
+                                    <div class="container mx-auto px-6 max-w-4xl prose">
+                                        <button class="back-to-main mb-8 font-bold text-accent hover:underline">&larr; 記事一覧へ戻る</button>
+                                        <div class="my-4">${article.ad_html || ''}</div>
+                                        <span class="text-sm font-bold uppercase text-accent">${article.category}</span>
+                                        <h1 class="text-4xl font-bold text-primary mt-2 mb-4">${article.title}</h1>
+                                        <p class="text-base text-secondary">公開日: ${articleDate}</p>
+                                        <img src="${article.image}" alt="${article.title}" class="w-full rounded-lg shadow-md my-8"/>
+                                        ${article.content}
+                                        <h3>参考文献</h3>
+                                        <p>本記事の作成にあたり、以下の論文・報告を参考にしました。</p>
+                                        <ul>
+                                            <li><a href="${article.ref_link}" target="_blank" rel="noopener noreferrer">${article.ref_title}</a></li>
+                                        </ul>
+                                    </div>
+                                </section>
+                            `;
+                        });
+                        
+                        blogGrid.innerHTML = articleCardsHTML;
+                        articleWrapper.innerHTML = articleDetailsHTML;
+                        setupArticleLinks(); // Re-bind links after rendering
+                    };
 
-        renderArticles();
+                    const setupArticleLinks = () => {
+                        document.querySelectorAll('.article-link').forEach(link => {
+                            link.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const articleId = link.getAttribute('href').substring(1);
+                                showArticle(articleId);
+                            });
+                        });
+                        document.querySelectorAll('.back-to-main').forEach(button => {
+                            button.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                showMainContent();
+                            });
+                        });
+                    };
 
-
-        const header = document.getElementById('header');
-        const navLinks = document.querySelectorAll('.nav-link');
-        const sections = document.querySelectorAll('#main-content-wrapper > main > section[id]');
-
-        // --- Header Scroll Effect ---
-        const handleHeaderScroll = () => {
-            if (window.scrollY > 50) {
-                header.classList.add('header-scrolled');
-            } else {
-                header.classList.remove('header-scrolled');
-            }
-        };
-        window.addEventListener('scroll', handleHeaderScroll);
-        handleHeaderScroll();
-
-        // --- Nav Link Active State on Scroll ---
-        const sectionObserver = new IntersectionObserver((entries) => {
-            let currentActive = '';
-            entries.forEach(entry => {
-                if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
-                    currentActive = entry.target.getAttribute('id');
-                }
-            });
-            // Manual check for blog section as it might be taller
-            const blogSection = document.getElementById('blog');
-            const rect = blogSection.getBoundingClientRect();
-            if (rect.top <= window.innerHeight * 0.2 && rect.bottom >= window.innerHeight * 0.5) {
-                currentActive = 'blog';
-            }
-
-            navLinks.forEach(link => {
-                const linkHref = link.getAttribute('href').substring(1);
-                link.classList.toggle('active', linkHref === currentActive);
-            });
-        }, { rootMargin: "-20% 0px -50% 0px", threshold: 0.3 });
-        sections.forEach(section => {
-            if (section.id) sectionObserver.observe(section);
-        });
-
-        // --- Scroll Reveal Animation ---
-        const scrollObserver = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('is-visible');
-                    scrollObserver.unobserve(entry.target);
-                }
-            });
-        }, { threshold: 0.1 });
-        // Initial call for elements already in view
-        document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
-
-
-        // --- Article Page Navigation ---
-        const mainContentWrapper = document.getElementById('main-content-wrapper');
-        const articleSectionWrapper = document.getElementById('article-section-wrapper');
-        
-        const showArticle = (articleId) => {
-            mainContentWrapper.classList.add('hidden');
-            articleSectionWrapper.classList.remove('hidden');
-            document.querySelectorAll('.article-content').forEach(article => {
-                article.classList.toggle('hidden', article.id !== articleId);
-            });
-            window.scrollTo(0, 0);
-        };
-
-        const showMainContent = () => {
-            articleSectionWrapper.classList.add('hidden');
-            mainContentWrapper.classList.remove('hidden');
-        };
-
-        const setupArticleLinks = () => {
-            document.querySelectorAll('.article-link').forEach(link => {
-                link.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const articleId = link.getAttribute('href').substring(1);
-                    showArticle(articleId);
-                });
-            });
-            document.querySelectorAll('.back-to-main').forEach(button => {
-                button.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    showMainContent();
-                });
-            });
-        };
-        setupArticleLinks();
-        
-        // --- Business Transfer Accordion ---
-        document.querySelectorAll('.transfer-card').forEach(card => {
-            const toggleButton = card.querySelector('.transfer-toggle');
-            const details = card.querySelector('.transfer-details');
-            if (toggleButton && details) {
-                toggleButton.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    const isOpen = details.classList.contains('is-open');
+                    renderArticles();
                     
-                    document.querySelectorAll('.transfer-details.is-open').forEach(openDetail => {
-                        if (openDetail !== details) {
-                            openDetail.classList.remove('is-open');
-                            const otherButton = openDetail.closest('.transfer-card').querySelector('.transfer-toggle');
-                            if(otherButton) otherButton.textContent = '譲渡条件を確認する';
+                    const header = document.getElementById('header');
+                    const navLinks = document.querySelectorAll('.nav-link');
+                    const sections = document.querySelectorAll('#main-content-wrapper > main > section[id]');
+
+                    // --- Header Scroll Effect ---
+                    const handleHeaderScroll = () => {
+                        if (window.scrollY > 50) {
+                            header.classList.add('header-scrolled');
+                        } else {
+                            header.classList.remove('header-scrolled');
+                        }
+                    };
+                    window.addEventListener('scroll', handleHeaderScroll);
+                    handleHeaderScroll();
+
+                    // --- Nav Link Active State on Scroll ---
+                    const sectionObserver = new IntersectionObserver((entries) => {
+                        let currentActive = '';
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting && entry.intersectionRatio > 0.3) {
+                                currentActive = entry.target.getAttribute('id');
+                            }
+                        });
+                        const blogSection = document.getElementById('blog');
+                        const rect = blogSection.getBoundingClientRect();
+                        if (rect.top <= window.innerHeight * 0.2 && rect.bottom >= window.innerHeight * 0.5) {
+                            currentActive = 'blog';
+                        }
+
+                        navLinks.forEach(link => {
+                            const linkHref = link.getAttribute('href').substring(1);
+                            link.classList.toggle('active', linkHref === currentActive);
+                        });
+                    }, { rootMargin: "-20% 0px -50% 0px", threshold: 0.3 });
+                    sections.forEach(section => {
+                        if (section.id) sectionObserver.observe(section);
+                    });
+
+                    // --- Scroll Reveal Animation ---
+                    const scrollObserver = new IntersectionObserver((entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                entry.target.classList.add('is-visible');
+                                scrollObserver.unobserve(entry.target);
+                            }
+                        });
+                    }, { threshold: 0.1 });
+                    document.querySelectorAll('.scroll-reveal').forEach(el => scrollObserver.observe(el));
+
+                    // --- Article Page Navigation ---
+                    const mainContentWrapper = document.getElementById('main-content-wrapper');
+                    const articleSectionWrapper = document.getElementById('article-section-wrapper');
+                    
+                    const showArticle = (articleId) => {
+                        mainContentWrapper.classList.add('hidden');
+                        articleSectionWrapper.classList.remove('hidden');
+                        document.querySelectorAll('.article-content').forEach(article => {
+                            article.classList.toggle('hidden', article.id !== articleId);
+                        });
+                        window.scrollTo(0, 0);
+                    };
+
+                    const showMainContent = () => {
+                        articleSectionWrapper.classList.add('hidden');
+                        mainContentWrapper.classList.remove('hidden');
+                    };
+                    
+                    // --- Business Transfer Accordion ---
+                    document.querySelectorAll('.transfer-card').forEach(card => {
+                        const toggleButton = card.querySelector('.transfer-toggle');
+                        const details = card.querySelector('.transfer-details');
+                        if (toggleButton && details) {
+                            toggleButton.addEventListener('click', (e) => {
+                                e.preventDefault();
+                                const isOpen = details.classList.contains('is-open');
+                                
+                                document.querySelectorAll('.transfer-details.is-open').forEach(openDetail => {
+                                    if (openDetail !== details) {
+                                        openDetail.classList.remove('is-open');
+                                        const otherButton = openDetail.closest('.transfer-card').querySelector('.transfer-toggle');
+                                        if(otherButton) otherButton.textContent = '譲渡条件を確認する';
+                                    }
+                                });
+
+                                details.classList.toggle('is-open');
+                                toggleButton.textContent = isOpen ? '譲渡条件を確認する' : '閉じる';
+                            });
                         }
                     });
 
-                    details.classList.toggle('is-open');
-                    toggleButton.textContent = isOpen ? '譲渡条件を確認する' : '閉じる';
-                });
-            }
-        });
+                    // --- "Load More" Functionality ---
+                    const setupLoadMore = (buttonId, itemClass) => {
+                        const loadMoreButton = document.getElementById(buttonId);
+                        if (loadMoreButton) {
+                            loadMoreButton.addEventListener('click', () => {
+                                document.querySelectorAll(`.${itemClass}.hidden`).forEach(item => {
+                                    item.classList.remove('hidden');
+                                });
+                                loadMoreButton.style.display = 'none';
+                            });
+                        }
+                    };
 
-        // --- "Load More" Functionality ---
-        const setupLoadMore = (buttonId, itemClass) => {
-            const loadMoreButton = document.getElementById(buttonId);
-            if (loadMoreButton) {
-                loadMoreButton.addEventListener('click', () => {
-                    document.querySelectorAll(`.${itemClass}.hidden`).forEach(item => {
-                        item.classList.remove('hidden');
+                    setupLoadMore('load-more-articles', 'article-item');
+                    setupLoadMore('load-more-jobs', 'extra-job-item');
+                    setupLoadMore('load-more-transfers', 'extra-transfer-item');
+
+                    // --- Company Section Tab Functionality ---
+                    const companyTabs = document.querySelectorAll('.company-tab');
+                    const companyTabContents = document.querySelectorAll('.company-tab-content');
+
+                    companyTabs.forEach(tab => {
+                        tab.addEventListener('click', () => {
+                            companyTabs.forEach(t => t.classList.remove('active-tab'));
+                            tab.classList.add('active-tab');
+
+                            const contentId = tab.dataset.content;
+                            companyTabContents.forEach(content => {
+                                content.classList.add('hidden');
+                            });
+                            
+                            const targetContent = document.getElementById(contentId);
+                            if (targetContent) {
+                                targetContent.classList.remove('hidden');
+                            }
+                        });
                     });
-                    loadMoreButton.style.display = 'none';
-                });
-            }
-        };
 
-        setupLoadMore('load-more-articles', 'article-item');
-        setupLoadMore('load-more-jobs', 'extra-job-item');
-        setupLoadMore('load-more-transfers', 'extra-transfer-item');
+                    // --- AI Chatbot Logic ---
+                    const chatWidget = document.getElementById('chat-widget');
+                    const chatToggleButton = document.getElementById('chat-toggle-button');
+                    const chatIconOpen = document.getElementById('chat-icon-open');
+                    const chatIconClose = document.getElementById('chat-icon-close');
+                    const chatLog = document.getElementById('chat-log');
+                    const chatInput = document.getElementById('chat-input');
+                    const chatSendButton = document.getElementById('chat-send');
 
+                    const toggleChat = () => {
+                        const isOpen = chatWidget.classList.toggle('is-open');
+                        chatIconOpen.classList.toggle('hidden', isOpen);
+                        chatIconClose.classList.toggle('hidden', !isOpen);
+                        if(isOpen) {
+                            if(chatLog.children.length === 0) {
+                               setTimeout(() => addMessage('ai', 'こんにちは。メドテラス AIキャリア相談です。ご興味のある内容についてキーワードを入力してください。（例：「求人」「事業承継」「キャリア」）'), 500);
+                            }
+                            chatInput.focus();
+                        }
+                    };
+                    chatToggleButton.addEventListener('click', toggleChat);
 
-        // --- Company Section Tab Functionality ---
-        const companyTabs = document.querySelectorAll('.company-tab');
-        const companyTabContents = document.querySelectorAll('.company-tab-content');
+                    const addMessage = (sender, text) => {
+                        const messageDiv = document.createElement('div');
+                        messageDiv.classList.add('chat-message', 'w-full', 'flex');
+                        
+                        const bubbleDiv = document.createElement('div');
+                        bubbleDiv.classList.add('rounded-lg', 'px-4', 'py-2');
+                        
+                        if (sender === 'user') {
+                            messageDiv.classList.add('justify-end');
+                            bubbleDiv.classList.add('chat-bubble-user');
+                            bubbleDiv.textContent = text;
+                        } else {
+                            messageDiv.classList.add('justify-start');
+                            bubbleDiv.classList.add('chat-bubble-ai');
+                            bubbleDiv.innerHTML = text;
+                        }
 
-        companyTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
-                // Deactivate all tabs
-                companyTabs.forEach(t => t.classList.remove('active-tab'));
-                // Activate clicked tab
-                tab.classList.add('active-tab');
+                        messageDiv.appendChild(bubbleDiv);
+                        chatLog.appendChild(messageDiv);
+                        chatLog.scrollTop = chatLog.scrollHeight;
+                    };
 
-                const contentId = tab.dataset.content;
-                
-                // Hide all content
-                companyTabContents.forEach(content => {
-                    content.classList.add('hidden');
-                });
-                
-                // Show target content
-                const targetContent = document.getElementById(contentId);
-                if (targetContent) {
-                    targetContent.classList.remove('hidden');
-                }
-            });
-        });
+                    const getAiResponse = (userText) => {
+                        const lowerCaseText = userText.toLowerCase();
+                        if (lowerCaseText.includes('求人') || lowerCaseText.includes('転職')) {
+                            return '求人情報ですね。当サイトでは、全国の病院やクリニック、企業からの多様な求人を掲載しております。ご希望の診療科や勤務地、年収など、より詳しい条件をお聞かせいただけますか？ <a href="#jobs" class="text-accent underline">求人情報セクション</a>もご覧ください。';
+                        }
+                        if (lowerCaseText.includes('事業承継') || lowerCaseText.includes('開業')) {
+                            return '事業承継にご興味がおありなのですね。メドテラスでは、後継者を探されているクリニック様と、開業を目指す先生とのマッチングをサポートしております。ご希望のエリアや規模について教えていただけますでしょうか。詳しくは<a href="#transfer" class="text-accent underline">事業承継セクション</a>をご覧ください。';
+                        }
+                        if (lowerCaseText.includes('キャリア') || lowerCaseText.includes('パス')) {
+                            return '医師のキャリアパスは多様化しています。臨床以外にも、製薬会社、コンサルティング、行政など、様々な選択肢がございます。当サイトの<a href="#article-career" class="article-link text-accent underline">特集記事</a>もご参考に、先生の将来像について一緒に考えさせていただければと存じます。';
+                        }
+                        if (lowerCaseText.includes('記事') || lowerCaseText.includes('ai') || lowerCaseText.includes('オンライン')) {
+                            return '専門記事ですね。<a href="#blog" class="text-accent underline">Featured Articlesセクション</a>では、医療の最新トレンドに関する質の高い情報を提供しております。「オンライン診療」「AI診断」「キャリアパス」など、様々なテーマの記事がございますので、ぜひご覧ください。';
+                        }
+                        if (lowerCaseText.includes('ありがとう')) {
+                            return 'どういたしまして。その他、何かご不明な点がございましたら、お気軽にお尋ねください。';
+                        }
+                        return 'ご質問ありがとうございます。申し訳ありません、そのご質問にはまだお答えできません。より詳しい情報をご提供いただくか、別のキーワードでお試しください。';
+                    };
+                    
+                    const handleSendMessage = () => {
+                        const userText = chatInput.value.trim();
+                        if (userText === '') return;
 
-        // --- AI Chatbot Logic ---
-        const chatWidget = document.getElementById('chat-widget');
-        const chatToggleButton = document.getElementById('chat-toggle-button');
-        const chatIconOpen = document.getElementById('chat-icon-open');
-        const chatIconClose = document.getElementById('chat-icon-close');
-        const chatLog = document.getElementById('chat-log');
-        const chatInput = document.getElementById('chat-input');
-        const chatSendButton = document.getElementById('chat-send');
+                        addMessage('user', userText);
+                        chatInput.value = '';
+                        
+                        setTimeout(() => {
+                            const aiText = getAiResponse(userText);
+                            addMessage('ai', aiText);
 
-        const toggleChat = () => {
-            const isOpen = chatWidget.classList.toggle('is-open');
-            chatIconOpen.classList.toggle('hidden', isOpen);
-            chatIconClose.classList.toggle('hidden', !isOpen);
-            if(isOpen) {
-                if(chatLog.children.length === 0) {
-                   setTimeout(() => addMessage('ai', 'こんにちは。メドテラス AIキャリア相談です。ご興味のある内容についてキーワードを入力してください。（例：「求人」「事業承継」「キャリア」）'), 500);
-                }
-                chatInput.focus();
-            }
-        };
-        chatToggleButton.addEventListener('click', toggleChat);
-
-        const addMessage = (sender, text) => {
-            const messageDiv = document.createElement('div');
-            messageDiv.classList.add('chat-message', 'w-full', 'flex');
-            
-            const bubbleDiv = document.createElement('div');
-            bubbleDiv.classList.add('rounded-lg', 'px-4', 'py-2');
-            
-            if (sender === 'user') {
-                messageDiv.classList.add('justify-end');
-                bubbleDiv.classList.add('chat-bubble-user');
-                bubbleDiv.textContent = text;
-            } else {
-                messageDiv.classList.add('justify-start');
-                bubbleDiv.classList.add('chat-bubble-ai');
-                bubbleDiv.innerHTML = text; // Allow HTML for links
-            }
-
-            messageDiv.appendChild(bubbleDiv);
-            chatLog.appendChild(messageDiv);
-            chatLog.scrollTop = chatLog.scrollHeight;
-        };
-
-        const getAiResponse = (userText) => {
-            const lowerCaseText = userText.toLowerCase();
-            if (lowerCaseText.includes('求人') || lowerCaseText.includes('転職')) {
-                return '求人情報ですね。当サイトでは、全国の病院やクリニック、企業からの多様な求人を掲載しております。ご希望の診療科や勤務地、年収など、より詳しい条件をお聞かせいただけますか？ <a href="#jobs" class="text-accent underline">求人情報セクション</a>もご覧ください。';
-            }
-            if (lowerCaseText.includes('事業承継') || lowerCaseText.includes('開業')) {
-                return '事業承継にご興味がおありなのですね。メドテラスでは、後継者を探されているクリニック様と、開業を目指す先生とのマッチングをサポートしております。ご希望のエリアや規模について教えていただけますでしょうか。詳しくは<a href="#transfer" class="text-accent underline">事業承継セクション</a>をご覧ください。';
-            }
-            if (lowerCaseText.includes('キャリア') || lowerCaseText.includes('パス')) {
-                return '医師のキャリアパスは多様化しています。臨床以外にも、製薬会社、コンサルティング、行政など、様々な選択肢がございます。当サイトの<a href="#article-career" class="article-link text-accent underline">特集記事</a>もご参考に、先生の将来像について一緒に考えさせていただければと存じます。';
-            }
-            if (lowerCaseText.includes('記事') || lowerCaseText.includes('ai') || lowerCaseText.includes('オンライン')) {
-                return '専門記事ですね。<a href="#blog" class="text-accent underline">Featured Articlesセクション</a>では、医療の最新トレンドに関する質の高い情報を提供しております。「オンライン診療」「AI診断」「キャリアパス」など、様々なテーマの記事がございますので、ぜひご覧ください。';
-            }
-            if (lowerCaseText.includes('ありがとう')) {
-                return 'どういたしまして。その他、何かご不明な点がございましたら、お気軽にお尋ねください。';
-            }
-            return 'ご質問ありがとうございます。申し訳ありません、そのご質問にはまだお答えできません。より詳しい情報をご提供いただくか、別のキーワードでお試しください。';
-        };
-        
-        const handleSendMessage = () => {
-            const userText = chatInput.value.trim();
-            if (userText === '') return;
-
-            addMessage('user', userText);
-            chatInput.value = '';
-            
-            setTimeout(() => {
-                const aiText = getAiResponse(userText);
-                addMessage('ai', aiText);
-
-                // Re-bind event listeners for dynamically added article links in chat
-                chatLog.querySelectorAll('.article-link').forEach(link => {
-                    link.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const articleId = link.getAttribute('href').substring(1);
-                        showArticle(articleId);
-                        toggleChat();
+                            chatLog.querySelectorAll('.article-link').forEach(link => {
+                                link.addEventListener('click', (e) => {
+                                    e.preventDefault();
+                                    const articleId = link.getAttribute('href').substring(1);
+                                    showArticle(articleId);
+                                    toggleChat();
+                                });
+                            });
+                        }, 1000);
+                    };
+                    
+                    chatSendButton.addEventListener('click', handleSendMessage);
+                    chatInput.addEventListener('keypress', (e) => {
+                        if (e.key === 'Enter') {
+                            handleSendMessage();
+                        }
                     });
+                })
+                .catch(error => {
+                    console.error('記事データの読み込みに失敗しました:', error);
+                    document.querySelector('#blog .grid').innerHTML = `<p class="text-red-500 text-center col-span-3">記事の読み込みに失敗しました。ページを再読み込みしてください。</p>`;
                 });
-            }, 1000);
-        };
-        
-        chatSendButton.addEventListener('click', handleSendMessage);
-        chatInput.addEventListener('keypress', (e) => {
-            if (e.key === 'Enter') {
-                handleSendMessage();
-            }
         });
-    });
     </script>
 </body>
 </html>
